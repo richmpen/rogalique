@@ -9,7 +9,7 @@
 
 namespace Arkanoid {
 	Ball::Ball(const sf::Vector2f& position) :
-	Object(SETTINGS.TEXTURES_PATH + "Ball.png",position,SETTINGS.BALL_SIZE,SETTINGS.BALL_SIZE)
+	Object(SETTINGS.TEXTURES_PATH + "Ball.png",position,(float)SETTINGS.BALL_SIZE,(float)SETTINGS.BALL_SIZE)
 	{
 		assert(fireTexture.loadFromFile(SETTINGS.TEXTURES_PATH + "FireBall.png"));
 		texture.setSmooth(true);
