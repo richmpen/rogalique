@@ -99,7 +99,7 @@ namespace Rogalique
 		exitGameItem.childrens.push_back(noItem);
 
 		MenuItem mainMenu;
-		mainMenu.hintText.setString("ARKANOID");
+		mainMenu.hintText.setString("ROGALIQUE");
 		mainMenu.hintText.setFont(font);
 		mainMenu.hintText.setCharacterSize(38);
 		mainMenu.hintText.setFillColor(sf::Color::White);
