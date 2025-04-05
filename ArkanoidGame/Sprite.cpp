@@ -3,7 +3,7 @@
 #include "SFML/Graphics.hpp"
 
 
-namespace Arkanoid
+namespace Rogalique
 {
 	void InitSprite(sf::Sprite& sprite, float desiredWidth, float desiredHeight, const sf::Texture& texture)
 	{

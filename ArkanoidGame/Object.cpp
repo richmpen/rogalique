@@ -3,7 +3,7 @@
 #include <assert.h>
 #include "SFML/Graphics.hpp"
 
-namespace Arkanoid {
+namespace Rogalique {
 	Object::Object(const std::string& texturePath, const sf::Vector2f& position, float width, float height) :
 		startPosition(position)
 	{

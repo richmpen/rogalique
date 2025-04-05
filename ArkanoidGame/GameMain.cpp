@@ -2,7 +2,7 @@
 #include "Application.h"
 
 
-using namespace Arkanoid;
+using namespace Rogalique;
 
 int main()
 {

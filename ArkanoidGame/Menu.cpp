@@ -1,7 +1,7 @@
 #include "Menu.h"
 #include <assert.h>
 
-namespace Arkanoid
+namespace Rogalique
 {
 	void Menu::Init(const MenuItem& item)
 	{

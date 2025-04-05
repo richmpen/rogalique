@@ -8,7 +8,7 @@
 
 
 
-namespace Arkanoid
+namespace Rogalique
 {
 	enum class GameOptions : std::uint8_t
 	{

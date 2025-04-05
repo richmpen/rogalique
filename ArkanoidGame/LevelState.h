@@ -4,7 +4,7 @@
 #include "Block.h"
 #include "LevelLoader.h"
 
-namespace Arkanoid
+namespace Rogalique
 {
     struct LevelState {
         sf::Vector2f platePosition;

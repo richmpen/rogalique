@@ -1,7 +1,7 @@
 #include "BonusFactory.h"
 #include "Bonus.h"
 
-namespace Arkanoid
+namespace Rogalique
 {
     std::shared_ptr<Bonus> FireBallBonusFactory::CreateBonus(const sf::Vector2f& position) {
         return std::make_shared<FireBall>("FireBallBonus.png", position);

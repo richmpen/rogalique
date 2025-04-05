@@ -5,7 +5,7 @@
 #include "Ball.h"
 #include "Block.h"
 
-namespace Arkanoid {
+namespace Rogalique {
 
     class BonusEffect : public IDelayedAction {
     public:

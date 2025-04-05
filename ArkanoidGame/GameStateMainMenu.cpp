@@ -5,7 +5,7 @@
 
 #include "ScoreSystem.h"
 
-namespace Arkanoid
+namespace Rogalique
 {
 	void GameStateMainMenu::Init()
 	{

@@ -5,7 +5,7 @@
 #include "GameStateRecords.h"
 #include <assert.h>
 
-namespace Arkanoid
+namespace Rogalique
 {
 
 	Game::Game()

@@ -1,7 +1,7 @@
 #pragma once
 #include "SFML/Graphics.hpp"
 
-namespace Arkanoid {
+namespace Rogalique {
 
 	class Object {
 	public:

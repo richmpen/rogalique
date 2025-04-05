@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
 
-namespace Arkanoid
+namespace Rogalique
 {
 	class GameWorld
 	{
@@ -56,7 +56,7 @@ namespace Arkanoid
 		const int MAX_RECORDS_TABLE_SIZE = 5;
 		const char* PLAYER_ID = "Richmpen - Player";
 
-		const std::string GAME_NAME = "Arkanoid";
+		const std::string GAME_NAME = "Rogalique";
 	};
 #define SETTINGS GameWorld::Instance()
 }

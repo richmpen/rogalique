@@ -5,7 +5,7 @@
 #include <assert.h>
 #include <sstream>
 
-namespace Arkanoid
+namespace Rogalique
 {
 	
 

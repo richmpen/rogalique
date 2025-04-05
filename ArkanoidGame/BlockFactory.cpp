@@ -2,7 +2,7 @@
 #include "Block.h"
 
 
-namespace Arkanoid
+namespace Rogalique
 {
     int BlockFactory::GetcreatedBreackableBlocksCount()
     {

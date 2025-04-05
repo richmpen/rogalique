@@ -3,7 +3,7 @@
 #include <fstream>
 #include <assert.h>
 #include <filesystem>
-namespace Arkanoid {
+namespace Rogalique {
 	Level& LevelLoader::GetLevel(int i) {
 		return levels.at(i);
 	}

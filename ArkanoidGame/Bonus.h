@@ -8,7 +8,7 @@
 #include "Block.h"
 #include "LevelLoader.h"
 
-namespace Arkanoid {
+namespace Rogalique {
     class Bonus : public Object, public Colladiable, public IDelayedAction {
     protected:
         sf::Texture texture;

@@ -3,7 +3,7 @@
 #include <vector>
 #include "GameStateData.h"
 
-namespace Arkanoid
+namespace Rogalique
 {
 	class Game;
 

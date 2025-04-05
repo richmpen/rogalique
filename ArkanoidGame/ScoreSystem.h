@@ -2,7 +2,7 @@
 #include <iostream>
 
 
-namespace Arkanoid
+namespace Rogalique
 {
 	class ScoreSystem
 	{

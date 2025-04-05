@@ -6,7 +6,7 @@
 #include "Colladiable.h"
 
 
-namespace Arkanoid
+namespace Rogalique
 {
 	class Ball;
 

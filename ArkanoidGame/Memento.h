@@ -1,7 +1,7 @@
 ﻿#pragma once
 #include "LevelState.h"
 
-namespace Arkanoid
+namespace Rogalique
 {
     class Memento {
     private:
