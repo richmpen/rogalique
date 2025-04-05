@@ -7,7 +7,7 @@
 #include "Plate.h"
 #include <random>
 
-namespace Arkanoid {
+namespace Rogalique {
 	Ball::Ball(const sf::Vector2f& position) :
 	Object(SETTINGS.TEXTURES_PATH + "Ball.png",position,SETTINGS.BALL_SIZE,SETTINGS.BALL_SIZE)
 	{

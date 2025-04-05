@@ -6,7 +6,7 @@
 #include <iostream>
 
 
-namespace Arkanoid {
+namespace Rogalique {
 
 	Plate::Plate(const sf::Vector2f& position):Object(SETTINGS.TEXTURES_PATH + "Plate.png",position,SETTINGS.PLATE_WIDTH,SETTINGS.PLATE_HEIGHT)
 	{

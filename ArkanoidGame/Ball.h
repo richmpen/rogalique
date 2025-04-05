@@ -5,7 +5,7 @@
 #include "IObserver.h"
 #include "GameSettings.h"
 
-namespace Arkanoid {
+namespace Rogalique {
 	
 	class Plate;
 

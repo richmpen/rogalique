@@ -4,7 +4,7 @@
 #include <fstream>
 #include "GameSettings.h"
 
-namespace Arkanoid
+namespace Rogalique
 {
 	void ScoreSystem::SetScore(const int score)
 	{this->score = score;}

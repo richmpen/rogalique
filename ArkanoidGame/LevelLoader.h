@@ -6,7 +6,7 @@
 #include <map>
 
 
-namespace Arkanoid {
+namespace Rogalique {
 
 	enum class BlockType
 	{

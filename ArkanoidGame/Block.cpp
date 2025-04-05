@@ -9,7 +9,7 @@
 
 #include "Application.h"
 
-namespace Arkanoid {
+namespace Rogalique {
 
 	Block::Block(const std::string& texturePath, sf::Vector2f position)
 		: Object(SETTINGS.TEXTURES_PATH + texturePath, position, SETTINGS.BLOCK_WIDTH, SETTINGS.BLOCK_HEIGHT),

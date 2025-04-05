@@ -6,7 +6,7 @@
 #include <sstream>
 #include "ScoreSystem.h"
 
-namespace Arkanoid
+namespace Rogalique
 {
 
 	void GameStateGameOver::Init()

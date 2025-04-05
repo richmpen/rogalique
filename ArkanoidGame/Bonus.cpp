@@ -9,7 +9,7 @@
 #include <string>
 
 
-namespace Arkanoid {
+namespace Rogalique {
 
     Bonus::Bonus(const std::string& texturePath, const sf::Vector2f& position, float width, float height)
         : Object(SETTINGS.TEXTURES_PATH + texturePath, position, width, height) {

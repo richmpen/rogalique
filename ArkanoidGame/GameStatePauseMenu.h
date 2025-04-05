@@ -3,7 +3,7 @@
 #include "Menu.h"
 #include "GameStateData.h"
 
-namespace Arkanoid
+namespace Rogalique
 {
 	class Game;
 

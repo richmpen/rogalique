@@ -14,7 +14,7 @@
 #include "Memento.h"
 
 
-namespace Arkanoid
+namespace Rogalique
 {
     void GameStatePlaying::Init()
     {

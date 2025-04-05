@@ -2,7 +2,7 @@
 #include <memory>
 #include "SFML/Graphics.hpp"
 
-namespace Arkanoid
+namespace Rogalique
 {
 	class Bonus;
 

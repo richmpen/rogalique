@@ -2,7 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include "GameStateData.h"
 
-namespace Arkanoid
+namespace Rogalique
 {
 
 	enum class GameStateType

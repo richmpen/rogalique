@@ -5,7 +5,7 @@
 #include "IDelayedAction.h"
 #include "IObserver.h"
 
-namespace Arkanoid {
+namespace Rogalique {
 	class Ball;
 	class Block : public Object, public Colladiable, public IObservable
 	{

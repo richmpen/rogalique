@@ -17,7 +17,7 @@
 #include "Memento.h"
 #include "BonusEffect.h"
 
-namespace Arkanoid
+namespace Rogalique
 {
 	class ScoreSystem;
 	class Game;
