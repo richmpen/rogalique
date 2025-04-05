@@ -160,14 +160,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
-    <ClCompile Include="Ball.cpp" />
-    <ClCompile Include="Block.cpp" />
-    <ClCompile Include="BlockFactory.cpp" />
-    <ClCompile Include="Bonus.cpp" />
-    <ClCompile Include="BonusFactory.cpp" />
     <ClCompile Include="GameState.cpp" />
     <ClCompile Include="GameStateGameWin.cpp" />
-    <ClCompile Include="LevelLoader.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="ScoreSystem.cpp" />
     <ClCompile Include="Sprite.cpp" />
@@ -180,24 +174,15 @@
     <ClCompile Include="GameStateRecords.cpp" />
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="Text.cpp" />
-    <ClCompile Include="Plate.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h" />
-    <ClInclude Include="Ball.h" />
-    <ClInclude Include="Block.h" />
-    <ClInclude Include="BlockFactory.h" />
-    <ClInclude Include="Bonus.h" />
-    <ClInclude Include="BonusEffect.h" />
-    <ClInclude Include="BonusFactory.h" />
     <ClInclude Include="Colladiable.h" />
     <ClInclude Include="GameState.h" />
     <ClInclude Include="GameStateData.h" />
     <ClInclude Include="GameStateGameWin.h" />
     <ClInclude Include="IDelayedAction.h" />
     <ClInclude Include="IObserver.h" />
-    <ClInclude Include="LevelLoader.h" />
-    <ClInclude Include="LevelState.h" />
     <ClInclude Include="Memento.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="ScoreSystem.h" />
@@ -211,11 +196,7 @@
     <ClInclude Include="GameStateRecords.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="Text.h" />
-    <ClInclude Include="Plate.h" />
     <ClInclude Include="Vector.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\levels.config" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
