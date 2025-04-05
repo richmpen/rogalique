@@ -12,11 +12,11 @@ namespace Rogalique
 	{
 		recordsTable =
 		{
-			{"John", SETTINGS.BLOCKS_COUNT_ROWS*SETTINGS.BLOCKS_COUNT_IN_ROW / 2},
-			{"Jane", SETTINGS.BLOCKS_COUNT_ROWS*SETTINGS.BLOCKS_COUNT_IN_ROW / 3 },
-			{"Alice", SETTINGS.BLOCKS_COUNT_ROWS*SETTINGS.BLOCKS_COUNT_IN_ROW / 4 },
-			{"Bob", SETTINGS.BLOCKS_COUNT_ROWS*SETTINGS.BLOCKS_COUNT_IN_ROW / 5 },
-			{"Clementine", SETTINGS.BLOCKS_COUNT_ROWS*SETTINGS.BLOCKS_COUNT_IN_ROW / 5 },
+			{"John", 25},
+			{"Jane", 23},
+			{"Alice", 22 },
+			{"Bob", 24 },
+			{"Clementine", 15 },
 		};
 		
 		stateChangeType = GameStateChangeType::None;

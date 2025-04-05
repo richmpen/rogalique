@@ -1,5 +1,4 @@
 #include "ScoreSystem.h"
-#include "Block.h"
 #include "IObserver.h"
 #include <fstream>
 #include "GameSettings.h"
