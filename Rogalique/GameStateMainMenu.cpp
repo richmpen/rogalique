@@ -2,7 +2,7 @@
 #include "Application.h"
 #include "Game.h"
 #include <assert.h>
-
+#include "GameSettings.h"
 #include "ScoreSystem.h"
 
 namespace Rogalique
@@ -99,7 +99,7 @@ namespace Rogalique
 		exitGameItem.childrens.push_back(noItem);
 
 		MenuItem mainMenu;
-		mainMenu.hintText.setString("ARKANOID");
+		mainMenu.hintText.setString(SETTINGS.NOTIFICATION);
 		mainMenu.hintText.setFont(font);
 		mainMenu.hintText.setCharacterSize(38);
 		mainMenu.hintText.setFillColor(sf::Color::White);
@@ -158,17 +158,17 @@ namespace Rogalique
 	void GameStateMainMenu::Draw(sf::RenderWindow& window)
 	{
 		sf::Vector2f viewSize = (sf::Vector2f)window.getView().getSize();
-		DrawSprite(background, window);
+		//DrawSprite(background, window);
 		sf::Text* hintText = &menu.GetCurrentContext().hintText;
-		hintText->setOrigin(GetTextOrigin(*hintText, { 0.5f, 0.f }));
-		hintText->setPosition(viewSize.x / 2.f, 150.f);
+		hintText->setOrigin(GetTextOrigin(*hintText, { 0.5f, 0.5f }));
+		hintText->setPosition(viewSize.x / 2.f, viewSize.y / 2.f);
 		window.draw(*hintText);
 
 		scoreTotalText.setOrigin(GetTextOrigin(scoreTotalText, { 0.5f, 1.f }));
 		scoreTotalText.setPosition(viewSize.x -120, viewSize.y / 2 - 310.f);
-		window.draw(scoreTotalText);
+		//window.draw(scoreTotalText);
 
-		menu.Draw(window, viewSize / 2.f, { 0.5f, 0.f });
+		//menu.Draw(window, viewSize / 2.f, { 0.5f, 0.f });
 	}
 
 }
