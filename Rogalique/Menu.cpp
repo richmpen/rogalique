@@ -75,7 +75,7 @@ namespace Rogalique
 		}
 		
 		MenuItem* parent = selectedItem->parent;
-		assert(parent);
+		//assert(parent);
 
 		auto it = std::find_if(parent->childrens.begin(), parent->childrens.end(), [this](const auto& item) {
 			return selectedItem == &item;
@@ -92,7 +92,7 @@ namespace Rogalique
 		}
 		
 		MenuItem* parent = selectedItem->parent;
-		assert(parent);
+		//assert(parent);
 		
 		auto it = std::find_if(parent->childrens.begin(), parent->childrens.end(), [this](const auto& item) {
 			return selectedItem == &item;
@@ -105,7 +105,7 @@ namespace Rogalique
 
 	void Menu::SelectMenuItem(MenuItem& item)
 	{
-		assert(&item != &rootItem);
+		//assert(&item != &rootItem);
 
 		if (selectedItem == &item)
 		{

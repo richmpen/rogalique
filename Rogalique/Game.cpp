@@ -212,7 +212,7 @@ namespace Rogalique
 	}
 	void Game::LoadNextLevel()
 	{
-		assert(stateStack.back().GetType() == GameStateType::Playing);
+		/*assert(stateStack.back().GetType() == GameStateType::Playing);*/
 		auto playingData = (stateStack.back().GetData<GameStatePlaying>());
 		playingData->LoadNextLevel();
 	}

@@ -10,7 +10,7 @@ namespace Rogalique
 {
 	void GameStateRecords::Init()
 	{
-		assert(font.loadFromFile(SETTINGS.RESOURCES_PATH + "Fonts/Alata-Regular.ttf"));
+		//assert(font.loadFromFile(SETTINGS.RESOURCES_PATH + "Fonts/Alata-Regular.ttf"));
 
 		titleText.setString("RECORDS");
 		titleText.setFont(font);

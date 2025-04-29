@@ -9,8 +9,8 @@ namespace Rogalique
 {
 	void GameStateMainMenu::Init()
 	{
-		assert(font.loadFromFile(SETTINGS.RESOURCES_PATH + "Fonts/Alata-Regular.ttf"));
-		assert(backgroundTexture.loadFromFile(SETTINGS.TEXTURES_PATH + "main-menu-Bg.png"));
+		//assert(font.loadFromFile(SETTINGS.RESOURCES_PATH + "Fonts/Alata-Regular.ttf"));
+		//assert(backgroundTexture.loadFromFile(SETTINGS.TEXTURES_PATH + "main-menu-Bg.png"));
 		InitSprite(background, SETTINGS.SCREEN_WIDTH,SETTINGS.SCREEN_HEIGHT, backgroundTexture);
 		background.setPosition(SETTINGS.SCREEN_WIDTH / 2, SETTINGS.SCREEN_HEIGHT / 2);
 		

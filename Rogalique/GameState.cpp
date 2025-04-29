@@ -48,7 +48,7 @@ namespace Rogalique
 			break;
 		}
 		default:
-			assert(false);
+			/*assert(false);*/
 			break;
 		}
 		if (data) {

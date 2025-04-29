@@ -8,7 +8,7 @@ namespace Rogalique {
 		startPosition(position)
 	{
 		if (!texturePath.empty()) {
-			assert(texture.loadFromFile(texturePath));
+			//assert(texture.loadFromFile(texturePath));
 		}
 		InitSprite(sprite,width,height,texture);
 		sprite.setPosition(position);

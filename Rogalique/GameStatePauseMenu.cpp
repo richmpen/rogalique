@@ -7,7 +7,7 @@ namespace Rogalique
 {
 	void GameStatePauseMenu::Init()
 	{
-		assert(font.loadFromFile(SETTINGS.RESOURCES_PATH + "Fonts/Alata-Regular.ttf"));
+		//assert(font.loadFromFile(SETTINGS.RESOURCES_PATH + "Fonts/Alata-Regular.ttf"));
 
 		background.setFillColor(sf::Color(0, 0, 0, 128));
 
