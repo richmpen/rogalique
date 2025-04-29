@@ -11,20 +11,21 @@
 #include "ScoreSystem.h"
 #include <iostream>
 #include "Memento.h"
+#include "Player.h"
 
 
 namespace Rogalique
 {
     void GameStatePlaying::Init()
     {
-        assert(font.loadFromFile(SETTINGS.FONTS_PATH + "Alata-Regular.ttf"));
+        /*assert(font.loadFromFile(SETTINGS.FONTS_PATH + "Alata-Regular.ttf"));
         assert(ballSoundBuffer.loadFromFile(SETTINGS.SOUNDS_PATH + "ball.wav"));
         assert(hpLossSoundBuffer.loadFromFile(SETTINGS.SOUNDS_PATH + "hploss.wav"));
         assert(bonusEatSoundBuffer.loadFromFile(SETTINGS.SOUNDS_PATH + "bonus.wav"));
         assert(gameOverSoundBuffer.loadFromFile(SETTINGS.SOUNDS_PATH + "Death.wav"));
         assert(gameWinSoundBuffer.loadFromFile(SETTINGS.SOUNDS_PATH + "GameWin.wav"));
         assert(backgroundTexture.loadFromFile(SETTINGS.TEXTURES_PATH + "BackgroudnGameScene.jpg"));
-        assert(heartTexture.loadFromFile(SETTINGS.TEXTURES_PATH + "heart.png"));
+        assert(heartTexture.loadFromFile(SETTINGS.TEXTURES_PATH + "heart.png"));*/
 
         InitSprite(heartSprite, 50, 50, heartTexture);
 
@@ -104,6 +105,8 @@ namespace Rogalique
             Game& game = Application::Instance().GetGame();
             game.LoadNextLevel();
         }
+
+        std::cout << "init game state playing" << std::endl;
     }
 
     void GameStatePlaying::Draw(sf::RenderWindow& window)

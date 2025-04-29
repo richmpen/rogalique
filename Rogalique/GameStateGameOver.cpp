@@ -11,7 +11,7 @@ namespace Rogalique
 
 	void GameStateGameOver::Init()
 	{
-		assert(font.loadFromFile(SETTINGS.RESOURCES_PATH + "Fonts/Alata-Regular.ttf"));
+		//assert(font.loadFromFile(SETTINGS.RESOURCES_PATH + "Fonts/Alata-Regular.ttf"));
 
 		timeSinceGameOver = 0.f;
 		sf::Color backgroundColor = sf::Color::Black;

@@ -11,7 +11,7 @@ namespace Rogalique
 
 	void GameStateGameWin::Init()
 	{
-		assert(font.loadFromFile(SETTINGS.RESOURCES_PATH + "Fonts/Alata-Regular.ttf"));
+		//assert(font.loadFromFile(SETTINGS.RESOURCES_PATH + "Fonts/Alata-Regular.ttf"));
 
 		timeSinceGameWin = 0.f;
 

@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "Новый профиль",
+    "Projects": [
+      {
+        "Path": "Engine\\Engine.vcxproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "Rogalique\\Rogalique.vcxproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]
