@@ -13,7 +13,8 @@ int main()
 
 	EngineCore::ResourceSystem::Instance()->LoadTexture("player", "Resources/Textures/player.png");
 	EngineCore::ResourceSystem::Instance()->LoadTexture("enemy", "Resources/Textures/enemy.png");
-
+	EngineCore::ResourceSystem::Instance()->LoadSound("soundtrack", "Resources/Sounds/soundtrack.wav");
+	EngineCore::ResourceSystem::Instance()->LoadSound("fightMusic", "Resources/Sounds/fightMusic.wav");
 	auto developerLevel = std::make_shared<DeveloperLevel>();
 	developerLevel->Start();
 

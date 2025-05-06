@@ -7,6 +7,7 @@ namespace Rogalique
     void DeveloperLevel::Start()
     {
         player = std::make_unique<Player>(std::forward<EngineCore::Vector2Df>({ 0, 0 }));
+        music = std::make_unique<Music>("soundtrack");
     }
     void DeveloperLevel::Restart()
     {

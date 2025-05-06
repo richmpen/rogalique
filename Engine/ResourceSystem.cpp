@@ -113,6 +113,26 @@ namespace EngineCore
 		textureMaps.erase(textureMap);
 	}
 
+	void ResourceSystem::LoadSound(const std::string& name, std::string sourcePath)
+	{
+		sf::SoundBuffer* newSound = new sf::SoundBuffer();
+		if (newSound->loadFromFile(sourcePath))
+		{
+			sounds.emplace(name, newSound);
+		}
+	}
+
+	void ResourceSystem::DeleteSound(const std::string& name)
+	{
+		sounds.erase(sounds.find(name));
+		delete sounds.find(name)->second;
+	}
+
+	const sf::SoundBuffer* ResourceSystem::GetSound(const std::string& name) const
+	{
+		return sounds.find(name)->second;
+	}
+
 	void ResourceSystem::Clear()
 	{
 		DeleteAllTextures();
