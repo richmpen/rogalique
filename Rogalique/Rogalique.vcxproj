@@ -162,6 +162,7 @@
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="DeveloperLevel.cpp" />
+    <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="GameState.cpp" />
     <ClCompile Include="GameStateGameWin.cpp" />
     <ClCompile Include="Object.cpp" />
@@ -182,6 +183,7 @@
     <ClInclude Include="Application.h" />
     <ClInclude Include="Colladiable.h" />
     <ClInclude Include="DeveloperLevel.h" />
+    <ClInclude Include="Enemy.h" />
     <ClInclude Include="GameState.h" />
     <ClInclude Include="GameStateData.h" />
     <ClInclude Include="GameStateGameWin.h" />

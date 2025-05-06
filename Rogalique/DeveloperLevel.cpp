@@ -6,7 +6,7 @@ namespace Rogalique
 {
     void DeveloperLevel::Start()
     {
-        player = std::make_shared<Player>();
+        player = std::make_unique<Player>(std::forward<EngineCore::Vector2Df>({ 0, 0 }));
     }
     void DeveloperLevel::Restart()
     {

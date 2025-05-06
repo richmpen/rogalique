@@ -11,7 +11,8 @@ int main()
 {
 	EngineCore::RenderSystem::Instance()->SetMainWindow(new sf::RenderWindow(sf::VideoMode(1280, 720), "Rogalique"));
 
-	EngineCore::ResourceSystem::Instance()->LoadTexture("ball", "Resources/Textures/Ball.png");
+	EngineCore::ResourceSystem::Instance()->LoadTexture("player", "Resources/Textures/player.png");
+	EngineCore::ResourceSystem::Instance()->LoadTexture("enemy", "Resources/Textures/enemy.png");
 
 	auto developerLevel = std::make_shared<DeveloperLevel>();
 	developerLevel->Start();

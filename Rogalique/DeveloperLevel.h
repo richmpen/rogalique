@@ -14,7 +14,7 @@ namespace Rogalique
         void Start() override;
         void Restart() override;
         void Stop() override;
-        private:
+    private:
         std::shared_ptr<Player> player;
     };
 

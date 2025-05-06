@@ -40,23 +40,23 @@ namespace EngineCore {
 		sprite->setOrigin({ 0.5f * textureSize.x, 0.5f * textureSize.y });
 	}
 
-	void SpriteRendererComponent::SetPixelsSize(int newWidth, int newHeight) {
+	void SpriteRendererComponent::SetPixelSize(int newWidth, int newHeight) {
 		auto originalSize = sprite->getTexture()->getSize();
 		scale = { (float)newWidth / (float)originalSize.x, -(float)newHeight / (float)originalSize.y };
 	}
 
 	void SpriteRendererComponent::FlipX(bool flip) {
 		if (flip != isFlipX) {
-			auto scale = sprite->getScale();
-			sprite->setScale({ -scale.x, scale.y });
+
+			scale = { -scale.x, scale.y };
 			isFlipX = flip;
 		}
 	}
 
 	void SpriteRendererComponent::FlipY(bool flip) {
 		if (flip != isFlipY) {
-			auto scale = sprite->getScale();
-			sprite->setScale({ scale.x, -scale.y });
+
+			scale = { scale.x, -scale.y };
 			isFlipY = flip;
 		}
 	}

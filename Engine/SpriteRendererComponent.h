@@ -16,7 +16,7 @@ namespace EngineCore {
 
 		const sf::Sprite* GetSprite() const;
 		void SetTexture(const sf::Texture& newTexture);
-		void SetPixelsSize(int newWidth, int newHeight);
+		void SetPixelSize(int newWidth, int newHeight);
 
 		void FlipX(bool flip);
 		void FlipY(bool flip);
