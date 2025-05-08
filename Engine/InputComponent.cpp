@@ -18,23 +18,19 @@ namespace EngineCore
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
         {
             verticalAxis += 1.0f;
-            //std::cout << "Up" << std::endl;
 
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
         {
             verticalAxis -= 1.0f;
-            //std::cout << "Down" << std::endl;
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
         {
             horizontalAxis += 1.0f;
-            //std::cout << "Right" << std::endl;
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
         {
             horizontalAxis -= 1.0f;
-            //std::cout << "Left" << std::endl;
         }
         
     }

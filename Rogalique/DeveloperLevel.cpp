@@ -1,5 +1,7 @@
 ﻿#include "DeveloperLevel.h"
 
+#include "EnemyAIComponent.h"
+
 
 using namespace EngineCore;
 
@@ -26,13 +28,9 @@ namespace Rogalique
             }
         }
 
-        
-        
-        
-        
         player = std::make_unique<Player>(std::forward<EngineCore::Vector2Df>({ 200, 200 }));
         enemy = std::make_unique<Enemy>(std::forward<EngineCore::Vector2Df>({ 450, 1600 }));
-        music = std::make_unique<Music>("soundtrack");
+        music = std::make_unique<Music>("fightMusic");
     }
     void DeveloperLevel::Restart()
     {
@@ -43,5 +41,6 @@ namespace Rogalique
     {
         GameWorld::Instance()->Clear();
     }
+
 
 }

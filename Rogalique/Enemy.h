@@ -16,8 +16,10 @@ namespace Rogalique {
     public:
         Enemy(const EngineCore::Vector2Df& position);
         EngineCore::GameObject* GetGameObject();
+	    float GetSpeed(){ return speed; }
     private:
         EngineCore::GameObject* gameObject;
+	    float speed = 300.f;
     };
 }
 
