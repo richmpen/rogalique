@@ -22,17 +22,18 @@ namespace Rogalique
 
         auto camera = gameObject->AddComponent<EngineCore::CameraComponent>();
         camera->SetWindow(&EngineCore::RenderSystem::Instance()->GetMainWindow());
-        camera->SetBaseResolution(1280, 720);
+        camera->SetBaseResolution(1920, 1080);
+        
 
         auto input = gameObject->AddComponent<EngineCore::InputComponent>();
 
         auto move = gameObject->AddComponent<EngineCore::MoveComponent>();
-        move->SetSpeed(400.f);
+        move->SetSpeed(1000.f);
 
-        auto spriteDirection = gameObject->AddComponent<EngineCore::DirectionComponent>();
+        auto direction = gameObject->AddComponent<EngineCore::DirectionComponent>();
 
         auto collider = gameObject->AddComponent<EngineCore::SpriteColliderComponent>();
-
+        
         auto rigidbody = gameObject->AddComponent<EngineCore::RigidbodyComponent>();
         
 

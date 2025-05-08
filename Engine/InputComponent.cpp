@@ -36,6 +36,7 @@ namespace EngineCore
             horizontalAxis -= 1.0f;
             //std::cout << "Left" << std::endl;
         }
+        
     }
 
     void InputComponent::Render()

@@ -16,12 +16,12 @@ namespace EngineCore {
 		if (input->GetHorizontalAxis() < 0)
 		{
 			spriteRenderer->FlipX(true);
-			std::cout << "flipZ" << std::endl;
+			// std::cout << "flipZ" << std::endl;
 		}
 		else if (input->GetHorizontalAxis() > 0)
 		{
 			spriteRenderer->FlipX(false);
-			std::cout << "flipY" << std::endl;
+			// std::cout << "flipY" << std::endl;
 		}
 	}
 

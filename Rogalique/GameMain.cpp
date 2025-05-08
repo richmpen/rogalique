@@ -9,15 +9,19 @@ using namespace Rogalique;
 
 int main()
 {
-	EngineCore::RenderSystem::Instance()->SetMainWindow(new sf::RenderWindow(sf::VideoMode(1280, 720), "Rogalique"));
-
+	EngineCore::RenderSystem::Instance()->SetMainWindow(new sf::RenderWindow(sf::VideoMode(1920, 1080), "Rogalique"));
+	// sf::Style::Fullscreen
 	EngineCore::ResourceSystem::Instance()->LoadTexture("player", "Resources/Textures/player.png");
 	EngineCore::ResourceSystem::Instance()->LoadTexture("enemy", "Resources/Textures/enemy.png");
 	EngineCore::ResourceSystem::Instance()->LoadSound("soundtrack", "Resources/Sounds/soundtrack.wav");
 	EngineCore::ResourceSystem::Instance()->LoadSound("fightMusic", "Resources/Sounds/fightMusic.wav");
+	EngineCore::ResourceSystem::Instance()->LoadTexture("floor", "Resources/Textures/floor.png");
+	EngineCore::ResourceSystem::Instance()->LoadTexture("wall", "Resources/Textures/wall.png");
 	auto developerLevel = std::make_shared<DeveloperLevel>();
 	developerLevel->Start();
 
+
+	
 	/*EngineCore::Matrix2D zeroMatrix;
 	zeroMatrix.Print();*/
 
