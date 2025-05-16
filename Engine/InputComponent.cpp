@@ -2,6 +2,7 @@
 #include "InputComponent.h"
 #include "iostream"
 #include "TransformComponent.h"
+#include "Logger.h"
 
 namespace EngineCore
 {
@@ -18,19 +19,23 @@ namespace EngineCore
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
         {
             verticalAxis += 1.0f;
-
+            LOG_Info("Move forward");
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
         {
             verticalAxis -= 1.0f;
+            LOG_Info("Move backward");
         }
+
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
         {
             horizontalAxis += 1.0f;
+            LOG_Info("Move right");
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
         {
             horizontalAxis -= 1.0f;
+            LOG_Info("Move left");
         }
         
     }
