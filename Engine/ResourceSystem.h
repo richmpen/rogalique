@@ -23,11 +23,16 @@ namespace EngineCore
 		int GetTextureMapElementsCount(const std::string& name) const;
 		void DeleteSharedTextureMap(const std::string& name);
 
+		void LoadSound(const std::string& name, std::string sourcePath);
+		void DeleteSound(const std::string& name);
+		const sf::SoundBuffer* GetSound(const std::string& name) const;
+		
 		void Clear();
 
 	private:
 		std::map<std::string, sf::Texture*> textures;
 		std::map<std::string, std::vector<sf::Texture*>> textureMaps;
+		std::map<std::string, sf::SoundBuffer*> sounds;
 
 		ResourceSystem() {}
 		~ResourceSystem() {}

@@ -52,6 +52,17 @@ namespace EngineCore
 		gameObjects.push_back(newGameObject);
 		return newGameObject;
 	}
+
+	GameObject* GameWorld::FindGameObjectByName(const std::string& name)
+	{
+		for (auto* gameObject : gameObjects) {
+			if (gameObject->GetName() == name) {
+				return gameObject;
+			}
+		}
+		return nullptr;
+	}
+
 	void GameWorld::DestroyGameObject(GameObject* gameObject)
 	{
 		markedToDestroyGameObjects.push_back(gameObject);

@@ -1,11 +1,13 @@
 ﻿#include "pch.h"
 #include "InputComponent.h"
+#include "iostream"
+#include "TransformComponent.h"
 
 namespace EngineCore
 {
     InputComponent::InputComponent(GameObject* gameObject) : Component(gameObject)
     {
-        
+
     }
 
     void InputComponent::Update(float deltaTime)
@@ -16,6 +18,7 @@ namespace EngineCore
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
         {
             verticalAxis += 1.0f;
+
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
         {
@@ -29,6 +32,7 @@ namespace EngineCore
         {
             horizontalAxis -= 1.0f;
         }
+        
     }
 
     void InputComponent::Render()

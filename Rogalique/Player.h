@@ -4,15 +4,15 @@
 #include "SpriteRendererComponent.h"
 #include "RenderSystem.h"
 #include "InputComponent.h"
-#include "SpriteColliderComponent.h"
 #include "GameObject.h"
+#include "Vector.h"
 
 namespace Rogalique
 {
     class Player
     {
     public:
-        Player();
+        Player(const EngineCore::Vector2Df& position);
         EngineCore::GameObject* GetGameObject();
     private:
         EngineCore::GameObject* gameObject;
