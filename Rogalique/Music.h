@@ -11,6 +11,7 @@ namespace Rogalique
     {
     public:
         Music(const std::string& soundName);
+        EngineCore::GameObject* GetGameObject();
     private:
         EngineCore::GameObject* gameObject;
     };

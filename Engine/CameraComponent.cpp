@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "CameraComponent.h"
-
+#include "Logger.h"
 #include <iostream>
 
 #include "TransformComponent.h"
@@ -32,7 +32,7 @@ namespace EngineCore
     {
         if (window == nullptr)
         {
-            std::cout << "Null window Render." << std::endl;
+            LOG_ERROR("Null window Render.");
         }
     }
 
@@ -50,7 +50,7 @@ namespace EngineCore
     {
         if (newZoom <= 0)
         {
-            std::cout << "Not Allowed zoom lesser or equal than zero" << std::endl;
+            LOG_WARN("Not Allowed zoom lesser or equal than zero");
             return;
         }
         view->zoom(newZoom);

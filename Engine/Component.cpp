@@ -6,7 +6,7 @@ namespace EngineCore
 {
 	Component::Component(GameObject* gameObject) : gameObject(gameObject){}
 	Component::~Component() {
-		std::cout << "Deleted component: " << this << std::endl;
+		LOG_INFO("Deleted component: " << this);
 	}
 
 	GameObject* Component::GetGameObject() {

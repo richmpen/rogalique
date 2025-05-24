@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "Engine.h"
+#include <cassert>
 #include <iostream>
 #include "GameWorld.h"
 #include "RenderSystem.h"
@@ -17,6 +18,7 @@ namespace EngineCore
 		unsigned int seed = (unsigned int)time(nullptr);
 		srand(seed);
 		setupLogger();
+		LOG_INFO("Setup Logger init!");
 	}
 
 	void Engine::Run()
@@ -24,7 +26,7 @@ namespace EngineCore
 		sf::Clock gameClock;
 		sf::Event event;
 
-		LOG_Info("Game started");
+		LOG_INFO("Game started");
 
 		while (RenderSystem::Instance()->GetMainWindow().isOpen())
 		{
@@ -41,6 +43,8 @@ namespace EngineCore
 
 			if (!RenderSystem::Instance()->GetMainWindow().isOpen())
 			{
+				LOG_WARN("need use game-save logic")
+				LOG_INFO("Game stopped");
 				break;
 			}
 
@@ -64,5 +68,6 @@ namespace EngineCore
 
 		LoggerRegistry::getInstance().registerLogger("global", logger);
 		LoggerRegistry::getInstance().setDefaultLogger(logger);
+		assert(logger && "Logger registration failed!");
 	}
 }

@@ -26,7 +26,7 @@ namespace EngineCore {
             float distanceSquared = directionToObject.x * directionToObject.x + directionToObject.y * directionToObject.y;
             
             if (distanceSquared <= chaseDistance * chaseDistance) {
-                
+                LOG_INFO("Enemy begins the pursuit to " << playerObject->GetName());
                 float distance = sqrt(distanceSquared);
                 if (distance > 0) {
                     directionToObject.x /= distance;

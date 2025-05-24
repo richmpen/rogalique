@@ -5,7 +5,7 @@
 #include <vector>
 #include <mutex>
 #include <unordered_map>
-
+#include <sstream>
 
 enum class LogLevel { Info, Warning, Error };
 
@@ -16,17 +16,22 @@ public:
 };
 
 class ConsoleSink : public LogSink {
+private:
+    std::string lastMessage;
 public:
     void log(LogLevel level, const std::string& message) override {
-        std::cout << logLevelToString(level) << " " << message << std::endl;
+        if (message != lastMessage) {
+            std::cout << logLevelToString(level) << " " << message << std::endl;
+            lastMessage = message;
+        }
     }
 
 private:
     std::string logLevelToString(LogLevel level) {
         switch (level) {
-        case LogLevel::Info: return "[Info]";
-        case LogLevel::Warning: return "[Warning]";
-        case LogLevel::Error: return "[ERROR]";
+        case LogLevel::Info: return "[\033[32mInfo\033[0m]";
+        case LogLevel::Warning: return "[\033[33mWarning\033[0m]";
+        case LogLevel::Error: return "[\033[31mERROR\033[0m]";
         default: return "[UNKNOWN]";
         }
     }
@@ -35,15 +40,16 @@ private:
 class FileSink : public LogSink {
 private:
     std::ofstream logFile;
-
+    std::string lastMessage;
 public:
     FileSink(const std::string& filename) {
         logFile.open(filename, std::ios::app);
     }
 
     void log(LogLevel level, const std::string& message) override {
-        if (logFile) {
+        if (logFile && message != lastMessage) {
             logFile << logLevelToString(level) << " " << message << std::endl;
+            lastMessage = message;
         }
     }
 
@@ -54,8 +60,8 @@ public:
 private:
     std::string logLevelToString(LogLevel level) {
         switch (level) {
-        case LogLevel::Info: return "[Info]";
-        case LogLevel::Warning: return "[Warning]";
+        case LogLevel::Info: return "[INFO]";
+        case LogLevel::Warning: return "[WARNING]";
         case LogLevel::Error: return "[ERROR]";
         default: return "[UNKNOWN]";
         }
@@ -66,6 +72,7 @@ class Logger {
 private:
     std::vector<std::shared_ptr<LogSink>> sinks;
     std::mutex logMutex;
+    std::string lastMessage;
 
 public:
     void addSink(std::shared_ptr<LogSink> sink) {
@@ -74,6 +81,13 @@ public:
 
     void log(LogLevel level, const std::string& message) {
         std::lock_guard<std::mutex> lock(logMutex);
+        
+        if (message == lastMessage) {
+            return;
+        }
+        
+        lastMessage = message;
+        
         for (auto& sink : sinks) {
             sink->log(level, message);
         }
@@ -114,6 +128,20 @@ public:
     }
 };
 
-#define LOG_Info(message) LoggerRegistry::getInstance().getLogger("global")->info(message)
-#define LOG_WARN(message) LoggerRegistry::getInstance().getLogger("global")->warn(message)
-#define LOG_ERROR(message) LoggerRegistry::getInstance().getLogger("global")->error(message)
+#define LOG_INFO(message) { \
+std::ostringstream _oss; \
+_oss << message; \
+LoggerRegistry::getInstance().getLogger("global")->info(_oss.str()); \
+}
+
+#define LOG_WARN(message) { \
+std::ostringstream _oss; \
+_oss << message; \
+LoggerRegistry::getInstance().getLogger("global")->warn(_oss.str()); \
+}
+
+#define LOG_ERROR(message) { \
+std::ostringstream _oss; \
+_oss << message; \
+LoggerRegistry::getInstance().getLogger("global")->error(_oss.str()); \
+}

@@ -9,6 +9,7 @@ namespace EngineCore {
 	}
 
 	void RenderSystem::SetMainWindow(sf::RenderWindow* newWindow) {
+		LOG_INFO("Setting MainWindow: " << newWindow);
 		window = newWindow;
 	}
 

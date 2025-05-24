@@ -1,6 +1,7 @@
 #pragma once
 #include "TransformComponent.h"
 #include <iostream>
+#include "Logger.h"
 
 namespace EngineCore
 {
@@ -25,7 +26,7 @@ namespace EngineCore
 		{
 			if constexpr (!std::is_base_of<Component, T>::value)
 			{
-				std::cout << "T must be derived from Component." << std::endl;
+				LOG_WARN("Can't add Transform, because it will break the engine loop.");
 				return nullptr;
 			}
 
@@ -33,14 +34,14 @@ namespace EngineCore
 			{
 				if (GetComponent<TransformComponent>() != nullptr)
 				{
-					std::cout << "Can't add Transform, because it will break the engine loop." << std::endl;
+					LOG_WARN("Can't add Transform, because it will break the engine loop.");
 					return nullptr;
 				}
 			}
 
 			T* newComponent = new T(this);
 			components.push_back(newComponent);
-			std::cout << "Add new component: " << newComponent << std::endl;
+			// LOG_INFO("Add new component: " << this );
 			return newComponent;
 		}
 
@@ -48,7 +49,7 @@ namespace EngineCore
 		{
 			components.erase(std::remove_if(components.begin(), components.end(), [component](Component* obj) { return obj == component; }), components.end());
 			delete component;
-			std::cout << "Deleted component";
+			LOG_INFO("Deleted component");
 		}
 
 		template <typename T>

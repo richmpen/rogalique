@@ -9,6 +9,7 @@ namespace Rogalique
 {
     void DeveloperLevel::Start()
     {
+        LOG_INFO("!Started " << levelName);
         float spritePanelWidth = 100;
         float spritePanelHeight = 100;
         
@@ -29,16 +30,21 @@ namespace Rogalique
         }
 
         player = std::make_unique<Player>(std::forward<EngineCore::Vector2Df>({ 200, 200 }));
+        if (player) {LOG_INFO(player->GetGameObject()->GetName() << " declared at level: " << levelName)}else{LOG_WARN("Player not spawn at level: " << levelName)}
         enemy = std::make_unique<Enemy>(std::forward<EngineCore::Vector2Df>({ 450, 1600 }));
-        music = std::make_unique<Music>("fightMusic");
+        if (enemy) {LOG_INFO(enemy->GetGameObject()->GetName() << " declared at level: " << levelName)}else{LOG_WARN("Enemy not spawn at level: " << levelName)}
+        music = std::make_unique<Music>("soundtrack");
+        if (music) {LOG_INFO("Music Load at level: " << levelName)}else{LOG_WARN("Music not Load at level: " << levelName)}
     }
     void DeveloperLevel::Restart()
     {
         Stop();
         Start();
+        LOG_INFO("!Restarted " << levelName);
     }
     void DeveloperLevel::Stop()
     {
+        LOG_INFO("!Stopped " << levelName);
         GameWorld::Instance()->Clear();
     }
 

@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "PhysicsSystem.h"
+#include "GameObject.h"
 
 namespace EngineCore
 {
@@ -59,12 +60,12 @@ namespace EngineCore
 							if (intersectionPosition.y > aPosition.y)
 							{
 								aTransform->MoveBy({ 0, -intersectionHeight });
-								std::cout << "Top collision" << std::endl;
+								LOG_INFO("Top collision");
 							}
 							else
 							{
 								aTransform->MoveBy({ 0, intersectionHeight });
-								std::cout << "Down collision" << std::endl;
+								LOG_INFO("Down collision");
 							}
 						}
 						else
@@ -72,12 +73,12 @@ namespace EngineCore
 							if (intersectionPosition.x > aPosition.x)
 							{
 								aTransform->MoveBy({ -intersectionWidth, 0.f });
-								std::cout << "Right collision" << std::endl;
+								LOG_INFO("Right collision");
 							}
 							else
 							{
 								aTransform->MoveBy({ intersectionWidth, 0.f });
-								std::cout << "Left collision" << std::endl;
+								LOG_INFO("Left collision");
 							}
 						}
 
@@ -105,13 +106,12 @@ namespace EngineCore
 
 	void PhysicsSystem::Subscribe(ColliderComponent* collider)
 	{
-		std::cout << "Subscribe " << collider << std::endl;
+		// LOG_INFO("Subscribe " << collider);
 		colliders.push_back(collider);
 	}
 	void PhysicsSystem::Unsubscribe(ColliderComponent* collider)
 	{
-		std::cout << "Unsubscribe " << collider << std::endl;
-
+		LOG_INFO("Unsubscribe " << collider);
 		colliders.erase(std::remove_if(colliders.begin(), colliders.end(), [collider](ColliderComponent* obj) { return obj == collider; }), colliders.end());
 	}
 }

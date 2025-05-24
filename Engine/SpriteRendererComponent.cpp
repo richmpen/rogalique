@@ -2,10 +2,16 @@
 #include "SpriteRendererComponent.h"
 #include "TransformComponent.h"
 #include "RenderSystem.h"
+#include <assert.h>
 
 namespace EngineCore {
 	SpriteRendererComponent::SpriteRendererComponent(GameObject* gameObject) : Component(gameObject) {
 		sprite = new sf::Sprite();
+		if (!sprite) {
+			LOG_ERROR("Failed to create sprite for GameObject: " << gameObject->GetName());
+			assert(false && "Failed to create sprite!");
+		}
+		LOG_INFO("Created SpriteRenderer for GameObject: " << gameObject->GetName());
 		scale = { 1,-1 };
 		sprite->setScale({1,-1});
 		transform = gameObject->GetComponent<TransformComponent>();

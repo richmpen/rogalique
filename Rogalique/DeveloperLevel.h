@@ -20,6 +20,8 @@ namespace Rogalique
         void Stop() override;
     private:
 
+        std::string levelName = "Developer Level";
+
         float levelWidth = 20;
         float levelHeight = 10;
 
