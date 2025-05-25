@@ -60,12 +60,12 @@ namespace EngineCore
 							if (intersectionPosition.y > aPosition.y)
 							{
 								aTransform->MoveBy({ 0, -intersectionHeight });
-								LOG_INFO("Top collision");
+								// LOG_INFO("Top collision");
 							}
 							else
 							{
 								aTransform->MoveBy({ 0, intersectionHeight });
-								LOG_INFO("Down collision");
+								// LOG_INFO("Down collision");
 							}
 						}
 						else
@@ -73,12 +73,12 @@ namespace EngineCore
 							if (intersectionPosition.x > aPosition.x)
 							{
 								aTransform->MoveBy({ -intersectionWidth, 0.f });
-								LOG_INFO("Right collision");
+								// LOG_INFO("Right collision");
 							}
 							else
 							{
 								aTransform->MoveBy({ intersectionWidth, 0.f });
-								LOG_INFO("Left collision");
+								// LOG_INFO("Left collision");
 							}
 						}
 
@@ -106,7 +106,7 @@ namespace EngineCore
 
 	void PhysicsSystem::Subscribe(ColliderComponent* collider)
 	{
-		// LOG_INFO("Subscribe " << collider);
+		LOG_INFO("Subscribe " << collider);
 		colliders.push_back(collider);
 	}
 	void PhysicsSystem::Unsubscribe(ColliderComponent* collider)

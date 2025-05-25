@@ -8,13 +8,14 @@
 #include "MoveComponent.h"
 #include "SpriteColliderComponent.h"
 #include "GameObject.h"
+#include <FightComponent.h>
 
 namespace Rogalique {
 
 	class Enemy
     {
     public:
-        Enemy(const EngineCore::Vector2Df& position);
+        Enemy(const EngineCore::Vector2Df& position, const EngineCore::EnemyType& target, int damage, int health);
         EngineCore::GameObject* GetGameObject();
 	    float GetSpeed(){ return speed; }
     private:

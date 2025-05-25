@@ -19,23 +19,23 @@ namespace EngineCore
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
         {
             verticalAxis += 1.0f;
-            LOG_INFO(gameObject->GetName() << ": Move up");
+            // LOG_INFO(gameObject->GetName() << ": Move up");
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
         {
             verticalAxis -= 1.0f;
-            LOG_INFO(gameObject->GetName() << ": Move down");
+            // LOG_INFO(gameObject->GetName() << ": Move down");
         }
 
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
         {
             horizontalAxis += 1.0f;
-            LOG_INFO(gameObject->GetName() << ": Move right");
+            // LOG_INFO(gameObject->GetName() << ": Move right");
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
         {
             horizontalAxis -= 1.0f;
-            LOG_INFO(gameObject->GetName() << ": Move left");
+            // LOG_INFO(gameObject->GetName() << ": Move left");
         }
         
     }

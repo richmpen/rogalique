@@ -7,33 +7,21 @@
 
 using namespace Rogalique;
 
-
-
 int main()
 {
-	try {
-		EngineCore::Engine::Instance();
+	EngineCore::Engine::Instance();
+	LOG_INFO("Setup Logger init!");
+	EngineCore::RenderSystem::Instance()->SetMainWindow(new sf::RenderWindow(sf::VideoMode(1920, 1080), "Rogalique"));
 
-		EngineCore::RenderSystem::Instance()->SetMainWindow(new sf::RenderWindow(sf::VideoMode(1920, 1080), "Rogalique"));
-		
-			EngineCore::ResourceSystem::Instance()->LoadTexture("player", "Resources/Textures/player.png");
-			EngineCore::ResourceSystem::Instance()->LoadTexture("enemy", "Resources/Textures/enemy.png");
-			EngineCore::ResourceSystem::Instance()->LoadSound("soundtrack", "Resources/Sounds/soundtrack.wav");
-			EngineCore::ResourceSystem::Instance()->LoadSound("fightMusic", "Resources/Sounds/fightMusic.wav");
-			EngineCore::ResourceSystem::Instance()->LoadTexture("floor", "Resources/Textures/floor.png");
-			EngineCore::ResourceSystem::Instance()->LoadTexture("wall", "Resources/Textures/wall.png");
-		
-		
-		auto developerLevel = std::make_shared<DeveloperLevel>();
-		developerLevel->Start();
+	EngineCore::ResourceSystem::Instance()->LoadTexture("player", "Resources/Textures/player.png");
+	EngineCore::ResourceSystem::Instance()->LoadTexture("enemy", "Resources/Textures/enemy.png");
+	EngineCore::ResourceSystem::Instance()->LoadSound("soundtrack", "Resources/Sounds/soundtrack.wav");
+	EngineCore::ResourceSystem::Instance()->LoadSound("fightMusic", "Resources/Sounds/fightMusic.wav");
+	EngineCore::ResourceSystem::Instance()->LoadTexture("floor", "Resources/Textures/floor.png");
+	EngineCore::ResourceSystem::Instance()->LoadTexture("wall", "Resources/Textures/wall.png");
+	auto developerLevel = std::make_shared<DeveloperLevel>();
+	developerLevel->Start();
 
-		EngineCore::Engine::Instance()->Run();
-	}
-	catch (const std::exception& e) {
-		LOG_ERROR("Critical error: ", e.what());
-		return -1;
-	}
-	
 
 	
 	/*EngineCore::Matrix2D zeroMatrix;
@@ -52,7 +40,7 @@ int main()
 
 	(someMatrix * someMatrix.GetInversed()).Print();*/
 
-	
+	EngineCore::Engine::Instance()->Run();
 
 
 	

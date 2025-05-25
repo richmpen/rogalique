@@ -16,12 +16,12 @@ namespace EngineCore {
 		if (input->GetHorizontalAxis() < 0)
 		{
 			spriteRenderer->FlipX(true);
-			LOG_INFO(gameObject->GetName() << ": sprite flip Right");
+			// LOG_INFO(gameObject->GetName() << ": sprite flip Right");
 		}
 		else if (input->GetHorizontalAxis() > 0)
 		{
 			spriteRenderer->FlipX(false);
-			LOG_INFO(gameObject->GetName() << ": sprite flip Left");
+			// LOG_INFO(gameObject->GetName() << ": sprite flip Left");
 		}
 	}
 

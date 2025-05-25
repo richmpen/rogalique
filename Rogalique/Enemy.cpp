@@ -1,12 +1,13 @@
 #include "Enemy.h"
 #include "ResourceSystem.h"
 #include "EnemyAIComponent.h"
+#include "FightComponent.h"
 #include "GameObject.h"
 #include "GameWorld.h"
 
 namespace Rogalique
 {
-    Enemy::Enemy(const EngineCore::Vector2Df& position)
+    Enemy::Enemy(const EngineCore::Vector2Df& position, const EngineCore::EnemyType& target, int damage, int health)
     {
         gameObject = EngineCore::GameWorld::Instance()->CreateGameObject("Enemy");
 
@@ -25,6 +26,11 @@ namespace Rogalique
         auto collider = gameObject->AddComponent<EngineCore::SpriteColliderComponent>();
 
         auto rigidbody = gameObject->AddComponent<EngineCore::RigidbodyComponent>();
+
+        auto fighter = gameObject->AddComponent<EngineCore::FightComponent>();
+        fighter->SetDamage(damage);
+        fighter->SetHealth(health);
+        fighter->SetTargetType(target);
     }
 
     EngineCore::GameObject* Enemy::GetGameObject()

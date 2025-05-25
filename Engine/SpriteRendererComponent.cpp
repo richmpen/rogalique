@@ -66,5 +66,11 @@ namespace EngineCore {
 			isFlipY = flip;
 		}
 	}
+
+	void SpriteRendererComponent::SetColor(const sf::Color& color) {
+		if (sprite) {
+			sprite->setColor(color);
+		}
+	}
 }
 

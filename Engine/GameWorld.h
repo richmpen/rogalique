@@ -22,6 +22,9 @@ namespace EngineCore
 		void Clear();
 
 		void Print() const;
+		
+        const std::vector<GameObject*>& GetAllGameObjects() const { return gameObjects; }
+		
 	private:
 		GameWorld() {}
 		~GameWorld() {}

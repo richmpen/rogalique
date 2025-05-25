@@ -20,21 +20,23 @@ namespace Rogalique
                 if (y == 0 || y == levelWidth - 1 || x == 0 || x == levelHeight - 1)
                 {
                     wall = std::make_unique<Wall>(EngineCore::Vector2Df{ spritePanelWidth * x, spritePanelHeight * y });
+                    // LoadObjectCheck(wall);
                 }
                 else
                 {
                     floor = std::make_unique<Floor>(EngineCore::Vector2Df{ spritePanelWidth * x, spritePanelHeight * y });
+                    // LoadObjectCheck(floor);
                 }
 
             }
         }
 
-        player = std::make_unique<Player>(std::forward<EngineCore::Vector2Df>({ 200, 200 }));
-        if (player) {LOG_INFO(player->GetGameObject()->GetName() << " declared at level: " << levelName)}else{LOG_WARN("Player not spawn at level: " << levelName)}
-        enemy = std::make_unique<Enemy>(std::forward<EngineCore::Vector2Df>({ 450, 1600 }));
-        if (enemy) {LOG_INFO(enemy->GetGameObject()->GetName() << " declared at level: " << levelName)}else{LOG_WARN("Enemy not spawn at level: " << levelName)}
+        player = std::make_unique<Player>(std::forward<EngineCore::Vector2Df>({ 200, 200 }),EngineCore::EnemyType::Player, 15, 100);
+        LoadObjectCheck(player);
+        enemy = std::make_unique<Enemy>(std::forward<EngineCore::Vector2Df>({ 450, 1600 }),EngineCore::EnemyType::Enemy,10, 50);
+        LoadObjectCheck(enemy);
         music = std::make_unique<Music>("soundtrack");
-        if (music) {LOG_INFO("Music Load at level: " << levelName)}else{LOG_WARN("Music not Load at level: " << levelName)}
+        LoadObjectCheck(music);
     }
     void DeveloperLevel::Restart()
     {
@@ -47,6 +49,5 @@ namespace Rogalique
         LOG_INFO("!Stopped " << levelName);
         GameWorld::Instance()->Clear();
     }
-
-
+    
 }

@@ -41,8 +41,23 @@ class FileSink : public LogSink {
 private:
     std::ofstream logFile;
     std::string lastMessage;
+    const size_t maxLines = 1000;
 public:
     FileSink(const std::string& filename) {
+        
+        std::ifstream infile(filename);
+        size_t lineCount = 0;
+        std::string tempLine;
+        while (std::getline(infile, tempLine)) {
+            ++lineCount;
+        }
+        infile.close();
+        
+        if (lineCount > maxLines) {
+            std::ofstream clearFile(filename, std::ios::trunc);
+            clearFile.close();
+        }
+        
         logFile.open(filename, std::ios::app);
     }
 
