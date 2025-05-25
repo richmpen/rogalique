@@ -6,6 +6,12 @@ namespace EngineCore
 	RigidbodyComponent::RigidbodyComponent(GameObject* gameObject) : Component(gameObject)
 	{
 		transform = gameObject->GetComponent<TransformComponent>();
+		if (transform == nullptr)
+		{
+			LOG_ERROR("RigidbodyComponent required to TransformComponent.");
+			gameObject->RemoveComponent(this);
+			return;
+		}
 	}
 
 	void RigidbodyComponent::Update(float deltaTime)

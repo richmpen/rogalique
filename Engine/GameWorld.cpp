@@ -42,12 +42,14 @@ namespace EngineCore
 
 	GameObject* GameWorld::CreateGameObject()
 	{
+		// LOG_INFO("Creating new Unidentified Object");
 		GameObject* newGameObject = new GameObject();
 		gameObjects.push_back(newGameObject);
 		return newGameObject;
 	}
 	GameObject* GameWorld::CreateGameObject(std::string name)
 	{
+		// LOG_INFO("Creating new Object: " << name);
 		GameObject* newGameObject = new GameObject(name);
 		gameObjects.push_back(newGameObject);
 		return newGameObject;
@@ -65,10 +67,12 @@ namespace EngineCore
 
 	void GameWorld::DestroyGameObject(GameObject* gameObject)
 	{
+		LOG_INFO("Destroying GameObject: " << gameObject->GetName());
 		markedToDestroyGameObjects.push_back(gameObject);
 	}
 	void GameWorld::Clear()
 	{
+		LOG_INFO("Clearing GameWorld");
 		for (int i = gameObjects.size() - 1; i >= 0; i--)
 		{
 			if (gameObjects[i] == nullptr)

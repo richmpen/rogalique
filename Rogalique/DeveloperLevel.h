@@ -19,6 +19,17 @@ namespace Rogalique
         void Restart() override;
         void Stop() override;
     private:
+        template<typename T>
+        void LoadObjectCheck(const std::shared_ptr<T>& object)
+        {
+            if (object && object->GetGameObject()) {
+                LOG_INFO(object->GetGameObject()->GetName() << " declared at level: " << levelName);
+            } else {
+                LOG_WARN("Object not valid at level: " << levelName);
+            }
+        }
+        
+        std::string levelName = "Developer Level";
 
         float levelWidth = 20;
         float levelHeight = 10;

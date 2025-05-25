@@ -1,0 +1,458 @@
+[INFO] Setup Logger init!
+[INFO] Setting MainWindow: 00000258CE301FA0
+[INFO] Loading texture: player
+[INFO] Loading texture: enemy
+[INFO] Loading sound: soundtrack
+[INFO] Loading sound: fightMusic
+[INFO] Loading texture: floor
+[INFO] Loading texture: wall
+[INFO] !Started Developer Level
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Created SpriteRenderer for GameObject: Player
+[INFO] Player declared at level: Developer Level
+[INFO] Created SpriteRenderer for GameObject: Enemy
+[INFO] Enemy declared at level: Developer Level
+[INFO] Created SoundComponent for GameObject: soundtrack
+[INFO] Initializing sound: 00000258D1133960
+[INFO] Sound Play
+[INFO] Music Load at level: Developer Level
+[INFO] Game started
+[WARNING] need use game-save logic
+[INFO] Game stopped
+[INFO] Setup Logger init!
+[INFO] Setting MainWindow: 00000244F3700740
+[INFO] Loading texture: player
+[INFO] Loading texture: enemy
+[INFO] Loading sound: soundtrack
+[INFO] Loading sound: fightMusic
+[INFO] Loading texture: floor
+[INFO] Loading texture: wall
+[INFO] !Started Developer Level
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Created SpriteRenderer for GameObject: Player
+[INFO] Player declared at level: Developer Level
+[INFO] Created SpriteRenderer for GameObject: Enemy
+[INFO] Enemy declared at level: Developer Level
+[INFO] Created SoundComponent for GameObject: soundtrack
+[INFO] Initializing sound: 00000244F6599930
+[INFO] Sound Play
+[INFO] Music Load at level: Developer Level
+[INFO] Game started
+[WARNING] need use game-save logic
+[INFO] Game stopped
+[INFO] Setup Logger init!
+[INFO] Setting MainWindow: 000001785EED5C80
+[INFO] Loading texture: player
+[INFO] Loading texture: enemy
+[INFO] Loading sound: soundtrack
+[INFO] Loading sound: fightMusic
+[INFO] Loading texture: floor
+[INFO] Loading texture: wall
+[INFO] !Started Developer Level
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Created SpriteRenderer for GameObject: Player
+[INFO] Player declared at level: Developer Level
+[INFO] Created SpriteRenderer for GameObject: Enemy
+[INFO] Created SoundComponent for GameObject: soundtrack
+[INFO] Initializing sound: 000001785EFB4930
+[INFO] Sound Play
+[INFO] Game started
+[INFO] Down collision
+[INFO] Left collision
+[INFO] Setup Logger init!
+[INFO] Setting MainWindow: 000001E07B117530
+[INFO] Loading texture: player
+[INFO] Loading texture: enemy
+[INFO] Loading sound: soundtrack
+[INFO] Loading sound: fightMusic
+[INFO] Loading texture: floor
+[INFO] Loading texture: wall
+[INFO] !Started Developer Level
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Created SpriteRenderer for GameObject: Player
+[INFO] Player declared at level: Developer Level
+[INFO] Created SpriteRenderer for GameObject: Enemy
+[INFO] Enemy declared at level: Developer Level
+[INFO] Created SoundComponent for GameObject: soundtrack
+[INFO] Initializing sound: 000001E07DE7A060
+[INFO] Sound Play
+[WARNING] Object not valid at level: Developer Level
+[INFO] Game started
+[WARNING] need use game-save logic
+[INFO] Game stopped
+[INFO] Setup Logger init!
+[INFO] Setting MainWindow: 0000019279812380
+[INFO] Loading texture: player
+[INFO] Loading texture: enemy
+[INFO] Loading sound: soundtrack
+[INFO] Loading sound: fightMusic
+[INFO] Loading texture: floor
+[INFO] Loading texture: wall
+[INFO] !Started Developer Level
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Created SpriteRenderer for GameObject: Player
+[INFO] Player declared at level: Developer Level
+[INFO] Created SpriteRenderer for GameObject: Enemy
+[INFO] Enemy declared at level: Developer Level
+[INFO] Created SoundComponent for GameObject: soundtrack
+[INFO] Initializing sound: 0000019279C5D830
+[INFO] Sound Play
+[WARNING] Object not valid at level: Developer Level
+[INFO] Game started
+[INFO] Left collision
+[INFO] Down collision
+[WARNING] need use game-save logic
+[INFO] Game stopped
+[INFO] Setup Logger init!
+[INFO] Setting MainWindow: 000001BFE898F140
+[INFO] Loading texture: player
+[INFO] Loading texture: enemy
+[INFO] Loading sound: soundtrack
+[INFO] Loading sound: fightMusic
+[INFO] Loading texture: floor
+[INFO] Loading texture: wall
+[INFO] !Started Developer Level
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 000001BFEB621540
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 000001BFEB6227F0
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 000001BFEB621E30
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 000001BFEB6212D0
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 000001BFEB622A60
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 000001BFEB622170
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 000001BFEB621F00
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 000001BFEB6223E0
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 000001BFEB622B30
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 000001BFEB621FD0
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 000001BFEB621610
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 000001BFEB6217B0
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 000001BFEB621880
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 000001BFEB84EEA0
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 000001BFEB84FC70
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 000001BFEB84F450
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 000001BFEB84ED00
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 000001BFEB84F2B0
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 000001BFEB850220
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 000001BFEB850150
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 000001BFEB8502F0
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 000001BFEB84EB60
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 000001BFEB84F520
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 000001BFEB84F040
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 000001BFEB84FEE0
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 000001BFEB84F1E0
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 000001BFEB8507D0
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 000001BFEB84EA90
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 000001BFEB850560
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 000001BFEB84F790
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 000001BFEB8503C0
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 000001BFEB84F380
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 000001BFEB850080
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 000001BFEB850490
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 000001BFEB84EDD0
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 000001BFEB84F5F0
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 000001BFEB84FA00
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 000001BFEB84F6C0
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 000001BFEB84F860
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 000001BFEB84EC30
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 000001BFEB84F930
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 000001BFEB84EF70
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 000001BFEB84FFB0
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 000001BFEB84FAD0
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 000001BFEB84FBA0
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 000001BFEB84F110
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 000001BFEB84FD40
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 000001BFEB84FE10
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 000001BFEB850630
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 000001BFEB850700
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 000001BFEB8508A0
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 000001BFEB850970
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 000001BFEB89CF40
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 000001BFEB89D830
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 000001BFEB89C8C0
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 000001BFEB89CCD0
+[INFO] Created SpriteRenderer for GameObject: Player
+[INFO] Subscribe 000001BFEB89C650
+[INFO] Player declared at level: Developer Level
+[INFO] Created SpriteRenderer for GameObject: Enemy
+[INFO] Subscribe 000001BFEB89BE30
+[INFO] Enemy declared at level: Developer Level
+[INFO] Created SoundComponent for GameObject: soundtrack
+[INFO] Initializing sound: 000001BFEB6B21A0
+[INFO] Sound Play
+[WARNING] Object not valid at level: Developer Level
+[INFO] Game started
+[INFO] Enemy begins the pursuit to Player
+[INFO] Enemy: Get damage 15, Current health 35
+[INFO] Player: Get damage 10, Current health 90
+[INFO] Enemy begins the pursuit to Player
+[INFO] Enemy: Get damage 15, Current health 20
+[INFO] Player: Get damage 10, Current health 80
+[INFO] Enemy begins the pursuit to Player
+[INFO] Enemy: Get damage 15, Current health 5
+[INFO] Player: Get damage 10, Current health 70
+[INFO] Enemy begins the pursuit to Player
+[INFO] Enemy: Get damage 15, Current health -10
+[INFO] Enemy: Die
+[INFO] Destroying GameObject: Enemy
+[INFO] Deleted component: 000001BFEB893CE0
+[INFO] Deleted component: 000001BFEB6FBD50
+[INFO] Deleted component: 000001BFEB6FC410
+[INFO] Deleted component: 000001BFEB89E740
+[INFO] Unsubscribe 000001BFEB89BE30
+[INFO] Deleted component: 000001BFEB89BE30
+[INFO] Deleted component: 000001BFEB89EB30
+[INFO] Deleted component: 000001BFE8A691B0
+[WARNING] need use game-save logic
+[INFO] Game stopped

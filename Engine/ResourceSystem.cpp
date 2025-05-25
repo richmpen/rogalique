@@ -13,15 +13,25 @@ namespace EngineCore
 	{
 		if (textures.find(name) != textures.end())
 		{
+			LOG_WARN("Texture already loaded: " << name);
 			return;
 		}
 
 		sf::Texture* newTexture = new sf::Texture();
-		if (newTexture->loadFromFile(sourcePath))
+		
+		if (!newTexture->loadFromFile(sourcePath))
 		{
-			newTexture->setSmooth(isSmooth);
-			textures.emplace(name, newTexture);
+			LOG_ERROR("Failed to load texture: " << sourcePath << ", loading placeholder.");
+			if (!newTexture->loadFromFile("Resources/Textures/placeholder.png"))
+			{
+				delete newTexture;
+				throw std::runtime_error("Failed to load texture and fallback placeholder from: " + sourcePath);
+			}
 		}
+		
+		newTexture->setSmooth(isSmooth);
+		textures.emplace(name, newTexture);
+		LOG_INFO("Loading texture: " << name);
 	}
 	const sf::Texture* ResourceSystem::GetTextureShared(const std::string& name) const
 	{
@@ -44,6 +54,7 @@ namespace EngineCore
 	{
 		if (textureMaps.find(name) != textureMaps.end())
 		{
+			LOG_WARN("TextureMap not found: " << name);
 			return;
 		}
 
@@ -78,8 +89,9 @@ namespace EngineCore
 					loadedElements++;
 				}
 			}
-
+			
 			textureMaps.emplace(name, *textureMapElements);
+			LOG_INFO("Loaded textureMap: " << name);
 		}
 	}
 	const sf::Texture* ResourceSystem::GetTextureMapElementShared(const std::string& name, int elementIndex) const
@@ -115,17 +127,55 @@ namespace EngineCore
 
 	void ResourceSystem::LoadSound(const std::string& name, std::string sourcePath)
 	{
-		sf::SoundBuffer* newSound = new sf::SoundBuffer();
-		if (newSound->loadFromFile(sourcePath))
+		// if (sounds.find(name) != sounds.end())
+		// {
+		// 	LOG_WARN("Sound not found: " << name);
+		// 	return;
+		// }
+		//
+		// sf::SoundBuffer* newSound = new sf::SoundBuffer();
+		// if (newSound->loadFromFile(sourcePath))
+		// {
+		// 	LOG_INFO("Loading sound: " << name);
+		// 	sounds.emplace(name, newSound);
+		// }
+///////////
+		if (sounds.find(name) != sounds.end())
 		{
-			sounds.emplace(name, newSound);
+			LOG_WARN("Sound already loaded: " << name);
+			return;
 		}
+
+		sf::SoundBuffer* newSound = new sf::SoundBuffer();
+		
+		if (!newSound->loadFromFile(sourcePath))
+		{
+			LOG_ERROR("Failed to load sound: " << sourcePath << ", loading default music.");
+			if (!newSound->loadFromFile("Resources/Sounds/default.wav"))
+			{
+				delete newSound;
+				throw std::runtime_error("Failed to load sound and fallback default sound from: " + sourcePath);
+			}
+		}
+		
+		
+		sounds.emplace(name, newSound);
+		LOG_INFO("Loading sound: " << name);
 	}
 
 	void ResourceSystem::DeleteSound(const std::string& name)
 	{
-		sounds.erase(sounds.find(name));
-		delete sounds.find(name)->second;
+		if (sounds.find(name) != sounds.end())
+		{
+			LOG_INFO("Delete Sound: " << name);
+			delete sounds.find(name)->second;
+			sounds.erase(sounds.find(name));
+		}
+		else
+		{
+			LOG_WARN("Sound not found: " << name);
+		}
+		
 	}
 
 	const sf::SoundBuffer* ResourceSystem::GetSound(const std::string& name) const
@@ -135,6 +185,7 @@ namespace EngineCore
 
 	void ResourceSystem::Clear()
 	{
+		LOG_INFO("Clearing... All Textures/TextureMaps");
 		DeleteAllTextures();
 		DeleteAllTextureMaps();
 	}

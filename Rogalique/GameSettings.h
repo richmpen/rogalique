@@ -6,14 +6,15 @@ namespace Rogalique
 {
 	class GameWorld
 	{
+	private:
+		GameWorld() = default;
 	public:
 		static GameWorld& Instance()
 		{
 			static GameWorld gameWorld;
 			return gameWorld;
 		}
-	
-		GameWorld() = default;
+		
 		
 		const std::string RESOURCES_PATH = "Resources/";
 		const std::string TEXTURES_PATH = RESOURCES_PATH + "Textures/";

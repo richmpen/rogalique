@@ -5,15 +5,15 @@
 #include <DirectionComponent.h>
 
 
+
 namespace Rogalique
 {
-    Player::Player(const EngineCore::Vector2Df& position)
+    Player::Player(const EngineCore::Vector2Df& position, const EngineCore::EnemyType& target, int damage, int health)
     {
         gameObject = EngineCore::GameWorld::Instance()->CreateGameObject("Player");
-
         auto transform = gameObject->GetComponent<EngineCore::TransformComponent>();
         transform->SetWorldPosition(position);
-        transform->Print();
+        
 
         auto renderer = gameObject->AddComponent<EngineCore::SpriteRendererComponent>();
 
@@ -35,11 +35,15 @@ namespace Rogalique
         auto collider = gameObject->AddComponent<EngineCore::SpriteColliderComponent>();
         
         auto rigidbody = gameObject->AddComponent<EngineCore::RigidbodyComponent>();
+
+
+        auto fighter = gameObject->AddComponent<EngineCore::FightComponent>();
+
+        fighter->SetDamage(damage);
+        fighter->SetHealth(health);
+        fighter->SetTargetType(target);
         
-
-
         
-
         //Experemental
         /*auto transform = gameObject->GetComponent<EngineCore::TransformComponent>();
         transform->RotateBy(90.f);

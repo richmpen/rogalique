@@ -17,5 +17,6 @@ namespace EngineCore
 	private:
 		Engine();
 		~Engine() = default;
+		void setupLogger();
 	};
 }

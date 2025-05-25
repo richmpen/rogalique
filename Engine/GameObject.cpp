@@ -60,10 +60,12 @@ namespace EngineCore
 
 	void GameObject::AddChild(GameObject* child)
 	{
+		LOG_INFO("Add Child to: " << this ->GetName());
 		children.push_back(child);
 	}
 	void GameObject::RemoveChild(GameObject* child)
 	{
+		LOG_INFO("Remove all Child to: " << this ->GetName());
 		children.erase(std::remove_if(children.begin(), children.end(), [child](GameObject* obj) { return obj == child; }), children.end());
 	}
 }

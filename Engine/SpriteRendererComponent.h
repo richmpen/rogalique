@@ -20,6 +20,8 @@ namespace EngineCore {
 
 		void FlipX(bool flip);
 		void FlipY(bool flip);
+		
+		void SetColor(const sf::Color& color);
 	private:
 		Vector2Df scale;
 		sf::Sprite* sprite;

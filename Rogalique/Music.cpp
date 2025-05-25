@@ -10,5 +10,9 @@ namespace Rogalique
         music->SetLoop(true);
         music->Start();
     }
-
+    
+    EngineCore::GameObject* Music::GetGameObject()
+    {
+        return gameObject;
+    }
 }

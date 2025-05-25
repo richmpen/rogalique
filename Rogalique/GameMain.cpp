@@ -9,8 +9,10 @@ using namespace Rogalique;
 
 int main()
 {
+	EngineCore::Engine::Instance();
+	LOG_INFO("Setup Logger init!");
 	EngineCore::RenderSystem::Instance()->SetMainWindow(new sf::RenderWindow(sf::VideoMode(1920, 1080), "Rogalique"));
-	// sf::Style::Fullscreen
+
 	EngineCore::ResourceSystem::Instance()->LoadTexture("player", "Resources/Textures/player.png");
 	EngineCore::ResourceSystem::Instance()->LoadTexture("enemy", "Resources/Textures/enemy.png");
 	EngineCore::ResourceSystem::Instance()->LoadSound("soundtrack", "Resources/Sounds/soundtrack.wav");
