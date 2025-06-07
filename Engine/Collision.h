@@ -1,19 +1,22 @@
 #pragma once
+#include <SFML/Graphics.hpp>
 namespace EngineCore {
-	class ColliderComponent;
-	class Collision {
-	public:
-		Collision(ColliderComponent* newFirst, ColliderComponent* newSecond, sf::FloatRect newCollisionRect) : first(newFirst), second(newSecond), collisionRect(newCollisionRect) {
+class ColliderComponent;
+class Collision {
+   public:
+    Collision(ColliderComponent* newFirst, ColliderComponent* newSecond,
+              sf::FloatRect newCollisionRect)
+        : first(newFirst), second(newSecond), collisionRect(newCollisionRect) {
 
-		};
-		
-		ColliderComponent* GetFirst() const { return first; }
-		ColliderComponent* GetSecond() const { return second; }
-		const sf::FloatRect& GetIntersectionRect() const { return collisionRect; }
-		
-	private:
-		ColliderComponent* first;
-		ColliderComponent* second;
-		sf::FloatRect collisionRect;
-	};
-}
+          };
+
+    ColliderComponent* GetFirst() const { return first; }
+    ColliderComponent* GetSecond() const { return second; }
+    const sf::FloatRect& GetIntersectionRect() const { return collisionRect; }
+
+   private:
+    ColliderComponent* first;
+    ColliderComponent* second;
+    sf::FloatRect collisionRect;
+};
+}  // namespace EngineCore

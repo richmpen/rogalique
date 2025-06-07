@@ -1,9 +1,9 @@
 #include "MazeGenerator.h"
 
+#include "DeveloperLevel.h"
+
 #include <cstdlib>
 #include <ctime>
-
-#include "DeveloperLevel.h"
 
 namespace Rogalique {
 // Constructor: Initializes the maze generator with the given dimensions and

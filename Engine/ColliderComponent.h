@@ -1,46 +1,48 @@
 #pragma once
 
-#include <SFML/Graphics.hpp>
-#include <vector>
-#include <functional>
-#include "Component.h"
 #include "Collision.h"
-#include "Trigger.h"
+#include "Component.h"
 #include "PhysicsSystem.h"
+#include "Trigger.h"
 
-namespace EngineCore
-{
-	class ColliderComponent : public Component
-	{
-	public:
-		ColliderComponent(GameObject* gameObject);
+#include <SFML/Graphics.hpp>
+#include <functional>
+#include <vector>
 
-		virtual void Update(float deltaTime) = 0;
-		virtual void Render() = 0;
+namespace EngineCore {
+class ColliderComponent : public Component {
+   public:
+    ColliderComponent(GameObject* gameObject);
 
-		void SetTrigger(bool newIsTrigger);
+    virtual void Update(float deltaTime) = 0;
+    virtual void Render() = 0;
 
-		void SubscribeCollision(std::function<void(Collision)> onCollisionAction);
-		void UnsubscribeCollision(std::function<void(Collision)> onCollisionAction);
+    void SetTrigger(bool newIsTrigger);
 
-		void SubscribeTriggerEnter(std::function<void(Trigger)> onTriggerEnterAction);
-		void UnsubscribeTriggerEnter(std::function<void(Trigger)> onTriggerEnterAction);
+    void SubscribeCollision(std::function<void(Collision)> onCollisionAction);
+    void UnsubscribeCollision(std::function<void(Collision)> onCollisionAction);
 
-		void SubscribeTriggerExit(std::function<void(Trigger)> onTriggerExitAction);
-		void UnsubscribeTriggerExit(std::function<void(Trigger)> onTriggerExitAction);
+    void SubscribeTriggerEnter(
+        std::function<void(Trigger)> onTriggerEnterAction);
+    void UnsubscribeTriggerEnter(
+        std::function<void(Trigger)> onTriggerEnterAction);
 
-		friend class PhysicsSystem;
+    void SubscribeTriggerExit(std::function<void(Trigger)> onTriggerExitAction);
+    void UnsubscribeTriggerExit(
+        std::function<void(Trigger)> onTriggerExitAction);
 
-	protected:
-		sf::FloatRect bounds;
-		bool isTrigger = false;
+    friend class PhysicsSystem;
 
-		void OnCollision(Collision collision);
-		void OnTriggerEnter(Trigger trigger);
-		void OnTriggerExit(Trigger trigger);
+   protected:
+    sf::FloatRect bounds;
+    bool isTrigger = false;
 
-		std::vector<std::function<void(Collision)>> onCollisionActions;
-		std::vector<std::function<void(Trigger)>> onTriggerEnterActions;
-		std::vector<std::function<void(Trigger)>> onTriggerExitActions;
-	};
-}
+    void OnCollision(Collision collision);
+    void OnTriggerEnter(Trigger trigger);
+    void OnTriggerExit(Trigger trigger);
+
+    std::vector<std::function<void(Collision)>> onCollisionActions;
+    std::vector<std::function<void(Trigger)>> onTriggerEnterActions;
+    std::vector<std::function<void(Trigger)>> onTriggerExitActions;
+};
+}  // namespace EngineCore

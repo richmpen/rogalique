@@ -3,40 +3,40 @@
 #include "GameObject.h"
 #include "PhysicsSystem.h"
 
-namespace EngineCore
-{
-	class GameWorld
-	{
-	public:
-		static GameWorld* Instance();
+namespace EngineCore {
+class GameWorld {
+   public:
+    static GameWorld* Instance();
 
-		void Update(float deltaTime);
-		void FixedUpdate(float deltaTime);
-		void Render();
-		void LateUpdate();
+    void Update(float deltaTime);
+    void FixedUpdate(float deltaTime);
+    void Render();
+    void LateUpdate();
 
-		GameObject* CreateGameObject();
-		GameObject* CreateGameObject(std::string name);
-		GameObject* FindGameObjectByName(const std::string& name);
-		void DestroyGameObject(GameObject* gameObject);
-		void Clear();
+    GameObject* CreateGameObject();
+    GameObject* CreateGameObject(std::string name);
+    GameObject* FindGameObjectByName(const std::string& name);
+    void DestroyGameObject(GameObject* gameObject);
+    void Clear();
 
-		void Print() const;
-		
-        const std::vector<GameObject*>& GetAllGameObjects() const { return gameObjects; }
-		
-	private:
-		GameWorld() {}
-		~GameWorld() {}
+    void Print() const;
 
-		GameWorld(GameWorld const&) = delete;
-		GameWorld& operator= (GameWorld const&) = delete;
+    const std::vector<GameObject*>& GetAllGameObjects() const {
+        return gameObjects;
+    }
 
-		float fixedCounter = 0.f;
+   private:
+    GameWorld() {}
+    ~GameWorld() {}
 
-		std::vector<GameObject*> gameObjects = {};
-		std::vector<GameObject*> markedToDestroyGameObjects = {};
+    GameWorld(GameWorld const&) = delete;
+    GameWorld& operator=(GameWorld const&) = delete;
 
-		void DestroyGameObjectImmediate(GameObject* gameObject);
-	};
-}
+    float fixedCounter = 0.f;
+
+    std::vector<GameObject*> gameObjects = {};
+    std::vector<GameObject*> markedToDestroyGameObjects = {};
+
+    void DestroyGameObjectImmediate(GameObject* gameObject);
+};
+}  // namespace EngineCore

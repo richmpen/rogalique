@@ -2,15 +2,16 @@
 
 namespace EngineCore {
 
-	class ColliderComponent;
-	class Trigger {
-	public:
-		Trigger(ColliderComponent* newFirst, ColliderComponent* newSecond) :
-			first(newFirst), second(newSecond) {
+class ColliderComponent;
+class Trigger {
+   public:
+    Trigger(ColliderComponent* newFirst, ColliderComponent* newSecond)
+        : first(newFirst), second(newSecond) {
 
-		};
-	private:
-		ColliderComponent* first;
-		ColliderComponent* second;
-	};
-}
+          };
+
+   private:
+    ColliderComponent* first;
+    ColliderComponent* second;
+};
+}  // namespace EngineCore

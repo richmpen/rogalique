@@ -1,54 +1,53 @@
 #pragma once
-#include "SFML/Graphics.hpp"
 #include "Text.h"
-#include <list>
+
 #include <functional>
+#include <list>
 
+#include "SFML/Graphics.hpp"
 
-namespace Rogalique
-{
-	struct MenuItem
-	{
-		sf::Text text;
-		sf::Text hintText;
-		Orientation childrenOrientation = Orientation::Vertical;
-		Alignment childrenAlignment = Alignment::Min;
-		float childrenSpacing;
+namespace Rogalique {
+struct MenuItem {
+    sf::Text text;
+    sf::Text hintText;
+    Orientation childrenOrientation = Orientation::Vertical;
+    Alignment childrenAlignment = Alignment::Min;
+    float childrenSpacing;
 
-		sf::Color selectedColor = sf::Color::Blue;
-		sf::Color deselectedColor = sf::Color::White;
+    sf::Color selectedColor = sf::Color::Blue;
+    sf::Color deselectedColor = sf::Color::White;
 
-		bool isEnabled = true;
-		std::vector<MenuItem> childrens;
+    bool isEnabled = true;
+    std::vector<MenuItem> childrens;
 
-		std::function<void(MenuItem& item)> onPressCallback;
+    std::function<void(MenuItem& item)> onPressCallback;
 
-		MenuItem* parent = nullptr;
-	};
+    MenuItem* parent = nullptr;
+};
 
-	class Menu
-	{
-	public:
-		void Init(const MenuItem& item);
+class Menu {
+   public:
+    void Init(const MenuItem& item);
 
-		void Update(float deltaTime);
+    void Update(float deltaTime);
 
-		void Draw(sf::RenderWindow& window, sf::Vector2f position, sf::Vector2f origin);
+    void Draw(sf::RenderWindow& window, sf::Vector2f position,
+              sf::Vector2f origin);
 
-		void PressOnSelectedItem();
-		void GoBack();
-		
-		void SwitchToPreviousMenuItem();
-		void SwitchToNextMenuItem();
+    void PressOnSelectedItem();
+    void GoBack();
 
-		MenuItem& GetCurrentContext();
+    void SwitchToPreviousMenuItem();
+    void SwitchToNextMenuItem();
 
-	private:
-		void InitMenuItem(MenuItem& item);
-		void SelectMenuItem(MenuItem& item);
+    MenuItem& GetCurrentContext();
 
-	private:
-		MenuItem rootItem;
-		MenuItem* selectedItem = nullptr;
-	};
-}
+   private:
+    void InitMenuItem(MenuItem& item);
+    void SelectMenuItem(MenuItem& item);
+
+   private:
+    MenuItem rootItem;
+    MenuItem* selectedItem = nullptr;
+};
+}  // namespace Rogalique

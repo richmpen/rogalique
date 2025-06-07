@@ -1,24 +1,25 @@
 #pragma once
-#include <iostream>
 #include <fstream>
-#include <string>
-#include <vector>
+#include <iostream>
 #include <mutex>
-#include <unordered_map>
 #include <sstream>
+#include <string>
+#include <unordered_map>
+#include <vector>
 
 enum class LogLevel { Info, Warning, Error };
 
 class LogSink {
-public:
+   public:
     virtual void log(LogLevel level, const std::string& message) = 0;
     virtual ~LogSink() = default;
 };
 
 class ConsoleSink : public LogSink {
-private:
+   private:
     std::string lastMessage;
-public:
+
+   public:
     void log(LogLevel level, const std::string& message) override {
         if (message != lastMessage) {
             std::cout << logLevelToString(level) << " " << message << std::endl;
@@ -26,25 +27,29 @@ public:
         }
     }
 
-private:
+   private:
     std::string logLevelToString(LogLevel level) {
         switch (level) {
-        case LogLevel::Info: return "[\033[32mInfo\033[0m]";
-        case LogLevel::Warning: return "[\033[33mWarning\033[0m]";
-        case LogLevel::Error: return "[\033[31mERROR\033[0m]";
-        default: return "[UNKNOWN]";
+            case LogLevel::Info:
+                return "[\033[32mInfo\033[0m]";
+            case LogLevel::Warning:
+                return "[\033[33mWarning\033[0m]";
+            case LogLevel::Error:
+                return "[\033[31mERROR\033[0m]";
+            default:
+                return "[UNKNOWN]";
         }
     }
 };
 
 class FileSink : public LogSink {
-private:
+   private:
     std::ofstream logFile;
     std::string lastMessage;
     const size_t maxLines = 1000;
-public:
+
+   public:
     FileSink(const std::string& filename) {
-        
         std::ifstream infile(filename);
         size_t lineCount = 0;
         std::string tempLine;
@@ -52,12 +57,12 @@ public:
             ++lineCount;
         }
         infile.close();
-        
+
         if (lineCount > maxLines) {
             std::ofstream clearFile(filename, std::ios::trunc);
             clearFile.close();
         }
-        
+
         logFile.open(filename, std::ios::app);
     }
 
@@ -72,37 +77,39 @@ public:
         if (logFile.is_open()) logFile.close();
     }
 
-private:
+   private:
     std::string logLevelToString(LogLevel level) {
         switch (level) {
-        case LogLevel::Info: return "[INFO]";
-        case LogLevel::Warning: return "[WARNING]";
-        case LogLevel::Error: return "[ERROR]";
-        default: return "[UNKNOWN]";
+            case LogLevel::Info:
+                return "[INFO]";
+            case LogLevel::Warning:
+                return "[WARNING]";
+            case LogLevel::Error:
+                return "[ERROR]";
+            default:
+                return "[UNKNOWN]";
         }
     }
 };
 
 class Logger {
-private:
+   private:
     std::vector<std::shared_ptr<LogSink>> sinks;
     std::mutex logMutex;
     std::string lastMessage;
 
-public:
-    void addSink(std::shared_ptr<LogSink> sink) {
-        sinks.push_back(sink);
-    }
+   public:
+    void addSink(std::shared_ptr<LogSink> sink) { sinks.push_back(sink); }
 
     void log(LogLevel level, const std::string& message) {
         std::lock_guard<std::mutex> lock(logMutex);
-        
+
         if (message == lastMessage) {
             return;
         }
-        
+
         lastMessage = message;
-        
+
         for (auto& sink : sinks) {
             sink->log(level, message);
         }
@@ -114,12 +121,12 @@ public:
 };
 
 class LoggerRegistry {
-private:
+   private:
     std::unordered_map<std::string, std::shared_ptr<Logger>> loggers;
     std::shared_ptr<Logger> defaultLogger;
     std::mutex registryMutex;
 
-public:
+   public:
     static LoggerRegistry& getInstance() {
         static LoggerRegistry instance;
         return instance;
@@ -137,26 +144,30 @@ public:
         defaultLogger = logger;
     }
 
-    void registerLogger(const std::string& name, std::shared_ptr<Logger> logger) {
+    void registerLogger(const std::string& name,
+                        std::shared_ptr<Logger> logger) {
         std::lock_guard<std::mutex> lock(registryMutex);
         loggers[name] = logger;
     }
 };
 
-#define LOG_INFO(message) { \
-std::ostringstream _oss; \
-_oss << message; \
-LoggerRegistry::getInstance().getLogger("global")->info(_oss.str()); \
-}
+#define LOG_INFO(message)                                                    \
+    {                                                                        \
+        std::ostringstream _oss;                                             \
+        _oss << message;                                                     \
+        LoggerRegistry::getInstance().getLogger("global")->info(_oss.str()); \
+    }
 
-#define LOG_WARN(message) { \
-std::ostringstream _oss; \
-_oss << message; \
-LoggerRegistry::getInstance().getLogger("global")->warn(_oss.str()); \
-}
+#define LOG_WARN(message)                                                    \
+    {                                                                        \
+        std::ostringstream _oss;                                             \
+        _oss << message;                                                     \
+        LoggerRegistry::getInstance().getLogger("global")->warn(_oss.str()); \
+    }
 
-#define LOG_ERROR(message) { \
-std::ostringstream _oss; \
-_oss << message; \
-LoggerRegistry::getInstance().getLogger("global")->error(_oss.str()); \
-}
+#define LOG_ERROR(message)                                                    \
+    {                                                                         \
+        std::ostringstream _oss;                                              \
+        _oss << message;                                                      \
+        LoggerRegistry::getInstance().getLogger("global")->error(_oss.str()); \
+    }

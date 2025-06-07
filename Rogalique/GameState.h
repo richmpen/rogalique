@@ -1,57 +1,54 @@
 ﻿#pragma once
-#include <SFML/Graphics.hpp>
 #include "GameStateData.h"
 
-namespace Rogalique
-{
+#include <SFML/Graphics.hpp>
 
-	enum class GameStateType
-	{
-		None = 0,
-		MainMenu,
-		Playing,
-		GameOver,
-		GameWin,
-		ExitDialog,
-		Records,
-	};
+namespace Rogalique {
 
-	class GameState
-	{
-	public:
-		GameState() = default;
-		GameState(GameStateType type, bool isExclusivelyVisible);
-		GameState(const GameState& state) = delete;
-		GameState(GameState&& state) { operator=(std::move(state)); }
+enum class GameStateType {
+    None = 0,
+    MainMenu,
+    Playing,
+    GameOver,
+    GameWin,
+    ExitDialog,
+    Records,
+};
 
-		virtual ~GameState();
+class GameState {
+   public:
+    GameState() = default;
+    GameState(GameStateType type, bool isExclusivelyVisible);
+    GameState(const GameState& state) = delete;
+    GameState(GameState&& state) { operator=(std::move(state)); }
 
-		GameState& operator= (const GameState& state) = delete;
-		GameState& operator= (GameState&& state) noexcept {
-			type = state.type;
-			data = std::move(state.data);
-			isExclusivelyVisible = state.isExclusivelyVisible;
-			state.data = nullptr;
-			return *this;
-		}
+    virtual ~GameState();
 
-		GameStateType GetType() const { return type; }
-		bool IsExclusivelyVisible() const { return isExclusivelyVisible; }
+    GameState& operator=(const GameState& state) = delete;
+    GameState& operator=(GameState&& state) noexcept {
+        type = state.type;
+        data = std::move(state.data);
+        isExclusivelyVisible = state.isExclusivelyVisible;
+        state.data = nullptr;
+        return *this;
+    }
 
-		template<class T>
-		T* GetData() const {
-			return static_cast<T*>(data.get());
-		}
+    GameStateType GetType() const { return type; }
+    bool IsExclusivelyVisible() const { return isExclusivelyVisible; }
 
-		void Update(float timeDelta);
-		void Draw(sf::RenderWindow& window);
-		void Control(sf::Event& event);
+    template <class T>
+    T* GetData() const {
+        return static_cast<T*>(data.get());
+    }
 
-	
-	private:
-		GameStateType type = GameStateType::None;
-		std::shared_ptr<GameStateData> data = nullptr;
-		bool isExclusivelyVisible = false;
-	};
+    void Update(float timeDelta);
+    void Draw(sf::RenderWindow& window);
+    void Control(sf::Event& event);
 
-}
+   private:
+    GameStateType type = GameStateType::None;
+    std::shared_ptr<GameStateData> data = nullptr;
+    bool isExclusivelyVisible = false;
+};
+
+}  // namespace Rogalique

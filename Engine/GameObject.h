@@ -1,135 +1,123 @@
 #pragma once
-#include "TransformComponent.h"
-#include <iostream>
 #include "Logger.h"
+#include "TransformComponent.h"
 
-namespace EngineCore
-{
-	class TransformComponent;
+#include <iostream>
 
-	class GameObject
-	{
-	public:
-		GameObject();
-		GameObject(std::string newName);
+namespace EngineCore {
+class TransformComponent;
 
-		~GameObject();
+class GameObject {
+   public:
+    GameObject();
+    GameObject(std::string newName);
 
-		std::string GetName() const;
-		void Print(int depth = 0) const;
+    ~GameObject();
 
-		void Update(float deltaTime);
-		void Render();
+    std::string GetName() const;
+    void Print(int depth = 0) const;
 
-		template <typename T>
-		T* AddComponent()
-		{
-			if constexpr (!std::is_base_of<Component, T>::value)
-			{
-				LOG_WARN("Can't add Transform, because it will break the engine loop.");
-				return nullptr;
-			}
+    void Update(float deltaTime);
+    void Render();
 
-			if constexpr (std::is_same<T, TransformComponent>::value)
-			{
-				if (GetComponent<TransformComponent>() != nullptr)
-				{
-					LOG_WARN("Can't add Transform, because it will break the engine loop.");
-					return nullptr;
-				}
-			}
+    template <typename T>
+    T* AddComponent() {
+        if constexpr (!std::is_base_of<Component, T>::value) {
+            LOG_WARN(
+                "Can't add Transform, because it will break the engine loop.");
+            return nullptr;
+        }
 
-			T* newComponent = new T(this);
-			components.push_back(newComponent);
-			// LOG_INFO("Add new component: " << this );
-			return newComponent;
-		}
+        if constexpr (std::is_same<T, TransformComponent>::value) {
+            if (GetComponent<TransformComponent>() != nullptr) {
+                LOG_WARN(
+                    "Can't add Transform, because it will break the engine "
+                    "loop.");
+                return nullptr;
+            }
+        }
 
-		void RemoveComponent(Component* component)
-		{
-			components.erase(std::remove_if(components.begin(), components.end(), [component](Component* obj) { return obj == component; }), components.end());
-			delete component;
-			LOG_INFO("Deleted component");
-		}
+        T* newComponent = new T(this);
+        components.push_back(newComponent);
+        // LOG_INFO("Add new component: " << this );
+        return newComponent;
+    }
 
-		template <typename T>
-		T* GetComponent() const
-		{
-			for (const auto& component : components)
-			{
-				if (auto casted = dynamic_cast<T*>(component))
-				{
-					return casted;
-				}
-			}
-			return nullptr;
-		}
+    void RemoveComponent(Component* component) {
+        components.erase(std::remove_if(components.begin(), components.end(),
+                                        [component](Component* obj) {
+                                            return obj == component;
+                                        }),
+                         components.end());
+        delete component;
+        LOG_INFO("Deleted component");
+    }
 
-		template <typename T>
-		T* GetComponentInChildren() const
-		{
-			T* component = GetComponent<T>();
-			if (component != nullptr || children.size() == 0)
-			{
-				return component;
-			}
+    template <typename T>
+    T* GetComponent() const {
+        for (const auto& component : components) {
+            if (auto casted = dynamic_cast<T*>(component)) {
+                return casted;
+            }
+        }
+        return nullptr;
+    }
 
-			for (const auto& child : children)
-			{
-				T* childComponent = child->GetComponentInChildren<T>();
-				if (childComponent != nullptr)
-				{
-					return childComponent;
-				}
-			}
+    template <typename T>
+    T* GetComponentInChildren() const {
+        T* component = GetComponent<T>();
+        if (component != nullptr || children.size() == 0) {
+            return component;
+        }
 
-			return nullptr;
-		}
+        for (const auto& child : children) {
+            T* childComponent = child->GetComponentInChildren<T>();
+            if (childComponent != nullptr) {
+                return childComponent;
+            }
+        }
 
-		template <typename T>
-		std::vector<T*> GetComponents() const
-		{
-			std::vector<T*> result;
-			for (const auto& component : components)
-			{
-				if (auto casted = dynamic_cast<T*>(component))
-				{
-					result.push_back(casted);
-				}
-			}
-			return result;
-		}
+        return nullptr;
+    }
 
-		template <typename T>
-		std::vector<T*> GetComponentsInChildren() const
-		{
-			std::vector<T*> result;
-			for (const auto& component : GetComponents<T>())
-			{
-				result.push_back(component);
-			}
+    template <typename T>
+    std::vector<T*> GetComponents() const {
+        std::vector<T*> result;
+        for (const auto& component : components) {
+            if (auto casted = dynamic_cast<T*>(component)) {
+                result.push_back(casted);
+            }
+        }
+        return result;
+    }
 
-			for (const auto& child : children)
-			{
-				for (const auto& childComponent : child->GetComponentsInChildren<T>())
-				{
-					result.push_back(childComponent);
-				}
-			}
+    template <typename T>
+    std::vector<T*> GetComponentsInChildren() const {
+        std::vector<T*> result;
+        for (const auto& component : GetComponents<T>()) {
+            result.push_back(component);
+        }
 
-			return result;
-		}
+        for (const auto& child : children) {
+            for (const auto& childComponent :
+                 child->GetComponentsInChildren<T>()) {
+                result.push_back(childComponent);
+            }
+        }
 
-		friend class GameWorld;
-		friend class TransformComponent;
+        return result;
+    }
 
-	private:
-		std::string name;
+    friend class GameWorld;
+    friend class TransformComponent;
 
-		std::vector<GameObject*> children = {};
-		std::vector<Component*> components = {};
+   private:
+    std::string name;
 
-		void AddChild(GameObject* child);
-		void RemoveChild(GameObject* child);
-	};
-}
+    std::vector<GameObject*> children = {};
+    std::vector<Component*> components = {};
+
+    void AddChild(GameObject* child);
+    void RemoveChild(GameObject* child);
+};
+}  // namespace EngineCore

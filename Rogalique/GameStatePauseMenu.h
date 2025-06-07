@@ -1,28 +1,27 @@
 #pragma once
-#include <SFML/Graphics.hpp>
-#include "Menu.h"
 #include "GameStateData.h"
+#include "Menu.h"
 
-namespace Rogalique
-{
-	class Game;
+#include <SFML/Graphics.hpp>
 
-	class GameStatePauseMenu : public GameStateData
-	{
-	public:
-		void Init() override;
-		void Shutdown()override;
-		void Control(const sf::Event& event)override;
-		void Update(float timeDelta) override;
-		void Draw(sf::RenderWindow& window)override;
+namespace Rogalique {
+class Game;
 
-	private:
-		sf::Font font;
+class GameStatePauseMenu : public GameStateData {
+   public:
+    void Init() override;
+    void Shutdown() override;
+    void Control(const sf::Event& event) override;
+    void Update(float timeDelta) override;
+    void Draw(sf::RenderWindow& window) override;
 
-		sf::RectangleShape background;
-		sf::Text titleText;
+   private:
+    sf::Font font;
 
-		Menu menu;
-	};
+    sf::RectangleShape background;
+    sf::Text titleText;
 
-}
+    Menu menu;
+};
+
+}  // namespace Rogalique

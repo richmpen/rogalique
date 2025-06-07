@@ -1,13 +1,13 @@
 ﻿#pragma once
-#include <array>
-#include <iostream>
-
 #include "Enemy.h"
 #include "Floor.h"
 #include "Music.h"
 #include "Player.h"
 #include "Scene.h"
 #include "Wall.h"
+
+#include <array>
+#include <iostream>
 
 using namespace EngineCore;
 
