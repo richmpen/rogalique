@@ -10,7 +10,6 @@ namespace EngineCore {
 EnemyAIComponent::EnemyAIComponent(GameObject* gameObject)
     : Component(gameObject), playerObject(nullptr) {
     chaseDistance = 400.0f;
-    speed = 300.0f;
     playerObject = GameWorld::Instance()->FindGameObjectByName("Player");
 }
 

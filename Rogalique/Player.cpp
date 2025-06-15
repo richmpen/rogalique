@@ -7,7 +7,7 @@
 
 namespace Rogalique {
 Player::Player(const EngineCore::Vector2Df& position,
-               const EngineCore::EnemyType& target, int damage, int health) {
+               const EngineCore::TargetType& target, int damage, int health) {
     gameObject = EngineCore::GameWorld::Instance()->CreateGameObject("Player");
     auto transform = gameObject->GetComponent<EngineCore::TransformComponent>();
     transform->SetWorldPosition(position);

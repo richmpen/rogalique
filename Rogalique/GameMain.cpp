@@ -16,16 +16,22 @@ int main() {
 
     EngineCore::ResourceSystem::Instance()->LoadTexture(
         "player", "Resources/Textures/player.png");
-    EngineCore::ResourceSystem::Instance()->LoadTexture(
-        "enemy", "Resources/Textures/enemy.png");
     EngineCore::ResourceSystem::Instance()->LoadSound(
         "soundtrack", "Resources/Sounds/soundtrack.wav");
+    EngineCore::ResourceSystem::Instance()->LoadSound(
+        "MetalHell", "Resources/Sounds/MetalHell.wav");
     EngineCore::ResourceSystem::Instance()->LoadSound(
         "fightMusic", "Resources/Sounds/fightMusic.wav");
     EngineCore::ResourceSystem::Instance()->LoadTexture(
         "floor", "Resources/Textures/floor.png");
     EngineCore::ResourceSystem::Instance()->LoadTexture(
         "wall", "Resources/Textures/wall.png");
+    EngineCore::ResourceSystem::Instance()->LoadTexture(
+        "cacodemon", "Resources/Textures/cacodemon.png");
+    EngineCore::ResourceSystem::Instance()->LoadTexture(
+        "creeper", "Resources/Textures/creeper.png");
+    EngineCore::ResourceSystem::Instance()->LoadTexture(
+        "creeperExplosion", "Resources/Textures/creeperExplosion.png");
     auto developerLevel = std::make_shared<DeveloperLevel>();
     developerLevel->Start();
 

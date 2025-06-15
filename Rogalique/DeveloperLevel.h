@@ -1,5 +1,7 @@
 ﻿#pragma once
+
 #include "Enemy.h"
+#include "EnemyFactory.h"
 #include "Floor.h"
 #include "Music.h"
 #include "Player.h"
@@ -14,31 +16,28 @@ using namespace EngineCore;
 namespace Rogalique {
 class DeveloperLevel : public Scene {
    public:
+    DeveloperLevel();
+
     void Start() override;
     void Restart() override;
     void Stop() override;
 
     std::vector<std::unique_ptr<Wall>> walls;
     std::vector<std::unique_ptr<Floor>> floors;
+    std::unordered_map<EnemyType, std::unique_ptr<EnemyFactory>> enemyFactories;
+    std::vector<std::shared_ptr<Enemy>> enemys;
 
    private:
     template <typename T>
-    void LoadObjectCheck(const std::shared_ptr<T>& object) {
-        if (object && object->GetGameObject()) {
-            LOG_INFO(object->GetGameObject()->GetName()
-                     << " declared at level: " << levelName);
-        } else {
-            LOG_WARN("Object not valid at level: " << levelName);
-        }
-    }
+    void LoadObjectCheck(const std::shared_ptr<T>& object);
 
     std::string levelName = "Developer Level";
-
-    int levelWidth = 15;
-    int levelHeight = 15;
+    float levelWidth = 15;
+    float levelHeight = 15;
+    float spritePanelSize = 100;
+    int indentMaze = -2;
 
     std::shared_ptr<Player> player;
-    std::shared_ptr<Enemy> enemy;
     std::shared_ptr<Music> music;
     std::shared_ptr<Wall> wall;
     std::shared_ptr<Floor> floor;

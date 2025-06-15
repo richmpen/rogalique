@@ -2,8 +2,10 @@
 
 #include "FightComponent.h"
 
+#include "EnemyAIComponent.h"
 #include "GameObject.h"
 #include "GameWorld.h"
+#include "ResourceSystem.h"
 #include "SpriteColliderComponent.h"
 #include "SpriteRendererComponent.h"
 
@@ -32,13 +34,57 @@ FightComponent::FightComponent(GameObject* gameObject) : Component(gameObject) {
 
         if (otherFight &&
             otherFight->GetTargetType() != this->GetTargetType() &&
-            otherFight->GetTargetType() != EnemyType::None &&
-            this->GetTargetType() != EnemyType::None) {
+            otherFight->GetTargetType() != TargetType::None &&
+            this->GetTargetType() != TargetType::None) {
             otherFight->TakeDamage(this->damage);
             attackCooldown = 1.0f;
-            flashTimer = 1.0f;
+            flashTimer = 2.0f;
+
+            // Если это крипер и столкнулся с игроком, запускаем взрыв
+            if (this->gameObject->GetName() == "Creeper" &&
+                otherObject->GetName() == "Player") {
+                StartCreeperExplosion();
+            }
         }
     });
+}
+
+void FightComponent::StartCreeperExplosion() {
+    isCreeperExploding = true;
+    explosionTimer = 2.0f;  // 2 секунды до смерти
+    if (renderer) {
+        renderer->SetTexture(
+            *ResourceSystem::Instance()->GetTextureShared("creeperExplosion"));
+    }
+    auto aiComponent = gameObject->GetComponent<EnemyAIComponent>();
+    auto rigidbody = gameObject->GetComponent<RigidbodyComponent>();
+    if (aiComponent) {
+        aiComponent->SetMoveSpeed(0.0f);
+        rigidbody->SetKinematic(true);
+        gameObject->RemoveComponent(collider);
+    }
+}
+
+void FightComponent::Update(float deltaTime) {
+    if (isCreeperExploding) {
+        explosionTimer -= deltaTime;
+        if (explosionTimer <= 0.0f) {
+            Die();
+        }
+    } else if (flashTimer > 0.0f) {
+        flashTimer -= deltaTime;
+        attackCooldown = flashTimer;
+
+        if (renderer) {
+            renderer->SetColor(sf::Color(255, 0, 0));
+        }
+    } else {
+        attackCooldown = 0.0f;
+
+        if (renderer) {
+            renderer->SetColor(sf::Color(255, 255, 255));
+        }
+    }
 }
 
 void FightComponent::TakeDamage(int damageValue) {
@@ -65,26 +111,10 @@ void FightComponent::SetHealth(int health) { this->health = health; }
 
 int FightComponent::GetHealth() { return this->health; }
 
-void FightComponent::SetTargetType(EnemyType type) { this->targetType = type; }
+void FightComponent::SetTargetType(TargetType type) { this->targetType = type; }
 
-EnemyType FightComponent::GetTargetType() const { return targetType; }
-
-void FightComponent::Update(float deltaTime) {
-    if (flashTimer > 0.0f) {
-        flashTimer -= deltaTime;
-        attackCooldown = flashTimer;
-
-        if (renderer) {
-            renderer->SetColor(sf::Color(255, 0, 0));
-        }
-    } else {
-        attackCooldown = 0.0f;
-
-        if (renderer) {
-            renderer->SetColor(sf::Color(255, 255, 255));
-        }
-    }
-}
+TargetType FightComponent::GetTargetType() const { return targetType; }
 
 void FightComponent::Render() {}
+
 }  // namespace EngineCore

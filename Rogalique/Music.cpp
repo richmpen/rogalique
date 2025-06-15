@@ -9,6 +9,7 @@ Music::Music(const std::string& soundName) {
         *EngineCore::ResourceSystem::Instance()->GetSound(soundName));
     music->SetLoop(true);
     music->Start();
+    music->SetVolume(10.f);
 }
 
 EngineCore::GameObject* Music::GetGameObject() { return gameObject; }

@@ -16,6 +16,7 @@ class SpriteRendererComponent : public Component {
 
     const sf::Sprite* GetSprite() const;
     void SetTexture(const sf::Texture& newTexture);
+    sf::Texture GetTexture() const;
     void SetPixelSize(int newWidth, int newHeight);
 
     void FlipX(bool flip);

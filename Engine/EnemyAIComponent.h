@@ -10,6 +10,7 @@ class EnemyAIComponent : public Component {
     EnemyAIComponent(GameObject* gameObject);
     void Update(float deltaTime) override;
     void Render() override;
+    void SetMoveSpeed(float newSpeed) { speed = newSpeed; };
 
    private:
     GameObject* playerObject;

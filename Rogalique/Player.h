@@ -12,7 +12,7 @@ namespace Rogalique {
 class Player {
    public:
     Player(const EngineCore::Vector2Df& position,
-           const EngineCore::EnemyType& target, int damage, int health);
+           const EngineCore::TargetType& target, int damage, int health);
     EngineCore::GameObject* GetGameObject();
 
    private:
