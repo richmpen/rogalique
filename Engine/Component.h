@@ -2,20 +2,19 @@
 
 namespace EngineCore {
 
-	class GameObject;
+class GameObject;
 
-	class Component
-	{
-	public:
-		Component(GameObject* gameObject);
-		virtual ~Component();
-		
-		virtual void Update(float deltaTime) = 0;
-		virtual void Render() = 0;
+class Component {
+   public:
+    Component(GameObject* gameObject);
+    virtual ~Component();
 
-		GameObject* GetGameObject();
-	protected:
-		GameObject* gameObject;
-	};
-}
+    virtual void Update(float deltaTime) = 0;
+    virtual void Render() = 0;
 
+    GameObject* GetGameObject();
+
+   protected:
+    GameObject* gameObject;
+};
+}  // namespace EngineCore

@@ -1,47 +1,53 @@
 ﻿#pragma once
 #include "Component.h"
-#include <SFML/Graphics.hpp>
+#include "RigidbodyComponent.h"
 #include "SpriteColliderComponent.h"
 #include "SpriteRendererComponent.h"
 
-namespace EngineCore
-{
+#include <SFML/Graphics.hpp>
 
-    enum class EnemyType
-    {
-        Player = 0,
-        Enemy,
-        None,
-    };
+namespace EngineCore {
 
-    class FightComponent : public Component
-    {
-    public:
-        FightComponent(GameObject* gameObject);
+enum class TargetType {
+    Player = 0,
+    Enemy,
+    None,
+};
 
-        void Update(float deltaTime) override;
-        void Render() override;
+class FightComponent : public Component {
+   public:
+    FightComponent(GameObject* gameObject);
 
-        void TakeDamage(int amount);
-        void Die();
+    void Update(float deltaTime) override;
+    void Render() override;
 
-        void SetDamage(int damage);
-        int GetDamage();
+    void TakeDamage(int amount);
+    void Die();
 
-        void SetHealth(int health);
-        int GetHealth();
+    void SetDamage(int damage);
+    int GetDamage();
 
-        void SetTargetType(EnemyType type);
-        EnemyType GetTargetType() const;
-    private:
-        int damage;
-        int health;
-        EnemyType targetType;
+    void SetHealth(int health);
+    int GetHealth();
 
-        float flashTimer = 0.0f;
-        float attackCooldown = 0.0f;
+    void SetTargetType(TargetType type);
+    TargetType GetTargetType() const;
 
-        SpriteColliderComponent* collider;
-        SpriteRendererComponent* renderer;
-    };
-}
+    void StartCreeperExplosion();
+
+   private:
+    int damage = 0;
+    int health = 0;
+    TargetType targetType = TargetType::None;
+
+    float flashTimer = 0.0f;
+    float attackCooldown = 0.0f;
+    float explosionTimer = 0.0f;
+    bool isCreeperExploding = false;
+
+    SpriteColliderComponent* collider;
+    SpriteRendererComponent* renderer;
+    // RigidbodyComponent* rigidbody;
+};
+
+}  // namespace EngineCore

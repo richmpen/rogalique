@@ -2,21 +2,19 @@
 #define NOMINMAX
 #include "SFML/Graphics.hpp"
 
-namespace EngineCore
-{
-	class Engine
-	{
-	public:
-		Engine(const Engine& app) = delete;
-		Engine& operator= (const Engine&) = delete;
+namespace EngineCore {
+class Engine {
+   public:
+    Engine(const Engine& app) = delete;
+    Engine& operator=(const Engine&) = delete;
 
-		static Engine* Instance();
+    static Engine* Instance();
 
-		void Run();
+    void Run();
 
-	private:
-		Engine();
-		~Engine() = default;
-		void setupLogger();
-	};
-}
+   private:
+    Engine();
+    ~Engine() = default;
+    void setupLogger();
+};
+}  // namespace EngineCore

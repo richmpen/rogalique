@@ -1,8 +1,8 @@
 #pragma once
+#include "DeveloperLevel.h"
+
 #include <stack>
 #include <vector>
-
-#include "DeveloperLevel.h"
 
 namespace Rogalique {
 

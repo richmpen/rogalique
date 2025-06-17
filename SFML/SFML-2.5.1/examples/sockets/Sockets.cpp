@@ -2,15 +2,13 @@
 ////////////////////////////////////////////////////////////
 // Headers
 ////////////////////////////////////////////////////////////
-#include <iostream>
 #include <cstdlib>
-
+#include <iostream>
 
 void runTcpServer(unsigned short port);
 void runTcpClient(unsigned short port);
 void runUdpServer(unsigned short port);
 void runUdpClient(unsigned short port);
-
 
 ////////////////////////////////////////////////////////////
 /// Entry point of application
@@ -18,31 +16,27 @@ void runUdpClient(unsigned short port);
 /// \return Application exit code
 ///
 ////////////////////////////////////////////////////////////
-int main()
-{
+int main() {
     // Choose an arbitrary port for opening sockets
     const unsigned short port = 50001;
 
     // TCP, UDP or connected UDP ?
     char protocol;
     std::cout << "Do you want to use TCP (t) or UDP (u)? ";
-    std::cin  >> protocol;
+    std::cin >> protocol;
 
     // Client or server ?
     char who;
     std::cout << "Do you want to be a server (s) or a client (c)? ";
-    std::cin  >> who;
+    std::cin >> who;
 
-    if (protocol == 't')
-    {
+    if (protocol == 't') {
         // Test the TCP protocol
         if (who == 's')
             runTcpServer(port);
         else
             runTcpClient(port);
-    }
-    else
-    {
+    } else {
         // Test the unconnected UDP protocol
         if (who == 's')
             runUdpServer(port);

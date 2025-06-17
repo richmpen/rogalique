@@ -1,9 +1,8 @@
 ////////////////////////////////////////////////////////////
 // Headers
 ////////////////////////////////////////////////////////////
-#include <SFML/Window.hpp>
 #include <SFML/OpenGL.hpp>
-
+#include <SFML/Window.hpp>
 
 ////////////////////////////////////////////////////////////
 /// Entry point of application
@@ -11,14 +10,14 @@
 /// \return Application exit code
 ///
 ////////////////////////////////////////////////////////////
-int main()
-{
+int main() {
     // Request a 24-bits depth buffer when creating the window
     sf::ContextSettings contextSettings;
     contextSettings.depthBits = 24;
 
     // Create the main window
-    sf::Window window(sf::VideoMode(640, 480), "SFML window with OpenGL", sf::Style::Default, contextSettings);
+    sf::Window window(sf::VideoMode(640, 480), "SFML window with OpenGL",
+                      sf::Style::Default, contextSettings);
 
     // Make it the active window for OpenGL calls
     window.setActive();
@@ -45,50 +44,31 @@ int main()
     glFrustum(-ratio, ratio, -1.f, 1.f, 1.f, 500.f);
 
     // Define a 3D cube (6 faces made of 2 triangles composed by 3 vertices)
-    GLfloat cube[] =
-    {
+    GLfloat cube[] = {
         // positions    // colors (r, g, b, a)
-        -50, -50, -50,  0, 0, 1, 1,
-        -50,  50, -50,  0, 0, 1, 1,
-        -50, -50,  50,  0, 0, 1, 1,
-        -50, -50,  50,  0, 0, 1, 1,
-        -50,  50, -50,  0, 0, 1, 1,
-        -50,  50,  50,  0, 0, 1, 1,
+        -50, -50, -50, 0, 0, 1, 1, -50, 50,  -50, 0, 0, 1, 1,
+        -50, -50, 50,  0, 0, 1, 1, -50, -50, 50,  0, 0, 1, 1,
+        -50, 50,  -50, 0, 0, 1, 1, -50, 50,  50,  0, 0, 1, 1,
 
-         50, -50, -50,  0, 1, 0, 1,
-         50,  50, -50,  0, 1, 0, 1,
-         50, -50,  50,  0, 1, 0, 1,
-         50, -50,  50,  0, 1, 0, 1,
-         50,  50, -50,  0, 1, 0, 1,
-         50,  50,  50,  0, 1, 0, 1,
+        50,  -50, -50, 0, 1, 0, 1, 50,  50,  -50, 0, 1, 0, 1,
+        50,  -50, 50,  0, 1, 0, 1, 50,  -50, 50,  0, 1, 0, 1,
+        50,  50,  -50, 0, 1, 0, 1, 50,  50,  50,  0, 1, 0, 1,
 
-        -50, -50, -50,  1, 0, 0, 1,
-         50, -50, -50,  1, 0, 0, 1,
-        -50, -50,  50,  1, 0, 0, 1,
-        -50, -50,  50,  1, 0, 0, 1,
-         50, -50, -50,  1, 0, 0, 1,
-         50, -50,  50,  1, 0, 0, 1,
+        -50, -50, -50, 1, 0, 0, 1, 50,  -50, -50, 1, 0, 0, 1,
+        -50, -50, 50,  1, 0, 0, 1, -50, -50, 50,  1, 0, 0, 1,
+        50,  -50, -50, 1, 0, 0, 1, 50,  -50, 50,  1, 0, 0, 1,
 
-        -50,  50, -50,  0, 1, 1, 1,
-         50,  50, -50,  0, 1, 1, 1,
-        -50,  50,  50,  0, 1, 1, 1,
-        -50,  50,  50,  0, 1, 1, 1,
-         50,  50, -50,  0, 1, 1, 1,
-         50,  50,  50,  0, 1, 1, 1,
+        -50, 50,  -50, 0, 1, 1, 1, 50,  50,  -50, 0, 1, 1, 1,
+        -50, 50,  50,  0, 1, 1, 1, -50, 50,  50,  0, 1, 1, 1,
+        50,  50,  -50, 0, 1, 1, 1, 50,  50,  50,  0, 1, 1, 1,
 
-        -50, -50, -50,  1, 0, 1, 1,
-         50, -50, -50,  1, 0, 1, 1,
-        -50,  50, -50,  1, 0, 1, 1,
-        -50,  50, -50,  1, 0, 1, 1,
-         50, -50, -50,  1, 0, 1, 1,
-         50,  50, -50,  1, 0, 1, 1,
+        -50, -50, -50, 1, 0, 1, 1, 50,  -50, -50, 1, 0, 1, 1,
+        -50, 50,  -50, 1, 0, 1, 1, -50, 50,  -50, 1, 0, 1, 1,
+        50,  -50, -50, 1, 0, 1, 1, 50,  50,  -50, 1, 0, 1, 1,
 
-        -50, -50,  50,  1, 1, 0, 1,
-         50, -50,  50,  1, 1, 0, 1,
-        -50,  50,  50,  1, 1, 0, 1,
-        -50,  50,  50,  1, 1, 0, 1,
-         50, -50,  50,  1, 1, 0, 1,
-         50,  50,  50,  1, 1, 0, 1,
+        -50, -50, 50,  1, 1, 0, 1, 50,  -50, 50,  1, 1, 0, 1,
+        -50, 50,  50,  1, 1, 0, 1, -50, 50,  50,  1, 1, 0, 1,
+        50,  -50, 50,  1, 1, 0, 1, 50,  50,  50,  1, 1, 0, 1,
     };
 
     // Enable position and color vertex components
@@ -105,18 +85,16 @@ int main()
     sf::Clock clock;
 
     // Start the game loop
-    while (window.isOpen())
-    {
+    while (window.isOpen()) {
         // Process events
         sf::Event event;
-        while (window.pollEvent(event))
-        {
+        while (window.pollEvent(event)) {
             // Close window: exit
-            if (event.type == sf::Event::Closed)
-                window.close();
+            if (event.type == sf::Event::Closed) window.close();
 
             // Escape key: exit
-            if ((event.type == sf::Event::KeyPressed) && (event.key.code == sf::Keyboard::Escape))
+            if ((event.type == sf::Event::KeyPressed) &&
+                (event.key.code == sf::Keyboard::Escape))
                 window.close();
 
             // Resize event: adjust the viewport

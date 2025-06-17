@@ -1,19 +1,18 @@
 #pragma once
 #include "GameObject.h"
-#include "SpriteRendererComponent.h"
 #include "InputComponent.h"
+#include "SpriteRendererComponent.h"
 
-namespace EngineCore
-{
-	class DirectionComponent : public Component
-	{
-	public:
-		DirectionComponent(GameObject* gameObject);
+namespace EngineCore {
+class DirectionComponent : public Component {
+   public:
+    DirectionComponent(GameObject* gameObject);
 
-		void Update(float deltaTime) override;
-		void Render() override;
-	private:
-		InputComponent* input;
-		SpriteRendererComponent* spriteRenderer;
-	};
-}
+    void Update(float deltaTime) override;
+    void Render() override;
+
+   private:
+    InputComponent* input;
+    SpriteRendererComponent* spriteRenderer;
+};
+}  // namespace EngineCore

@@ -1,30 +1,28 @@
 #pragma once
-#include <SFML/Graphics.hpp>
 #include "Game.h"
 
+#include <SFML/Graphics.hpp>
+
 namespace Rogalique {
-	
-	class Application
-	{
-	public:
-		Application(const Application& app) = delete;
-		Application& operator= (const Application&) = delete;
-		
-		static Application& Instance();
 
-		void Run();
+class Application {
+   public:
+    Application(const Application& app) = delete;
+    Application& operator=(const Application&) = delete;
 
-		Game& GetGame() { return game; }
+    static Application& Instance();
 
-	private:
-		Application();
-		~Application() = default;
+    void Run();
 
-	private:
-		Game game;
-		sf::RenderWindow window;
-	};
+    Game& GetGame() { return game; }
 
-}
+   private:
+    Application();
+    ~Application() = default;
 
+   private:
+    Game game;
+    sf::RenderWindow window;
+};
 
+}  // namespace Rogalique
