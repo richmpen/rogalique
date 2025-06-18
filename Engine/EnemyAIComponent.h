@@ -3,17 +3,17 @@
 #include "GameObject.h"
 #include "Vector.h"
 
-namespace EngineCore {
+namespace Rogalique {
 
-class EnemyAIComponent : public Component {
+class EnemyAIComponent : public EngineCore::Component {
    public:
-    EnemyAIComponent(GameObject* gameObject);
+    EnemyAIComponent(EngineCore::GameObject* gameObject);
     void Update(float deltaTime) override;
     void Render() override;
     void SetMoveSpeed(float newSpeed) { speed = newSpeed; };
 
    private:
-    GameObject* playerObject;
+    EngineCore::GameObject* playerObject;
     float chaseDistance;
     float speed;
 };

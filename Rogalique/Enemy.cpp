@@ -11,7 +11,7 @@ namespace Rogalique {
 EngineCore::GameObject* Enemy::GetGameObject() { return gameObject; }
 
 Cacodemon::Cacodemon(const EngineCore::Vector2Df& position,
-                     const EngineCore::TargetType& target, int damage,
+                     const TargetType& target, int damage,
                      int health, float speed) {
     gameObject =
         EngineCore::GameWorld::Instance()->CreateGameObject("Cacodemon");
@@ -19,7 +19,7 @@ Cacodemon::Cacodemon(const EngineCore::Vector2Df& position,
     auto transform = gameObject->GetComponent<EngineCore::TransformComponent>();
     transform->SetWorldPosition(position);
 
-    auto enemyAi = gameObject->AddComponent<EngineCore::EnemyAIComponent>();
+    auto enemyAi = gameObject->AddComponent<EnemyAIComponent>();
     enemyAi->SetMoveSpeed(speed);
     auto renderer =
         gameObject->AddComponent<EngineCore::SpriteRendererComponent>();
@@ -30,20 +30,20 @@ Cacodemon::Cacodemon(const EngineCore::Vector2Df& position,
     gameObject->AddComponent<EngineCore::SpriteColliderComponent>();
     gameObject->AddComponent<EngineCore::RigidbodyComponent>();
 
-    auto fighter = gameObject->AddComponent<EngineCore::FightComponent>();
+    auto fighter = gameObject->AddComponent<FightComponent>();
     fighter->SetDamage(damage);
     fighter->SetHealth(health);
     fighter->SetTargetType(target);
 }
 
 Creeper::Creeper(const EngineCore::Vector2Df& position,
-                 const EngineCore::TargetType& target, int damage, int health,
+                 const TargetType& target, int damage, int health,
                  float speed) {
     gameObject = EngineCore::GameWorld::Instance()->CreateGameObject("Creeper");
 
     auto transform = gameObject->GetComponent<EngineCore::TransformComponent>();
     transform->SetWorldPosition(position);
-    auto enemyAi = gameObject->AddComponent<EngineCore::EnemyAIComponent>();
+    auto enemyAi = gameObject->AddComponent<EnemyAIComponent>();
     enemyAi->SetMoveSpeed(speed);
     auto renderer =
         gameObject->AddComponent<EngineCore::SpriteRendererComponent>();
@@ -54,7 +54,7 @@ Creeper::Creeper(const EngineCore::Vector2Df& position,
     gameObject->AddComponent<EngineCore::SpriteColliderComponent>();
     gameObject->AddComponent<EngineCore::RigidbodyComponent>();
 
-    auto fighter = gameObject->AddComponent<EngineCore::FightComponent>();
+    auto fighter = gameObject->AddComponent<FightComponent>();
 
     fighter->SetDamage(damage);
     fighter->SetHealth(health);

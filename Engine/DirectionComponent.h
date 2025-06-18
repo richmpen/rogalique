@@ -3,16 +3,16 @@
 #include "InputComponent.h"
 #include "SpriteRendererComponent.h"
 
-namespace EngineCore {
-class DirectionComponent : public Component {
+namespace Rogalique {
+class DirectionComponent : public EngineCore::Component {
    public:
-    DirectionComponent(GameObject* gameObject);
+    DirectionComponent(EngineCore::GameObject* gameObject);
 
     void Update(float deltaTime) override;
     void Render() override;
 
    private:
-    InputComponent* input;
-    SpriteRendererComponent* spriteRenderer;
+    EngineCore::InputComponent* input;
+    EngineCore::SpriteRendererComponent* spriteRenderer;
 };
-}  // namespace EngineCore
+}  // namespace Rogalique

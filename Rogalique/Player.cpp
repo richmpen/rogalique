@@ -7,7 +7,7 @@
 
 namespace Rogalique {
 Player::Player(const EngineCore::Vector2Df& position,
-               const EngineCore::TargetType& target, int damage, int health) {
+               const TargetType& target, int damage, int health) {
     gameObject = EngineCore::GameWorld::Instance()->CreateGameObject("Player");
     auto transform = gameObject->GetComponent<EngineCore::TransformComponent>();
     transform->SetWorldPosition(position);
@@ -28,14 +28,14 @@ Player::Player(const EngineCore::Vector2Df& position,
     auto move = gameObject->AddComponent<EngineCore::MoveComponent>();
     move->SetSpeed(1000.f);
 
-    auto direction = gameObject->AddComponent<EngineCore::DirectionComponent>();
+    auto direction = gameObject->AddComponent<DirectionComponent>();
 
     auto collider =
         gameObject->AddComponent<EngineCore::SpriteColliderComponent>();
 
     auto rigidbody = gameObject->AddComponent<EngineCore::RigidbodyComponent>();
 
-    auto fighter = gameObject->AddComponent<EngineCore::FightComponent>();
+    auto fighter = gameObject->AddComponent<FightComponent>();
 
     fighter->SetDamage(damage);
     fighter->SetHealth(health);

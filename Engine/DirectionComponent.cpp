@@ -1,13 +1,13 @@
-#include "pch.h"
 
 #include "DirectionComponent.h"
 
-namespace EngineCore {
+namespace Rogalique {
 
-DirectionComponent::DirectionComponent(GameObject* gameObject)
+DirectionComponent::DirectionComponent(EngineCore::GameObject* gameObject)
     : Component(gameObject) {
-    input = gameObject->GetComponent<InputComponent>();
-    spriteRenderer = gameObject->GetComponent<SpriteRendererComponent>();
+    input = gameObject->GetComponent<EngineCore::InputComponent>();
+    spriteRenderer =
+        gameObject->GetComponent<EngineCore::SpriteRendererComponent>();
 }
 
 void DirectionComponent::Update(float deltaTime) {
@@ -21,4 +21,4 @@ void DirectionComponent::Update(float deltaTime) {
 }
 
 void DirectionComponent::Render() {}
-}  // namespace EngineCore
+}  // namespace Rogalique

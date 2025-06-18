@@ -23,7 +23,7 @@ class Enemy {
 class Cacodemon : public Enemy {
    public:
     Cacodemon(const EngineCore::Vector2Df& position,
-              const EngineCore::TargetType& target, int damage, int health,
+              const TargetType& target, int damage, int health,
               float speed);
     ~Cacodemon() {}
 };
@@ -31,7 +31,7 @@ class Cacodemon : public Enemy {
 class Creeper : public Enemy {
    public:
     Creeper(const EngineCore::Vector2Df& position,
-            const EngineCore::TargetType& target, int damage, int health,
+            const TargetType& target, int damage, int health,
             float speed);
     ~Creeper() {}
 };

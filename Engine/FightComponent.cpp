@@ -1,6 +1,4 @@
-﻿#include "pch.h"
-
-#include "FightComponent.h"
+﻿#include "FightComponent.h"
 
 #include "EnemyAIComponent.h"
 #include "GameObject.h"
@@ -9,10 +7,11 @@
 #include "SpriteColliderComponent.h"
 #include "SpriteRendererComponent.h"
 
-namespace EngineCore {
-FightComponent::FightComponent(GameObject* gameObject) : Component(gameObject) {
-    collider = gameObject->GetComponent<SpriteColliderComponent>();
-    renderer = gameObject->GetComponent<SpriteRendererComponent>();
+namespace Rogalique {
+FightComponent::FightComponent(EngineCore::GameObject* gameObject)
+    : Component(gameObject) {
+    collider = gameObject->GetComponent<EngineCore::SpriteColliderComponent>();
+    renderer = gameObject->GetComponent<EngineCore::SpriteRendererComponent>();
 
     if (collider == nullptr) {
         LOG_ERROR("FightComponent required to SpriteColliderComponent.");
@@ -20,14 +19,15 @@ FightComponent::FightComponent(GameObject* gameObject) : Component(gameObject) {
         return;
     }
 
-    collider->SubscribeCollision([this](Collision collision) {
+    collider->SubscribeCollision([this](EngineCore::Collision collision) {
         if (health <= 0 || attackCooldown > 0.0f) return;
 
-        ColliderComponent* otherCollider = (collision.GetFirst() == collider)
+        EngineCore::ColliderComponent* otherCollider =
+            (collision.GetFirst() == collider)
                                                ? collision.GetSecond()
                                                : collision.GetFirst();
 
-        GameObject* otherObject = otherCollider->GetGameObject();
+        EngineCore::GameObject* otherObject = otherCollider->GetGameObject();
 
         FightComponent* otherFight =
             otherObject->GetComponent<FightComponent>();
@@ -40,7 +40,8 @@ FightComponent::FightComponent(GameObject* gameObject) : Component(gameObject) {
             attackCooldown = 1.0f;
             flashTimer = 2.0f;
 
-            // Если это крипер и столкнулся с игроком, запускаем взрыв
+            // If it's a creeper and collides with a player, trigger an
+            // explosion
             if (this->gameObject->GetName() == "Creeper" &&
                 otherObject->GetName() == "Player") {
                 StartCreeperExplosion();
@@ -51,13 +52,14 @@ FightComponent::FightComponent(GameObject* gameObject) : Component(gameObject) {
 
 void FightComponent::StartCreeperExplosion() {
     isCreeperExploding = true;
-    explosionTimer = 2.0f;  // 2 секунды до смерти
+    explosionTimer = 2.0f;  // 2 seconds to death
     if (renderer) {
         renderer->SetTexture(
-            *ResourceSystem::Instance()->GetTextureShared("creeperExplosion"));
+            *EngineCore::ResourceSystem::Instance()->GetTextureShared(
+                "creeperExplosion"));
     }
     auto aiComponent = gameObject->GetComponent<EnemyAIComponent>();
-    auto rigidbody = gameObject->GetComponent<RigidbodyComponent>();
+    auto rigidbody = gameObject->GetComponent<EngineCore::RigidbodyComponent>();
     if (aiComponent) {
         aiComponent->SetMoveSpeed(0.0f);
         rigidbody->SetKinematic(true);
@@ -100,7 +102,7 @@ void FightComponent::TakeDamage(int damageValue) {
 
 void FightComponent::Die() {
     LOG_INFO(gameObject->GetName() << ": Die");
-    GameWorld::Instance()->DestroyGameObject(this->gameObject);
+    EngineCore::GameWorld::Instance()->DestroyGameObject(this->gameObject);
 }
 
 void FightComponent::SetDamage(int damage) { this->damage = damage; }

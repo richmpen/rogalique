@@ -6,7 +6,7 @@
 
 #include <SFML/Graphics.hpp>
 
-namespace EngineCore {
+namespace Rogalique {
 
 enum class TargetType {
     Player = 0,
@@ -14,9 +14,9 @@ enum class TargetType {
     None,
 };
 
-class FightComponent : public Component {
+class FightComponent : public EngineCore::Component {
    public:
-    FightComponent(GameObject* gameObject);
+    FightComponent(EngineCore::GameObject* gameObject);
 
     void Update(float deltaTime) override;
     void Render() override;
@@ -45,9 +45,8 @@ class FightComponent : public Component {
     float explosionTimer = 0.0f;
     bool isCreeperExploding = false;
 
-    SpriteColliderComponent* collider;
-    SpriteRendererComponent* renderer;
-    // RigidbodyComponent* rigidbody;
+    EngineCore::SpriteColliderComponent* collider;
+    EngineCore::SpriteRendererComponent* renderer;
 };
 
 }  // namespace EngineCore

@@ -43,7 +43,7 @@ void DeveloperLevel::Start() {
     player =
         std::make_unique<Player>(std::forward<EngineCore::Vector2Df>(
                                      {levelWidth / 2 * spritePanelSize, 200}),
-                                 EngineCore::TargetType::Player, 15, 100);
+                                 TargetType::Player, 15, 100);
     LoadObjectCheck(player);
 
     music = std::make_unique<Music>("MetalHell");

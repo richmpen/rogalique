@@ -1,28 +1,29 @@
-﻿#include "pch.h"
-
+﻿
 #include "EnemyAIComponent.h"
 
 #include "GameWorld.h"
 #include "TransformComponent.h"
 
-namespace EngineCore {
+namespace Rogalique {
 
-EnemyAIComponent::EnemyAIComponent(GameObject* gameObject)
+EnemyAIComponent::EnemyAIComponent(EngineCore::GameObject* gameObject)
     : Component(gameObject), playerObject(nullptr) {
     chaseDistance = 400.0f;
-    playerObject = GameWorld::Instance()->FindGameObjectByName("Player");
+    playerObject =
+        EngineCore::GameWorld::Instance()->FindGameObjectByName("Player");
 }
 
 void EnemyAIComponent::Update(float deltaTime) {
-    TransformComponent* enemyTransform =
-        GetGameObject()->GetComponent<TransformComponent>();
-    TransformComponent* objectTransform =
-        playerObject->GetComponent<TransformComponent>();
+    EngineCore::TransformComponent* enemyTransform =
+        GetGameObject()
+            ->GetComponent<EngineCore::TransformComponent>();
+    EngineCore::TransformComponent* objectTransform =
+        playerObject->GetComponent<EngineCore::TransformComponent>();
 
     if (enemyTransform && objectTransform) {
-        Vector2Df enemyPos = enemyTransform->GetWorldPosition();
-        Vector2Df objectPos = objectTransform->GetWorldPosition();
-        Vector2Df directionToObject = objectPos - enemyPos;
+        EngineCore::Vector2Df enemyPos = enemyTransform->GetWorldPosition();
+        EngineCore::Vector2Df objectPos = objectTransform->GetWorldPosition();
+        EngineCore::Vector2Df directionToObject = objectPos - enemyPos;
 
         float distanceSquared = directionToObject.x * directionToObject.x +
                                 directionToObject.y * directionToObject.y;
@@ -35,7 +36,8 @@ void EnemyAIComponent::Update(float deltaTime) {
                 directionToObject.y /= distance;
             }
 
-            Vector2Df movement = directionToObject * speed * deltaTime;
+            EngineCore::Vector2Df movement =
+                directionToObject * speed * deltaTime;
             enemyTransform->MoveBy(movement);
         }
     }
