@@ -1,5 +1,5 @@
 ﻿#include "FightComponent.h"
-
+#include "InputComponent.h"
 #include "EnemyAIComponent.h"
 #include "GameObject.h"
 #include "GameWorld.h"
@@ -42,8 +42,8 @@ FightComponent::FightComponent(EngineCore::GameObject* gameObject)
 
             // If it's a creeper and collides with a player, trigger an
             // explosion
-            if (this->gameObject->GetName() == "Creeper" &&
-                otherObject->GetName() == "Player") {
+            if (this->gameObject &&
+                otherObject->GetComponent<EngineCore::InputComponent>() != 0) {
                 StartCreeperExplosion();
             }
         }
