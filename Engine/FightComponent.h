@@ -1,6 +1,7 @@
 ﻿#pragma once
 #include "Component.h"
-#include "RigidbodyComponent.h"
+#include "CreeperExplosion.h"
+#include "HealthComponent.h"
 #include "SpriteColliderComponent.h"
 #include "SpriteRendererComponent.h"
 
@@ -21,32 +22,24 @@ class FightComponent : public EngineCore::Component {
     void Update(float deltaTime) override;
     void Render() override;
 
-    void TakeDamage(int amount);
-    void Die();
-
     void SetDamage(int damage);
     int GetDamage();
-
-    void SetHealth(int health);
-    int GetHealth();
 
     void SetTargetType(TargetType type);
     TargetType GetTargetType() const;
 
-    void StartCreeperExplosion();
-
    private:
     int damage = 0;
-    int health = 0;
     TargetType targetType = TargetType::None;
 
     float flashTimer = 0.0f;
     float attackCooldown = 0.0f;
-    float explosionTimer = 0.0f;
-    bool isCreeperExploding = false;
+    
 
+    HealthComponent* healthComponent;
     EngineCore::SpriteColliderComponent* collider;
     EngineCore::SpriteRendererComponent* renderer;
+    CreeperExplosion* creeperExplosion;
 };
 
 }  // namespace EngineCore

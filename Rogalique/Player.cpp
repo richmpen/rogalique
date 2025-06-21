@@ -1,5 +1,5 @@
 ﻿#include "Player.h"
-
+#include "HealthComponent.h"
 #include <DirectionComponent.h>
 #include <MoveComponent.h>
 #include <ResourceSystem.h>
@@ -35,11 +35,14 @@ Player::Player(const EngineCore::Vector2Df& position,
 
     auto rigidbody = gameObject->AddComponent<EngineCore::RigidbodyComponent>();
 
+    auto healthComponent = gameObject->AddComponent<HealthComponent>();
+    healthComponent->SetHealth(health);
+    
     auto fighter = gameObject->AddComponent<FightComponent>();
 
     fighter->SetDamage(damage);
-    fighter->SetHealth(health);
     fighter->SetTargetType(target);
+
 
     // Experemental
     /*auto transform =

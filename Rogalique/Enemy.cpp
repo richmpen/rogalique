@@ -1,10 +1,11 @@
 ﻿#include "Enemy.h"
-
+#include "HealthComponent.h"
 #include "EnemyAIComponent.h"
 #include "FightComponent.h"
 #include "GameObject.h"
 #include "GameWorld.h"
 #include "ResourceSystem.h"
+#include "CreeperExplosion.h"
 
 namespace Rogalique {
 
@@ -30,10 +31,13 @@ Cacodemon::Cacodemon(const EngineCore::Vector2Df& position,
     gameObject->AddComponent<EngineCore::SpriteColliderComponent>();
     gameObject->AddComponent<EngineCore::RigidbodyComponent>();
 
+    auto healthComponent = gameObject->AddComponent<HealthComponent>();
+    healthComponent->SetHealth(health);
+    
     auto fighter = gameObject->AddComponent<FightComponent>();
     fighter->SetDamage(damage);
-    fighter->SetHealth(health);
     fighter->SetTargetType(target);
+
 }
 
 Creeper::Creeper(const EngineCore::Vector2Df& position,
@@ -54,11 +58,15 @@ Creeper::Creeper(const EngineCore::Vector2Df& position,
     gameObject->AddComponent<EngineCore::SpriteColliderComponent>();
     gameObject->AddComponent<EngineCore::RigidbodyComponent>();
 
+    auto creaperExplosion = gameObject->AddComponent<CreeperExplosion>();
+    
+    auto healthComponent = gameObject->AddComponent<HealthComponent>();
+    healthComponent->SetHealth(health);
+    
     auto fighter = gameObject->AddComponent<FightComponent>();
-
     fighter->SetDamage(damage);
-    fighter->SetHealth(health);
     fighter->SetTargetType(target);
+
 }
 
 }  // namespace Rogalique

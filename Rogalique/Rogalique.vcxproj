@@ -160,9 +160,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\Engine\CreeperExplosion.cpp" />
     <ClCompile Include="..\Engine\DirectionComponent.cpp" />
     <ClCompile Include="..\Engine\EnemyAIComponent.cpp" />
     <ClCompile Include="..\Engine\FightComponent.cpp" />
+    <ClCompile Include="..\Engine\HealthComponent.cpp" />
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="DeveloperLevel.cpp" />
     <ClCompile Include="EnemyFactory.cpp" />
@@ -189,9 +191,11 @@
     <ClCompile Include="Wall.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\Engine\CreeperExplosion.h" />
     <ClInclude Include="..\Engine\DirectionComponent.h" />
     <ClInclude Include="..\Engine\EnemyAIComponent.h" />
     <ClInclude Include="..\Engine\FightComponent.h" />
+    <ClInclude Include="..\Engine\HealthComponent.h" />
     <ClInclude Include="Application.h" />
     <ClInclude Include="Colladiable.h" />
     <ClInclude Include="DeveloperLevel.h" />
