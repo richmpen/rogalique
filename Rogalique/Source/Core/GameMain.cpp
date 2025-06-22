@@ -3,7 +3,7 @@
 #include "Matrix2D.h"
 #include "Player.h"
 #include "ResourceSystem.h"
-
+#include "GameSettings.h"
 #include <SFML/Graphics.hpp>
 
 using namespace Rogalique;
@@ -12,26 +12,22 @@ int main() {
     EngineCore::Engine::Instance();
     LOG_INFO("Setup Logger init!");
     EngineCore::RenderSystem::Instance()->SetMainWindow(
-        new sf::RenderWindow(sf::VideoMode(1920, 1080), "Rogalique"));
-
+        new sf::RenderWindow(sf::VideoMode(SETTINGS.SCREEN_WIDTH, SETTINGS.SCREEN_HEIGHT), SETTINGS.GAME_NAME));
+    
     EngineCore::ResourceSystem::Instance()->LoadTexture(
-        "player", "Assets/Textures/player.png");
+        "player", SETTINGS.TEXTURES_PATH + "player.png");
     EngineCore::ResourceSystem::Instance()->LoadSound(
-        "soundtrack", "Assets/Sounds/soundtrack.wav");
-    EngineCore::ResourceSystem::Instance()->LoadSound(
-        "MetalHell", "Assets/Sounds/MetalHell.wav");
-    EngineCore::ResourceSystem::Instance()->LoadSound(
-        "fightMusic", "Assets/Sounds/fightMusic.wav");
+        "MetalHell", SETTINGS.SOUNDS_PATH + "MetalHell.wav");
     EngineCore::ResourceSystem::Instance()->LoadTexture(
-        "floor", "Assets/Textures/floor.png");
+        "floor", SETTINGS.TEXTURES_PATH + "floor.png");
     EngineCore::ResourceSystem::Instance()->LoadTexture(
-        "wall", "Assets/Textures/wall.png");
+        "wall", SETTINGS.TEXTURES_PATH + "wall.png");
     EngineCore::ResourceSystem::Instance()->LoadTexture(
-        "cacodemon", "Assets/Textures/cacodemon.png");
+        "cacodemon", SETTINGS.TEXTURES_PATH + "cacodemon.png");
     EngineCore::ResourceSystem::Instance()->LoadTexture(
-        "creeper", "Assets/Textures/creeper.png");
+        "creeper", SETTINGS.TEXTURES_PATH + "creeper.png");
     EngineCore::ResourceSystem::Instance()->LoadTexture(
-        "creeperExplosion", "Assets/Textures/creeperExplosion.png");
+        "creeperExplosion", SETTINGS.TEXTURES_PATH + "creeperExplosion.png");
     auto developerLevel = std::make_shared<DeveloperLevel>();
     developerLevel->Start();
 

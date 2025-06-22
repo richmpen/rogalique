@@ -51,7 +51,7 @@ void DeveloperLevel::Start() {
     // Enemy Spawners (Requires factory initialization)
     ObjectSpawner spawner(this);
     spawner.Spawn(1, EnemyType::CACODEMON, {550, 500}, TargetType::Enemy, 10,
-                  20, 150);
+                  30, 150);
     spawner.Spawn(2, EnemyType::CREEPER, {300, 300}, TargetType::Enemy, 30, 20,
                   200);
 }

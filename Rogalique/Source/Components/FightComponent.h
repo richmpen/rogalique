@@ -23,7 +23,7 @@ class FightComponent : public EngineCore::Component {
     void Render() override;
 
     void SetDamage(int damage);
-    int GetDamage();
+    int GetDamage() const;
 
     void SetTargetType(TargetType type);
     TargetType GetTargetType() const;

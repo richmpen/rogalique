@@ -1,6 +1,8 @@
 ﻿#include "Player.h"
 #include "HealthComponent.h"
 #include "DirectionComponent.h"
+#include "GameSettings.h"
+
 #include <MoveComponent.h>
 #include <ResourceSystem.h>
 #include <SpriteColliderComponent.h>
@@ -21,12 +23,12 @@ Player::Player(const EngineCore::Vector2Df& position,
 
     auto camera = gameObject->AddComponent<EngineCore::CameraComponent>();
     camera->SetWindow(&EngineCore::RenderSystem::Instance()->GetMainWindow());
-    camera->SetBaseResolution(1920, 1080);
+    camera->SetBaseResolution(SETTINGS.PLAYER_CAMERA_WIDTH, SETTINGS.PLAYER_CAMERA_HEIGHT);
 
     auto input = gameObject->AddComponent<EngineCore::InputComponent>();
 
     auto move = gameObject->AddComponent<EngineCore::MoveComponent>();
-    move->SetSpeed(1000.f);
+    move->SetSpeed(SETTINGS.PLAYER_SPEED);
 
     auto direction = gameObject->AddComponent<DirectionComponent>();
 

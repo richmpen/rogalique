@@ -1,6 +1,7 @@
 ﻿
 #include "EnemyAIComponent.h"
 
+#include "GameSettings.h"
 #include "GameWorld.h"
 #include "TransformComponent.h"
 
@@ -8,7 +9,7 @@ namespace Rogalique {
 
 EnemyAIComponent::EnemyAIComponent(EngineCore::GameObject* gameObject)
     : Component(gameObject), playerObject(nullptr) {
-    chaseDistance = 400.0f;
+    chaseDistance = SETTINGS.ENEMY_CHASE_DISTANCE;
     playerObject =
         EngineCore::GameWorld::Instance()->FindGameObjectByName("Player");
 }

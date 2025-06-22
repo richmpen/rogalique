@@ -1,6 +1,7 @@
 ﻿#include "CreeperExplosion.h"
 
 #include "EnemyAIComponent.h"
+#include "GameSettings.h"
 #include "HealthComponent.h"
 #include "ResourceSystem.h"
 
@@ -15,7 +16,7 @@ CreeperExplosion::CreeperExplosion(EngineCore::GameObject* gameObject) : Compone
 
 void CreeperExplosion::StartCreeperExplosion() {
     isCreeperExploding = true;
-    explosionTimer = 2.0f;  // 2 seconds to death
+    explosionTimer = SETTINGS.CREEPER_EXPLOSION_TIMER;  // 2 seconds to death
     if (renderer) {
         renderer->SetTexture(
             *EngineCore::ResourceSystem::Instance()->GetTextureShared(

@@ -4,32 +4,34 @@
 #include <string>
 
 namespace Rogalique {
-class GameWorld {
+class GameSettings {
    private:
-    GameWorld() = default;
+    GameSettings() = default;
 
    public:
-    static GameWorld& Instance() {
-        static GameWorld gameWorld;
-        return gameWorld;
+    static GameSettings& Instance() {
+        static GameSettings gameSettings;
+        return gameSettings;
     }
 
-    const std::string RESOURCES_PATH = "Resources/";
+    const std::string RESOURCES_PATH = "Assets/";
     const std::string TEXTURES_PATH = RESOURCES_PATH + "Textures/";
-    const std::string FONTS_PATH = RESOURCES_PATH + "Fonts/";
     const std::string SOUNDS_PATH = RESOURCES_PATH + "Sounds/";
-    const std::string LEVELS_CONFIG_PATH = RESOURCES_PATH + "levels.config";
-    const std::string SCORE_CONFIG_PATH = RESOURCES_PATH + "score.config";
     const unsigned int SCREEN_WIDTH = 1920;
     const unsigned int SCREEN_HEIGHT = 1080;
 
-    const float TIME_PER_FRAME = 1.f / 60.f;
-
-    const int MAX_RECORDS_TABLE_SIZE = 5;
-    const char* PLAYER_ID = "Richmpen - Player";
-
+    //Gameplay
+    const float ENEMY_CHASE_DISTANCE = 400.f;
+    const float DAMAGE_FLASH_TIMER = 0.5f;
+    const float ATTACK_COOLDOWN_DURATION = 1.5f;
+    const float CREEPER_EXPLOSION_TIMER = 1.5f;
+    //Player
+    const int PLAYER_CAMERA_WIDTH = 1920;
+    const int PLAYER_CAMERA_HEIGHT = 1080;
+    const float PLAYER_SPEED = 1000.f;
+    
     const std::string GAME_NAME = "Rogalique";
-    const std::string NOTIFICATION = "TO BE DONE \n Press Esc to exit to menu";
+    const float TIME_PER_FRAME = 1.f / 60.f;
 };
-#define SETTINGS GameWorld::Instance()
+#define SETTINGS GameSettings::Instance()
 }  // namespace Rogalique

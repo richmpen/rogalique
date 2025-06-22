@@ -20,7 +20,7 @@ void ResourceSystem::LoadTexture(const std::string& name,
     if (!newTexture->loadFromFile(sourcePath)) {
         LOG_ERROR("Failed to load texture: " << sourcePath
                                              << ", loading placeholder.");
-        if (!newTexture->loadFromFile("Resources/Textures/placeholder.png")) {
+        if (!newTexture->loadFromFile("Assets/Textures/placeholder.png")) {
             delete newTexture;
             throw std::runtime_error(
                 "Failed to load texture and fallback placeholder from: " +
@@ -143,7 +143,7 @@ void ResourceSystem::LoadSound(const std::string& name,
     if (!newSound->loadFromFile(sourcePath)) {
         LOG_ERROR("Failed to load sound: " << sourcePath
                                            << ", loading default music.");
-        if (!newSound->loadFromFile("Resources/Sounds/default.wav")) {
+        if (!newSound->loadFromFile("Assets/Sounds/default.wav")) {
             delete newSound;
             throw std::runtime_error(
                 "Failed to load sound and fallback default sound from: " +

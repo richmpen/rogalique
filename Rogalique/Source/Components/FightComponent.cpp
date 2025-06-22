@@ -1,6 +1,7 @@
 ﻿#include "FightComponent.h"
 #include "InputComponent.h"
 #include "GameObject.h"
+#include "GameSettings.h"
 #include "GameWorld.h"
 #include "ResourceSystem.h"
 
@@ -31,8 +32,8 @@ FightComponent::FightComponent(EngineCore::GameObject* gameObject)
 
         EngineCore::ColliderComponent* otherCollider =
             (collision.GetFirst() == collider)
-                                               ? collision.GetSecond()
-                                               : collision.GetFirst();
+                ? collision.GetSecond()
+                : collision.GetFirst();
 
         EngineCore::GameObject* otherObject = otherCollider->GetGameObject();
 
@@ -44,49 +45,38 @@ FightComponent::FightComponent(EngineCore::GameObject* gameObject)
             otherFight->GetTargetType() != TargetType::None &&
             this->GetTargetType() != TargetType::None) {
             otherFight->healthComponent->TakeDamage(this->damage);
-            attackCooldown = 1.0f;
-            flashTimer = 2.0f;
+            attackCooldown = SETTINGS.ATTACK_COOLDOWN_DURATION;
+            flashTimer = SETTINGS.DAMAGE_FLASH_TIMER;
 
-            // If it's a creeper and collides with a player, trigger an
-            // explosion
-            if (this->gameObject->GetComponent<CreeperExplosion>() != 0 &&
-                otherObject->GetComponent<EngineCore::InputComponent>() != 0) {
+            if (this->gameObject->GetComponent<CreeperExplosion>() != nullptr &&
+                otherObject->GetComponent<EngineCore::InputComponent>() != nullptr) {
                 creeperExplosion->StartCreeperExplosion();
             }
         }
     });
 }
 
-
-
 void FightComponent::Update(float deltaTime) {
-    
-    if (flashTimer > 0.0f && gameObject->GetComponent<CreeperExplosion>() == 0) {
+    if (flashTimer > 0.0f && gameObject->GetComponent<CreeperExplosion>() == nullptr) {
         flashTimer -= deltaTime;
-        attackCooldown = flashTimer;
-    
-        if (renderer) {
+        if (renderer && flashTimer > 0.0f) {
             renderer->SetColor(sf::Color(255, 0, 0));
-        }
-    } else {
-        attackCooldown = 0.0f;
-    
-        if (renderer) {
+        } else if (renderer) {
             renderer->SetColor(sf::Color(255, 255, 255));
         }
+    } else if (renderer) {
+        renderer->SetColor(sf::Color(255, 255, 255));
+    }
+    
+    if (attackCooldown > 0.0f) {
+        attackCooldown -= deltaTime;
     }
 }
 
-
-
 void FightComponent::SetDamage(int damage) { this->damage = damage; }
-
-int FightComponent::GetDamage() { return this->damage; }
-
+int FightComponent::GetDamage() const { return this->damage; }
 void FightComponent::SetTargetType(TargetType type) { this->targetType = type; }
-
 TargetType FightComponent::GetTargetType() const { return targetType; }
-
 void FightComponent::Render() {}
 
-}  // namespace EngineCore
+} // namespace Rogalique
