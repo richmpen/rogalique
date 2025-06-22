@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-#include <FightComponent.h>
+#include "FightComponent.h"
 
 namespace Rogalique {
 

@@ -2,7 +2,7 @@
 
 #include "SpriteRendererComponent.h"
 
-#include "RenderSystem.h"
+#include "../EntitySystem/Systems/RenderSystem.h"
 #include "TransformComponent.h"
 
 #include <assert.h>

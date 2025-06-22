@@ -4,7 +4,6 @@
 
 #include "GameWorld.h"
 #include "RenderSystem.h"
-
 #include <cassert>
 #include <iostream>
 
@@ -58,7 +57,7 @@ void Engine::Run() {
 void Engine::setupLogger() {
     auto logger = std::make_shared<Logger>();
     logger->addSink(std::make_shared<ConsoleSink>());
-    logger->addSink(std::make_shared<FileSink>("log.txt"));
+    logger->addSink(std::make_shared<FileSink>("Source/Logs/mainLog.txt"));
 
     LoggerRegistry::getInstance().registerLogger("global", logger);
     LoggerRegistry::getInstance().setDefaultLogger(logger);

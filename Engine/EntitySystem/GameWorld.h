@@ -1,7 +1,7 @@
 ﻿#pragma once
 
 #include "GameObject.h"
-#include "PhysicsSystem.h"
+#include "../Systems/PhysicsSystem.h"
 
 namespace EngineCore {
 class GameWorld {

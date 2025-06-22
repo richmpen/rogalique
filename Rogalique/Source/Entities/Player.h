@@ -3,11 +3,11 @@
 #include "GameObject.h"
 #include "GameWorld.h"
 #include "InputComponent.h"
-#include "RenderSystem.h"
+#include "../EntitySystem/Systems/RenderSystem.h"
 #include "SpriteRendererComponent.h"
 #include "Vector.h"
 
-#include <FightComponent.h>
+#include "FightComponent.h"
 namespace Rogalique {
 class Player {
    public:

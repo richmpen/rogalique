@@ -123,7 +123,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>SFML_STATIC;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Engine;$(SolutionDir)\SFML\SFML-2.5.1\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)Source;$(ProjectDir)Assets;$(SolutionDir)SFML\SFML-2.5.1\include;$(SolutionDir)Engine\EntitySystem;$(SolutionDir)Engine\EntitySystem\Systems;$(SolutionDir)Engine\EntitySystem\EngineComponents;$(SolutionDir)Engine\Utils;$(SolutionDir)Engine\Math;$(SolutionDir)Engine\Core;$(ProjectDir)Source\Audio;$(ProjectDir)Source\Components;$(ProjectDir)Source\Core;$(ProjectDir)Source\Effects;$(ProjectDir)Source\Entities;$(ProjectDir)Source\Levels;$(ProjectDir)Source\Levels\LevelEntities;$(ProjectDir)Source\Logs;$(ProjectDir)Source\Rendering;$(ProjectDir)Source\Systems;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -160,40 +160,40 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\Engine\CreeperExplosion.cpp" />
-    <ClCompile Include="..\Engine\DirectionComponent.cpp" />
-    <ClCompile Include="..\Engine\EnemyAIComponent.cpp" />
-    <ClCompile Include="..\Engine\FightComponent.cpp" />
-    <ClCompile Include="..\Engine\HealthComponent.cpp" />
-    <ClCompile Include="DeveloperLevel.cpp" />
-    <ClCompile Include="EnemyFactory.cpp" />
-    <ClCompile Include="Enemy.cpp" />
-    <ClCompile Include="Floor.cpp" />
-    <ClCompile Include="MazeGenerator.cpp" />
-    <ClCompile Include="Music.cpp" />
-    <ClCompile Include="ObjectSpawner.cpp" />
-    <ClCompile Include="Player.cpp" />
-    <ClCompile Include="Sprite.cpp" />
-    <ClCompile Include="GameMain.cpp" />
-    <ClCompile Include="Wall.cpp" />
+    <ClCompile Include="Source\Audio\Music.cpp" />
+    <ClCompile Include="Source\Components\DirectionComponent.cpp" />
+    <ClCompile Include="Source\Components\EnemyAIComponent.cpp" />
+    <ClCompile Include="Source\Components\FightComponent.cpp" />
+    <ClCompile Include="Source\Components\HealthComponent.cpp" />
+    <ClCompile Include="Source\Core\GameMain.cpp" />
+    <ClCompile Include="Source\Effects\CreeperExplosion.cpp" />
+    <ClCompile Include="Source\Entities\Enemy.cpp" />
+    <ClCompile Include="Source\Entities\Player.cpp" />
+    <ClCompile Include="Source\Levels\DeveloperLevel.cpp" />
+    <ClCompile Include="Source\Levels\LevelEntities\Floor.cpp" />
+    <ClCompile Include="Source\Levels\LevelEntities\Wall.cpp" />
+    <ClCompile Include="Source\Rendering\Sprite.cpp" />
+    <ClCompile Include="Source\Systems\EnemyFactory.cpp" />
+    <ClCompile Include="Source\Systems\MazeGenerator.cpp" />
+    <ClCompile Include="Source\Systems\ObjectSpawner.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\Engine\CreeperExplosion.h" />
-    <ClInclude Include="..\Engine\DirectionComponent.h" />
-    <ClInclude Include="..\Engine\EnemyAIComponent.h" />
-    <ClInclude Include="..\Engine\FightComponent.h" />
-    <ClInclude Include="..\Engine\HealthComponent.h" />
-    <ClInclude Include="DeveloperLevel.h" />
-    <ClInclude Include="EnemyFactory.h" />
-    <ClInclude Include="Enemy.h" />
-    <ClInclude Include="Floor.h" />
-    <ClInclude Include="MazeGenerator.h" />
-    <ClInclude Include="Music.h" />
-    <ClInclude Include="ObjectSpawner.h" />
-    <ClInclude Include="Player.h" />
-    <ClInclude Include="Sprite.h" />
-    <ClInclude Include="GameSettings.h" />
-    <ClInclude Include="Wall.h" />
+    <ClInclude Include="Source\Audio\Music.h" />
+    <ClInclude Include="Source\Components\DirectionComponent.h" />
+    <ClInclude Include="Source\Components\EnemyAIComponent.h" />
+    <ClInclude Include="Source\Components\FightComponent.h" />
+    <ClInclude Include="Source\Components\HealthComponent.h" />
+    <ClInclude Include="Source\Core\GameSettings.h" />
+    <ClInclude Include="Source\Effects\CreeperExplosion.h" />
+    <ClInclude Include="Source\Entities\Enemy.h" />
+    <ClInclude Include="Source\Entities\Player.h" />
+    <ClInclude Include="Source\Levels\DeveloperLevel.h" />
+    <ClInclude Include="Source\Levels\LevelEntities\Floor.h" />
+    <ClInclude Include="Source\Levels\LevelEntities\Wall.h" />
+    <ClInclude Include="Source\Rendering\Sprite.h" />
+    <ClInclude Include="Source\Systems\EnemyFactory.h" />
+    <ClInclude Include="Source\Systems\MazeGenerator.h" />
+    <ClInclude Include="Source\Systems\ObjectSpawner.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Engine\Engine.vcxproj">

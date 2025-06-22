@@ -15,23 +15,23 @@ int main() {
         new sf::RenderWindow(sf::VideoMode(1920, 1080), "Rogalique"));
 
     EngineCore::ResourceSystem::Instance()->LoadTexture(
-        "player", "Resources/Textures/player.png");
+        "player", "Assets/Textures/player.png");
     EngineCore::ResourceSystem::Instance()->LoadSound(
-        "soundtrack", "Resources/Sounds/soundtrack.wav");
+        "soundtrack", "Assets/Sounds/soundtrack.wav");
     EngineCore::ResourceSystem::Instance()->LoadSound(
-        "MetalHell", "Resources/Sounds/MetalHell.wav");
+        "MetalHell", "Assets/Sounds/MetalHell.wav");
     EngineCore::ResourceSystem::Instance()->LoadSound(
-        "fightMusic", "Resources/Sounds/fightMusic.wav");
+        "fightMusic", "Assets/Sounds/fightMusic.wav");
     EngineCore::ResourceSystem::Instance()->LoadTexture(
-        "floor", "Resources/Textures/floor.png");
+        "floor", "Assets/Textures/floor.png");
     EngineCore::ResourceSystem::Instance()->LoadTexture(
-        "wall", "Resources/Textures/wall.png");
+        "wall", "Assets/Textures/wall.png");
     EngineCore::ResourceSystem::Instance()->LoadTexture(
-        "cacodemon", "Resources/Textures/cacodemon.png");
+        "cacodemon", "Assets/Textures/cacodemon.png");
     EngineCore::ResourceSystem::Instance()->LoadTexture(
-        "creeper", "Resources/Textures/creeper.png");
+        "creeper", "Assets/Textures/creeper.png");
     EngineCore::ResourceSystem::Instance()->LoadTexture(
-        "creeperExplosion", "Resources/Textures/creeperExplosion.png");
+        "creeperExplosion", "Assets/Textures/creeperExplosion.png");
     auto developerLevel = std::make_shared<DeveloperLevel>();
     developerLevel->Start();
 

@@ -1,6 +1,6 @@
 ﻿#include "Player.h"
 #include "HealthComponent.h"
-#include <DirectionComponent.h>
+#include "DirectionComponent.h"
 #include <MoveComponent.h>
 #include <ResourceSystem.h>
 #include <SpriteColliderComponent.h>
