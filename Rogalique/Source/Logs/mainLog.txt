@@ -659,3 +659,343 @@
 [INFO] Enemy begins the pursuit to Player
 [WARNING] need use game-save logic
 [INFO] Game stopped
+[INFO] Setup Logger init!
+[INFO] Setting MainWindow: 0000022185FFF140
+[INFO] Loading texture: player
+[INFO] Loading sound: MetalHell
+[INFO] Loading texture: floor
+[INFO] Loading texture: wall
+[INFO] Loading texture: cacodemon
+[INFO] Loading texture: creeper
+[INFO] Loading texture: creeperExplosion
+[INFO] !Started Developer Level
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022188CB9480
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022188CB7B50
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022188CB8AC0
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022188CB8B90
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022188CB9550
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022188CB96F0
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022188CB8C60
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022188CB9890
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022188CB7C20
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022188CB7DC0
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022188F45120
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022188F43C00
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022188F43DA0
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022188F452C0
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022188F445C0
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022188F451F0
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022188F43CD0
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022188F44010
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022188F43F40
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022188F43E70
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022188F45390
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022188F44D10
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022188F45600
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022188F44280
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022188F44690
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022188F440E0
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022188F44F80
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022188F45460
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022188F449D0
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022188F441B0
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022188F44350
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022188F456D0
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022188F45940
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022188F45530
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022188F44AA0
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022188F44DE0
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022188F45050
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022188F44420
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022188F444F0
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022188F44760
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022188F457A0
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022188F44830
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022188F45870
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022188F45A10
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022188F44900
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022188F43B30
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022188F44B70
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022188F44C40
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022188F44EB0
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022192D728B0
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022192D71940
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022192D711F0
+[INFO] Created SpriteRenderer for GameObject: Floor
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022192D72A50
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022192D724A0
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022192D72710
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022192D72D90
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022192D72570
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022192D72090
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022192D72230
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022192D71A10
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022192D727E0
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022192D73000
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022192D72160
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022192D72300
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022192D71AE0
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022192D72BF0
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022192D72640
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022192D71870
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022192D72F30
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022192D723D0
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022192D72980
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022192D72B20
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022192D72CC0
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022192D72E60
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022192D71EF0
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022192D730D0
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022192D712C0
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022192D717A0
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022192D71600
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022192D71BB0
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022192D71530
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022192D71390
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022192D716D0
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022192D71460
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022192D71C80
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022192D71D50
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022192D71E20
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022192D71FC0
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022192CF9460
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022192CFAF30
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022192CF9FC0
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022192CFAB20
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022192CFA8B0
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022192CF9390
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022192CF96D0
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022192CF92C0
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022192CFAE60
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022192CFB000
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022192CFA570
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022192CF9530
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022192CFA710
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022192CFA090
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022192CFA980
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022192CFA4A0
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022192CF9120
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022192CFA640
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022192CF91F0
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022192CFA7E0
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022192CF97A0
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022192CFAA50
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022192CF9D50
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022192CFABF0
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022192CF9600
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022192CF9870
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022192CF9940
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022192CF9A10
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022192CFA160
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022192CFA230
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022192CF9AE0
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022192CF9BB0
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022192CFA300
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022192CF9C80
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022192CF9E20
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022192CFACC0
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022192CF9EF0
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022192CFAD90
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022192CFA3D0
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022192CFC4B0
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022192CFC650
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022192CFCC00
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022192CFC8C0
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022192CFBA20
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022192CFBE30
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022192CFC580
+[INFO] Created SpriteRenderer for GameObject: Wall
+[INFO] Subscribe 0000022192CFC170
+[INFO] Created SpriteRenderer for GameObject: Player
+[INFO] Subscribe 0000022192CFC720
+[INFO] FightComponent: CreeperExplosion not present. This is fine.
+[INFO] Player declared at level: Developer Level
+[INFO] Created SoundComponent for GameObject: MetalHell
+[INFO] Initializing sound: 0000022188D4DE10
+[INFO] Sound Play
+[INFO] Volume: 10%
+[INFO] Created SpriteRenderer for GameObject: Cacodemon
+[INFO] Subscribe 0000022192CFCE70
+[INFO] FightComponent: CreeperExplosion not present. This is fine.
+[INFO] Spawned Cacodemon at position (593, 553)
+[INFO] Created SpriteRenderer for GameObject: Creeper
+[INFO] Subscribe 0000022192CFB2D0
+[INFO] Spawned Creeper at position (296, 323)
+[INFO] Created SpriteRenderer for GameObject: Creeper
+[INFO] Subscribe 0000022192CFC7F0
+[INFO] Spawned Creeper at position (344, 348)
+[INFO] Game started
+[INFO] Enemy begins the pursuit to Player
+[INFO] Creeper: Get damage 15, Current health 5
+[INFO] Player: Get damage 30, Current health 70
+[INFO] Unsubscribe 0000022192CFC7F0
+[INFO] Deleted component: 0000022192CFC7F0
+[INFO] Deleted component
+[INFO] Enemy begins the pursuit to Player
+[INFO] Player: Get damage 30, Current health 40
+[INFO] Unsubscribe 0000022192CFB2D0
+[INFO] Deleted component: 0000022192CFB2D0
+[INFO] Deleted component
+[INFO] Enemy begins the pursuit to Player
+[INFO] Creeper: Die
+[INFO] Destroying GameObject: Creeper
+[INFO] Deleted component: 0000022192CF0EE0
+[INFO] Deleted component: 0000022188F5A670
+[INFO] Deleted component: 0000022192D7D810
+[INFO] Deleted component: 0000022192D7EA70
+[INFO] Deleted component: 0000022192D7D3B0
+[INFO] Deleted component: 0000022188F5A6D0
+[INFO] Deleted component: 00000221860CFC70
+[INFO] Enemy begins the pursuit to Player
+[WARNING] need use game-save logic
+[INFO] Game stopped
