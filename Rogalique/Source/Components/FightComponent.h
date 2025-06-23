@@ -34,7 +34,6 @@ class FightComponent : public EngineCore::Component {
 
     float flashTimer = 0.0f;
     float attackCooldown = 0.0f;
-    
 
     HealthComponent* healthComponent;
     EngineCore::SpriteColliderComponent* collider;
@@ -42,4 +41,4 @@ class FightComponent : public EngineCore::Component {
     CreeperExplosion* creeperExplosion;
 };
 
-}  // namespace EngineCore
+}  // namespace Rogalique

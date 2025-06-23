@@ -1,15 +1,16 @@
 ﻿#include "Player.h"
-#include "HealthComponent.h"
+
 #include "DirectionComponent.h"
 #include "GameSettings.h"
+#include "HealthComponent.h"
 
 #include <MoveComponent.h>
 #include <ResourceSystem.h>
 #include <SpriteColliderComponent.h>
 
 namespace Rogalique {
-Player::Player(const EngineCore::Vector2Df& position,
-               const TargetType& target, int damage, int health) {
+Player::Player(const EngineCore::Vector2Df& position, const TargetType& target,
+               int damage, int health) {
     gameObject = EngineCore::GameWorld::Instance()->CreateGameObject("Player");
     auto transform = gameObject->GetComponent<EngineCore::TransformComponent>();
     transform->SetWorldPosition(position);
@@ -23,7 +24,8 @@ Player::Player(const EngineCore::Vector2Df& position,
 
     auto camera = gameObject->AddComponent<EngineCore::CameraComponent>();
     camera->SetWindow(&EngineCore::RenderSystem::Instance()->GetMainWindow());
-    camera->SetBaseResolution(SETTINGS.PLAYER_CAMERA_WIDTH, SETTINGS.PLAYER_CAMERA_HEIGHT);
+    camera->SetBaseResolution(SETTINGS.PLAYER_CAMERA_WIDTH,
+                              SETTINGS.PLAYER_CAMERA_HEIGHT);
 
     auto input = gameObject->AddComponent<EngineCore::InputComponent>();
 
@@ -39,12 +41,11 @@ Player::Player(const EngineCore::Vector2Df& position,
 
     auto healthComponent = gameObject->AddComponent<HealthComponent>();
     healthComponent->SetHealth(health);
-    
+
     auto fighter = gameObject->AddComponent<FightComponent>();
 
     fighter->SetDamage(damage);
     fighter->SetTargetType(target);
-
 
     // Experemental
     /*auto transform =

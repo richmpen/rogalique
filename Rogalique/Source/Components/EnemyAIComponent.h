@@ -17,4 +17,4 @@ class EnemyAIComponent : public EngineCore::Component {
     float chaseDistance;
     float speed;
 };
-}  // namespace EngineCore
+}  // namespace Rogalique
