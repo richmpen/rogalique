@@ -1,8 +1,9 @@
 ﻿#include "FightComponent.h"
-#include "InputComponent.h"
+
 #include "GameObject.h"
 #include "GameSettings.h"
 #include "GameWorld.h"
+#include "InputComponent.h"
 #include "ResourceSystem.h"
 
 namespace Rogalique {
@@ -31,9 +32,8 @@ FightComponent::FightComponent(EngineCore::GameObject* gameObject)
         if (healthComponent->GetHealth() <= 0 || attackCooldown > 0.0f) return;
 
         EngineCore::ColliderComponent* otherCollider =
-            (collision.GetFirst() == collider)
-                ? collision.GetSecond()
-                : collision.GetFirst();
+            (collision.GetFirst() == collider) ? collision.GetSecond()
+                                               : collision.GetFirst();
 
         EngineCore::GameObject* otherObject = otherCollider->GetGameObject();
 
@@ -49,7 +49,8 @@ FightComponent::FightComponent(EngineCore::GameObject* gameObject)
             flashTimer = SETTINGS.DAMAGE_FLASH_TIMER;
 
             if (this->gameObject->GetComponent<CreeperExplosion>() != nullptr &&
-                otherObject->GetComponent<EngineCore::InputComponent>() != nullptr) {
+                otherObject->GetComponent<EngineCore::InputComponent>() !=
+                    nullptr) {
                 creeperExplosion->StartCreeperExplosion();
             }
         }
@@ -57,7 +58,8 @@ FightComponent::FightComponent(EngineCore::GameObject* gameObject)
 }
 
 void FightComponent::Update(float deltaTime) {
-    if (flashTimer > 0.0f && gameObject->GetComponent<CreeperExplosion>() == nullptr) {
+    if (flashTimer > 0.0f &&
+        gameObject->GetComponent<CreeperExplosion>() == nullptr) {
         flashTimer -= deltaTime;
         if (renderer && flashTimer > 0.0f) {
             renderer->SetColor(sf::Color(255, 0, 0));
@@ -67,7 +69,7 @@ void FightComponent::Update(float deltaTime) {
     } else if (renderer) {
         renderer->SetColor(sf::Color(255, 255, 255));
     }
-    
+
     if (attackCooldown > 0.0f) {
         attackCooldown -= deltaTime;
     }
@@ -79,4 +81,4 @@ void FightComponent::SetTargetType(TargetType type) { this->targetType = type; }
 TargetType FightComponent::GetTargetType() const { return targetType; }
 void FightComponent::Render() {}
 
-} // namespace Rogalique
+}  // namespace Rogalique

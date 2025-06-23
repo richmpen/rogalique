@@ -5,14 +5,13 @@
 #include "HealthComponent.h"
 #include "ResourceSystem.h"
 
-
 namespace Rogalique {
 
-CreeperExplosion::CreeperExplosion(EngineCore::GameObject* gameObject) : Component(gameObject) {
+CreeperExplosion::CreeperExplosion(EngineCore::GameObject* gameObject)
+    : Component(gameObject) {
     renderer = gameObject->GetComponent<EngineCore::SpriteRendererComponent>();
     collider = gameObject->GetComponent<EngineCore::SpriteColliderComponent>();
-    }
-
+}
 
 void CreeperExplosion::StartCreeperExplosion() {
     isCreeperExploding = true;
@@ -32,26 +31,22 @@ void CreeperExplosion::StartCreeperExplosion() {
 }
 
 void CreeperExplosion::Update(float deltaTime) {
-    if (IsExploding()) { //+ check for the presence of CreeperExplosion Component
+    if (IsExploding()) {  //+ check for the presence of CreeperExplosion
+                          //Component
         SetExplosionTimer(GetExplosionTimer() - deltaTime);
         if (GetExplosionTimer() <= 0.0f) {
-           gameObject->GetComponent<HealthComponent>()->Die();
+            gameObject->GetComponent<HealthComponent>()->Die();
         }
     }
 }
 
-void CreeperExplosion::Render() {
-}
+void CreeperExplosion::Render() {}
 
 void CreeperExplosion::SetExplosionTimer(float count) {
     explosionTimer = count;
 }
 
-float CreeperExplosion::GetExplosionTimer() const {
-    return explosionTimer;
-}
+float CreeperExplosion::GetExplosionTimer() const { return explosionTimer; }
 
-bool CreeperExplosion::IsExploding() {
-    return isCreeperExploding;
-}
-}
+bool CreeperExplosion::IsExploding() { return isCreeperExploding; }
+}  // namespace Rogalique

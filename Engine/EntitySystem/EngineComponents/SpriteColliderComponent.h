@@ -1,7 +1,7 @@
 #pragma once
 
-#include "ColliderComponent.h"
 #include "../EntitySystem/Systems/RenderSystem.h"
+#include "ColliderComponent.h"
 #include "SpriteRendererComponent.h"
 
 #include <SFML/Graphics/Sprite.hpp>

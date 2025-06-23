@@ -22,17 +22,15 @@ class Enemy {
 
 class Cacodemon : public Enemy {
    public:
-    Cacodemon(const EngineCore::Vector2Df& position,
-              const TargetType& target, int damage, int health,
-              float speed);
+    Cacodemon(const EngineCore::Vector2Df& position, const TargetType& target,
+              int damage, int health, float speed);
     ~Cacodemon() {}
 };
 
 class Creeper : public Enemy {
    public:
-    Creeper(const EngineCore::Vector2Df& position,
-            const TargetType& target, int damage, int health,
-            float speed);
+    Creeper(const EngineCore::Vector2Df& position, const TargetType& target,
+            int damage, int health, float speed);
     ~Creeper() {}
 };
 }  // namespace Rogalique

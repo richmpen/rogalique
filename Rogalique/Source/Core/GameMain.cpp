@@ -1,9 +1,10 @@
 ﻿#include "DeveloperLevel.h"
 #include "Engine.h"
+#include "GameSettings.h"
 #include "Matrix2D.h"
 #include "Player.h"
 #include "ResourceSystem.h"
-#include "GameSettings.h"
+
 #include <SFML/Graphics.hpp>
 
 using namespace Rogalique;
@@ -11,9 +12,10 @@ using namespace Rogalique;
 int main() {
     EngineCore::Engine::Instance();
     LOG_INFO("Setup Logger init!");
-    EngineCore::RenderSystem::Instance()->SetMainWindow(
-        new sf::RenderWindow(sf::VideoMode(SETTINGS.SCREEN_WIDTH, SETTINGS.SCREEN_HEIGHT), SETTINGS.GAME_NAME));
-    
+    EngineCore::RenderSystem::Instance()->SetMainWindow(new sf::RenderWindow(
+        sf::VideoMode(SETTINGS.SCREEN_WIDTH, SETTINGS.SCREEN_HEIGHT),
+        SETTINGS.GAME_NAME));
+
     EngineCore::ResourceSystem::Instance()->LoadTexture(
         "player", SETTINGS.TEXTURES_PATH + "player.png");
     EngineCore::ResourceSystem::Instance()->LoadSound(

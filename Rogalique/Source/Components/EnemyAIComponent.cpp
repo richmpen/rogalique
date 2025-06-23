@@ -16,8 +16,7 @@ EnemyAIComponent::EnemyAIComponent(EngineCore::GameObject* gameObject)
 
 void EnemyAIComponent::Update(float deltaTime) {
     EngineCore::TransformComponent* enemyTransform =
-        GetGameObject()
-            ->GetComponent<EngineCore::TransformComponent>();
+        GetGameObject()->GetComponent<EngineCore::TransformComponent>();
     EngineCore::TransformComponent* objectTransform =
         playerObject->GetComponent<EngineCore::TransformComponent>();
 
@@ -46,4 +45,4 @@ void EnemyAIComponent::Update(float deltaTime) {
 
 void EnemyAIComponent::Render() {}
 
-}  // namespace EngineCore
+}  // namespace Rogalique
