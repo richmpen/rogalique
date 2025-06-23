@@ -5,4 +5,5 @@
 **/x86/
 *.vcxproj.filters
 *.vcxproj.user
+**/Logs
 Rogalique/Source/Logs/mainLog.txt
