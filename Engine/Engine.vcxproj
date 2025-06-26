@@ -164,7 +164,9 @@
     <ClInclude Include="EntitySystem\EngineComponents\MoveComponent.h" />
     <ClInclude Include="EntitySystem\EngineComponents\RigidbodyComponent.h" />
     <ClInclude Include="EntitySystem\EngineComponents\SoundComponent.h" />
+    <ClInclude Include="EntitySystem\EngineComponents\AnimationComponent.h" />
     <ClInclude Include="EntitySystem\EngineComponents\SpriteColliderComponent.h" />
+    <ClInclude Include="EntitySystem\EngineComponents\SpriteMovementAnimationComponent.h" />
     <ClInclude Include="EntitySystem\EngineComponents\SpriteRendererComponent.h" />
     <ClInclude Include="EntitySystem\EngineComponents\TransformComponent.h" />
     <ClInclude Include="EntitySystem\GameObject.h" />
@@ -192,7 +194,9 @@
     <ClCompile Include="EntitySystem\EngineComponents\MoveComponent.cpp" />
     <ClCompile Include="EntitySystem\EngineComponents\RigidbodyComponent.cpp" />
     <ClCompile Include="EntitySystem\EngineComponents\SoundComponent.cpp" />
+    <ClCompile Include="EntitySystem\EngineComponents\AnimationComponent.cpp" />
     <ClCompile Include="EntitySystem\EngineComponents\SpriteColliderComponent.cpp" />
+    <ClCompile Include="EntitySystem\EngineComponents\SpriteMovementAnimationComponent.cpp" />
     <ClCompile Include="EntitySystem\EngineComponents\SpriteRendererComponent.cpp" />
     <ClCompile Include="EntitySystem\EngineComponents\TransformComponent.cpp" />
     <ClCompile Include="EntitySystem\GameObject.cpp" />

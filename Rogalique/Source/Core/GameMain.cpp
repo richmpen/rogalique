@@ -16,19 +16,22 @@ int main() {
         sf::VideoMode(SETTINGS.SCREEN_WIDTH, SETTINGS.SCREEN_HEIGHT),
         SETTINGS.GAME_NAME));
 
-    EngineCore::ResourceSystem::Instance()->LoadTexture(
+    ResourceSystem::Instance()->LoadTextureMap("playerTM", SETTINGS.TEXTURE_MAP_PATH + "PlayerTextureMap.png", { 64, 64 }, 5, false);
+    ResourceSystem::Instance()->LoadTextureMap("enemyTM", SETTINGS.TEXTURE_MAP_PATH + "enemyTM.png", { 64, 64 }, 4, false);
+    ResourceSystem::Instance()->LoadTextureMap("explosionTM", SETTINGS.TEXTURE_MAP_PATH + "explosionTM.png", { 64, 64 }, 5, false);
+    ResourceSystem::Instance()->LoadTexture(
         "player", SETTINGS.TEXTURES_PATH + "player.png");
-    EngineCore::ResourceSystem::Instance()->LoadSound(
+    ResourceSystem::Instance()->LoadSound(
         "MetalHell", SETTINGS.SOUNDS_PATH + "MetalHell.wav");
-    EngineCore::ResourceSystem::Instance()->LoadTexture(
+    ResourceSystem::Instance()->LoadTexture(
         "floor", SETTINGS.TEXTURES_PATH + "floor.png");
-    EngineCore::ResourceSystem::Instance()->LoadTexture(
+    ResourceSystem::Instance()->LoadTexture(
         "wall", SETTINGS.TEXTURES_PATH + "wall.png");
-    EngineCore::ResourceSystem::Instance()->LoadTexture(
+    ResourceSystem::Instance()->LoadTexture(
         "cacodemon", SETTINGS.TEXTURES_PATH + "cacodemon.png");
-    EngineCore::ResourceSystem::Instance()->LoadTexture(
+    ResourceSystem::Instance()->LoadTexture(
         "creeper", SETTINGS.TEXTURES_PATH + "creeper.png");
-    EngineCore::ResourceSystem::Instance()->LoadTexture(
+    ResourceSystem::Instance()->LoadTexture(
         "creeperExplosion", SETTINGS.TEXTURES_PATH + "creeperExplosion.png");
     auto developerLevel = std::make_shared<DeveloperLevel>();
     developerLevel->Start();

@@ -1,4 +1,5 @@
 ﻿#pragma once
+#include "AnimationComponent.h"
 #include "Component.h"
 #include "SpriteColliderComponent.h"
 #include "SpriteRendererComponent.h"
@@ -21,5 +22,6 @@ class CreeperExplosion : public EngineCore::Component {
 
     EngineCore::SpriteColliderComponent* collider;
     EngineCore::SpriteRendererComponent* renderer;
+    EngineCore::AnimationComponent* animator;
 };
 }  // namespace Rogalique

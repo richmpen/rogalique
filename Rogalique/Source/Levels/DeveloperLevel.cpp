@@ -52,7 +52,7 @@ void DeveloperLevel::Start() {
     ObjectSpawner spawner(this);
     spawner.Spawn(1, EnemyType::CACODEMON, {550, 500}, TargetType::Enemy, 10,
                   30, 150);
-    spawner.Spawn(2, EnemyType::CREEPER, {300, 300}, TargetType::Enemy, 30, 20,
+    spawner.Spawn(1, EnemyType::CREEPER, {300, 300}, TargetType::Enemy, 30, 20,
                   200);
 }
 void DeveloperLevel::Restart() {

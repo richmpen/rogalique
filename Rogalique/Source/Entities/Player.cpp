@@ -7,6 +7,7 @@
 #include <MoveComponent.h>
 #include <ResourceSystem.h>
 #include <SpriteColliderComponent.h>
+#include <SpriteMovementAnimationComponent.h>
 
 namespace Rogalique {
 Player::Player(const EngineCore::Vector2Df& position, const TargetType& target,
@@ -18,8 +19,7 @@ Player::Player(const EngineCore::Vector2Df& position, const TargetType& target,
     auto renderer =
         gameObject->AddComponent<EngineCore::SpriteRendererComponent>();
 
-    renderer->SetTexture(
-        *EngineCore::ResourceSystem::Instance()->GetTextureShared("player"));
+    renderer->SetTexture(*EngineCore::ResourceSystem::Instance()->GetTextureMapElementShared("playerTM", 0));
     renderer->SetPixelSize(100, 100);
 
     auto camera = gameObject->AddComponent<EngineCore::CameraComponent>();
@@ -36,6 +36,9 @@ Player::Player(const EngineCore::Vector2Df& position, const TargetType& target,
 
     auto collider =
         gameObject->AddComponent<EngineCore::SpriteColliderComponent>();
+
+    auto animator = gameObject->AddComponent<EngineCore::SpriteMovementAnimationComponent>();
+    animator->Initialize("playerTM", 6.f);
 
     auto rigidbody = gameObject->AddComponent<EngineCore::RigidbodyComponent>();
 
