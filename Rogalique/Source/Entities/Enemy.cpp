@@ -25,13 +25,18 @@ Cacodemon::Cacodemon(const EngineCore::Vector2Df& position,
     
     auto enemyAi = gameObject->AddComponent<EnemyAIComponent>();
     enemyAi->SetMoveSpeed(speed);
+    auto move = gameObject->AddComponent<EngineCore::MoveComponent>();
     auto renderer =
         gameObject->AddComponent<EngineCore::SpriteRendererComponent>();
-    renderer->SetTexture(
-        *EngineCore::ResourceSystem::Instance()->GetTextureShared("cacodemon"));
+    renderer->SetTexture(*EngineCore::ResourceSystem::Instance()->GetTextureMapElementShared("cacodemonTM", 0));
     renderer->SetPixelSize(100, 100);
 
+    auto moveAnimator = gameObject->AddComponent<EngineCore::SpriteMovementAnimationComponent>();
+    moveAnimator->Initialize("cacodemonTM", 10.f);
     auto direction = gameObject->AddComponent<DirectionComponent>();
+    direction->AddDirectionMoveAnimation(directionEnum::Right, 0, 5, true);
+    direction->AddDirectionMoveAnimation(directionEnum::Left, 0, 5, false);
+
     
     gameObject->AddComponent<EngineCore::SpriteColliderComponent>();
     gameObject->AddComponent<EngineCore::RigidbodyComponent>();
@@ -59,14 +64,15 @@ Creeper::Creeper(const EngineCore::Vector2Df& position,
         gameObject->AddComponent<EngineCore::SpriteRendererComponent>();
     renderer->SetTexture(*EngineCore::ResourceSystem::Instance()->GetTextureMapElementShared("enemyTM", 0));
     renderer->SetPixelSize(100, 100);
+    
+    auto moveAnimator = gameObject->AddComponent<EngineCore::SpriteMovementAnimationComponent>();
+    moveAnimator->Initialize("enemyTM", 6.f);
 
     auto direction = gameObject->AddComponent<DirectionComponent>();
     
     auto collider =
         gameObject->AddComponent<EngineCore::SpriteColliderComponent>();
     
-    auto animator = gameObject->AddComponent<EngineCore::SpriteMovementAnimationComponent>();
-    animator->Initialize("enemyTM", 6.f);
     
     gameObject->AddComponent<EngineCore::RigidbodyComponent>();
     

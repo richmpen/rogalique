@@ -6,9 +6,9 @@ namespace EngineCore {
 SpriteMovementAnimationComponent::SpriteMovementAnimationComponent(GameObject* gameObject)
         : Component(gameObject)
 {
+    input = gameObject->GetComponent<InputComponent>();
     movement = gameObject->GetComponent<MoveComponent>();
     renderer = gameObject->GetComponent<SpriteRendererComponent>();
-
     if (movement == nullptr)
     {
         LOG_WARN("Need movement component for movement animation")
@@ -19,6 +19,23 @@ SpriteMovementAnimationComponent::SpriteMovementAnimationComponent(GameObject* g
         LOG_WARN("Need renderer component for movement animation")
         gameObject->RemoveComponent(this);
     }
+    else if (input == nullptr)
+    {
+        LOG_WARN("Need input component for movement animation")
+    }
+}
+
+void SpriteMovementAnimationComponent::PlayAnimation(int startFrame, int endFrame)
+{
+    
+    if (textureMap.empty() || startFrame < 0 || endFrame >= static_cast<int>(textureMap.size()) || startFrame > endFrame)
+    {
+        LOG_ERROR("Invalid animation range: startFrame=" << startFrame << ", endFrame=" << endFrame << ", textureMap.size()=" << textureMap.size());
+        return;
+    }
+    frame = startFrame;
+    animationRange = {startFrame, endFrame};
+    renderer->SetTexture(*textureMap[frame]);
 }
 
 void SpriteMovementAnimationComponent::Initialize(const std::string& textureMapName, float newFramerate)
@@ -33,6 +50,10 @@ void SpriteMovementAnimationComponent::Initialize(const std::string& textureMapN
 
 void SpriteMovementAnimationComponent::Update(float deltaTime)
 {
+    if (!movement || !renderer)
+    {
+        return;
+    }
     if (movement->GetAccelerationSquared() == 0.f)
     {
         if (counter > 0)
@@ -49,12 +70,10 @@ void SpriteMovementAnimationComponent::Update(float deltaTime)
     {
         counter = 0;
         frame++;
-
-        if (frame == textureMap.size())
+        if (frame > animationRange.second)
         {
-            frame = 0;
+            frame = animationRange.first;
         }
-
         renderer->SetTexture(*textureMap[frame]);
     }
 }

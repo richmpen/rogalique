@@ -19,7 +19,7 @@ Player::Player(const EngineCore::Vector2Df& position, const TargetType& target,
     auto renderer =
         gameObject->AddComponent<EngineCore::SpriteRendererComponent>();
 
-    renderer->SetTexture(*EngineCore::ResourceSystem::Instance()->GetTextureMapElementShared("playerTM", 0));
+    renderer->SetTexture(*EngineCore::ResourceSystem::Instance()->GetTextureMapElementShared("playerTMALL", 0));
     renderer->SetPixelSize(100, 100);
 
     auto camera = gameObject->AddComponent<EngineCore::CameraComponent>();
@@ -31,14 +31,18 @@ Player::Player(const EngineCore::Vector2Df& position, const TargetType& target,
 
     auto move = gameObject->AddComponent<EngineCore::MoveComponent>();
     move->SetSpeed(SETTINGS.PLAYER_SPEED);
+    
+    auto animation = gameObject->AddComponent<EngineCore::SpriteMovementAnimationComponent>();
+    animation->Initialize("playerTMALL", 10.f);
 
     auto direction = gameObject->AddComponent<DirectionComponent>();
-
+    direction->AddDirectionMoveAnimation(directionEnum::Left, 4, 7, true);
+    direction->AddDirectionMoveAnimation(directionEnum::Right, 4, 7, false);
+    direction->AddDirectionMoveAnimation(directionEnum::Up, 13, 15, false);
+    direction->AddDirectionMoveAnimation(directionEnum::Down, 18, 19, false);
     auto collider =
         gameObject->AddComponent<EngineCore::SpriteColliderComponent>();
-
-    auto animator = gameObject->AddComponent<EngineCore::SpriteMovementAnimationComponent>();
-    animator->Initialize("playerTM", 6.f);
+    
 
     auto rigidbody = gameObject->AddComponent<EngineCore::RigidbodyComponent>();
 

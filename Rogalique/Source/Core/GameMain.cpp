@@ -16,9 +16,12 @@ int main() {
         sf::VideoMode(SETTINGS.SCREEN_WIDTH, SETTINGS.SCREEN_HEIGHT),
         SETTINGS.GAME_NAME));
 
-    ResourceSystem::Instance()->LoadTextureMap("playerTM", SETTINGS.TEXTURE_MAP_PATH + "PlayerTextureMap.png", { 64, 64 }, 5, false);
-    ResourceSystem::Instance()->LoadTextureMap("enemyTM", SETTINGS.TEXTURE_MAP_PATH + "enemyTM.png", { 64, 64 }, 4, false);
-    ResourceSystem::Instance()->LoadTextureMap("explosionTM", SETTINGS.TEXTURE_MAP_PATH + "explosionTM.png", { 64, 64 }, 5, false);
+    ResourceSystem::Instance()->LoadTextureMap("playerTM", SETTINGS.TEXTURE_MAP_PATH + "PlayerTextureMap.png", { 64, 64 }, 5, true);
+    ResourceSystem::Instance()->LoadTextureMap("playerTMALL", SETTINGS.TEXTURE_MAP_PATH + "PlayerTMALL.png", { 64, 64 }, 20, true);
+
+    ResourceSystem::Instance()->LoadTextureMap("enemyTM", SETTINGS.TEXTURE_MAP_PATH + "enemyTM.png", { 64, 64 }, 6, true);
+    ResourceSystem::Instance()->LoadTextureMap("explosionTM", SETTINGS.TEXTURE_MAP_PATH + "explosionTM.png", { 64, 64 }, 5, true);
+    ResourceSystem::Instance()->LoadTextureMap("cacodemonTM", SETTINGS.TEXTURE_MAP_PATH + "cacodemon.png", { 64, 64 }, 6, true);
     ResourceSystem::Instance()->LoadTexture(
         "player", SETTINGS.TEXTURES_PATH + "player.png");
     ResourceSystem::Instance()->LoadSound(
