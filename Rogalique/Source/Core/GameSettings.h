@@ -18,6 +18,7 @@ class GameSettings {
     const std::string TEXTURES_PATH = RESOURCES_PATH + "Textures/";
     const std::string SOUNDS_PATH = RESOURCES_PATH + "Sounds/";
     const std::string TEXTURE_MAP_PATH = RESOURCES_PATH + "TextureMaps/";
+    const std::string FONTS_PATH = RESOURCES_PATH + "Fonts/";
     const unsigned int SCREEN_WIDTH = 1920;
     const unsigned int SCREEN_HEIGHT = 1080;
 

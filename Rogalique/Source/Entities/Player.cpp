@@ -1,5 +1,7 @@
 ﻿#include "Player.h"
 
+#include "AmmoComponent.h"
+#include "ArmorComponent.h"
 #include "DirectionComponent.h"
 #include "GameSettings.h"
 #include "HealthComponent.h"
@@ -11,7 +13,7 @@
 
 namespace Rogalique {
 Player::Player(const EngineCore::Vector2Df& position, const TargetType& target,
-               int damage, int health) {
+               int damage, int health, int armor) {
     gameObject = EngineCore::GameWorld::Instance()->CreateGameObject("Player");
     auto transform = gameObject->GetComponent<EngineCore::TransformComponent>();
     transform->SetWorldPosition(position);
@@ -45,15 +47,22 @@ Player::Player(const EngineCore::Vector2Df& position, const TargetType& target,
     
 
     auto rigidbody = gameObject->AddComponent<EngineCore::RigidbodyComponent>();
-
+    auto armorComponent = gameObject->AddComponent<ArmorComponent>();
+    armorComponent -> SetArmor(armor);
+    armorComponent-> SetMaxArmor(armor);
     auto healthComponent = gameObject->AddComponent<HealthComponent>();
     healthComponent->SetHealth(health);
-
+    healthComponent-> SetMaxHealth(health);
+    auto ammoComponent = gameObject->AddComponent<AmmoComponent>();
+    ammoComponent-> SetMaxAmmo(30);
+    ammoComponent-> AddAmmo(30);
+    ammoComponent-> SetAmmoInClip(90);
     auto fighter = gameObject->AddComponent<FightComponent>();
 
     fighter->SetDamage(damage);
     fighter->SetTargetType(target);
-
+    
+    
     // Experemental
     /*auto transform =
     gameObject->GetComponent<EngineCore::TransformComponent>();

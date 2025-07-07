@@ -1,4 +1,5 @@
 ﻿#pragma once
+#include "AmmoComponent.h"
 #include "Component.h"
 #include "CreeperExplosion.h"
 #include "HealthComponent.h"

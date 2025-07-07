@@ -6,6 +6,7 @@
 #include "Music.h"
 #include "Player.h"
 #include "Scene.h"
+#include "UiManager.h"
 #include "Wall.h"
 
 #include <array>
@@ -41,6 +42,7 @@ class DeveloperLevel : public Scene {
     std::shared_ptr<Music> music;
     std::shared_ptr<Wall> wall;
     std::shared_ptr<Floor> floor;
+    std::shared_ptr<UiManager> uiManager;
 };
 
 }  // namespace Rogalique

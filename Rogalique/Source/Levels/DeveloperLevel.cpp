@@ -4,6 +4,9 @@
 #include "EnemyFactory.h"
 #include "MazeGenerator.h"
 #include "ObjectSpawner.h"
+#include "UiManager.h"
+#include "UiElement.h"
+#include "Ui/HUDGenerator.h"
 
 using namespace EngineCore;
 
@@ -43,23 +46,33 @@ void DeveloperLevel::Start() {
     player =
         std::make_unique<Player>(std::forward<EngineCore::Vector2Df>(
                                      {levelWidth / 2 * spritePanelSize, 200}),
-                                 TargetType::Player, 15, 100);
+                                 TargetType::Player, 15, 100, 100);
     LoadObjectCheck(player);
 
     music = std::make_unique<Music>("MetalHell");
 
     // Enemy Spawners (Requires factory initialization)
     ObjectSpawner spawner(this);
-    spawner.Spawn(1, EnemyType::CACODEMON, {550, 500}, TargetType::Enemy, 10,
+    spawner.Spawn(1, EnemyType::CACODEMON, {550, 500}, TargetType::Enemy, 1,
                   30, 150);
-    spawner.Spawn(1, EnemyType::CREEPER, {300, 300}, TargetType::Enemy, 30, 20,
+    spawner.Spawn(0, EnemyType::CREEPER, {300, 300}, TargetType::Enemy, 1, 20,
                   200);
+    
+    // UI
+    auto uiGameObject = GameWorld::Instance()->CreateGameObject("UI_Manager");
+    auto uiManagerRaw = uiGameObject->AddComponent<Rogalique::UiManager>();
+    uiManager = std::shared_ptr<UiManager>(uiManagerRaw);
+    
+    HUDGenerator hudGenerator(uiManager, this, player->GetGameObject());
+    hudGenerator.Generate();
 }
+
 void DeveloperLevel::Restart() {
     Stop();
     Start();
     LOG_INFO("!Restarted " << levelName);
 }
+
 void DeveloperLevel::Stop() {
     LOG_INFO("!Stopped " << levelName);
     GameWorld::Instance()->Clear();

@@ -161,10 +161,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Source\Audio\Music.cpp" />
+    <ClCompile Include="Source\Components\AmmoComponent.cpp" />
+    <ClCompile Include="Source\Components\ArmorComponent.cpp" />
     <ClCompile Include="Source\Components\DirectionComponent.cpp" />
     <ClCompile Include="Source\Components\EnemyAIComponent.cpp" />
     <ClCompile Include="Source\Components\FightComponent.cpp" />
     <ClCompile Include="Source\Components\HealthComponent.cpp" />
+    <ClCompile Include="Source\Components\UiManager.cpp" />
     <ClCompile Include="Source\Core\GameMain.cpp" />
     <ClCompile Include="Source\Effects\CreeperExplosion.cpp" />
     <ClCompile Include="Source\Entities\Enemy.cpp" />
@@ -173,16 +176,22 @@
     <ClCompile Include="Source\Levels\LevelEntities\Floor.cpp" />
     <ClCompile Include="Source\Levels\LevelEntities\Wall.cpp" />
     <ClCompile Include="Source\Rendering\Sprite.cpp" />
+    <ClCompile Include="Source\Rendering\Text.cpp" />
     <ClCompile Include="Source\Systems\EnemyFactory.cpp" />
     <ClCompile Include="Source\Systems\MazeGenerator.cpp" />
     <ClCompile Include="Source\Systems\ObjectSpawner.cpp" />
+    <ClCompile Include="Source\Components\UiElement.cpp" />
+    <ClCompile Include="Source\Ui\HUDGenerator.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Audio\Music.h" />
+    <ClInclude Include="Source\Components\AmmoComponent.h" />
+    <ClInclude Include="Source\Components\ArmorComponent.h" />
     <ClInclude Include="Source\Components\DirectionComponent.h" />
     <ClInclude Include="Source\Components\EnemyAIComponent.h" />
     <ClInclude Include="Source\Components\FightComponent.h" />
     <ClInclude Include="Source\Components\HealthComponent.h" />
+    <ClInclude Include="Source\Components\UiManager.h" />
     <ClInclude Include="Source\Core\GameSettings.h" />
     <ClInclude Include="Source\Effects\CreeperExplosion.h" />
     <ClInclude Include="Source\Entities\Enemy.h" />
@@ -191,9 +200,12 @@
     <ClInclude Include="Source\Levels\LevelEntities\Floor.h" />
     <ClInclude Include="Source\Levels\LevelEntities\Wall.h" />
     <ClInclude Include="Source\Rendering\Sprite.h" />
+    <ClInclude Include="Source\Rendering\Text.h" />
     <ClInclude Include="Source\Systems\EnemyFactory.h" />
     <ClInclude Include="Source\Systems\MazeGenerator.h" />
     <ClInclude Include="Source\Systems\ObjectSpawner.h" />
+    <ClInclude Include="Source\Components\UiElement.h" />
+    <ClInclude Include="Source\Ui\HUDGenerator.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Engine\Engine.vcxproj">
