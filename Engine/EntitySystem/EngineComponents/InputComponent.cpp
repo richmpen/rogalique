@@ -9,14 +9,12 @@
 
 namespace EngineCore {
 InputComponent::InputComponent(GameObject* gameObject)
-    : Component(gameObject) {
-    
-}
+    : Component(gameObject) {}
 
 void InputComponent::Update(float deltaTime) {
     verticalAxis = 0.f;
     horizontalAxis = 0.f;
-    
+
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
         verticalAxis += 1.0f;
     }

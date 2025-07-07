@@ -8,7 +8,7 @@
 namespace Rogalique {
 
 EnemyAIComponent::EnemyAIComponent(EngineCore::GameObject* gameObject)
-    : Component(gameObject){
+    : Component(gameObject) {
     chaseDistance = SETTINGS.ENEMY_CHASE_DISTANCE;
     playerObject =
         EngineCore::GameWorld::Instance()->FindGameObjectByName("Player");
@@ -39,12 +39,10 @@ void EnemyAIComponent::Update(float deltaTime) {
             EngineCore::Vector2Df movement =
                 directionToObject * speed * deltaTime;
             enemyTransform->MoveBy(movement);
-        }
-        else {
+        } else {
             discovered = false;
         }
     }
-    
 }
 
 void EnemyAIComponent::Render() {}

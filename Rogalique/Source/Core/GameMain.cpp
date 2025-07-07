@@ -5,6 +5,7 @@
 #include "Player.h"
 #include "ResourceSystem.h"
 #include "UiManager.h"
+
 #include <SFML/Graphics.hpp>
 
 using namespace Rogalique;
@@ -15,15 +16,25 @@ int main() {
     EngineCore::RenderSystem::Instance()->SetMainWindow(new sf::RenderWindow(
         sf::VideoMode(SETTINGS.SCREEN_WIDTH, SETTINGS.SCREEN_HEIGHT),
         SETTINGS.GAME_NAME));
-    
+
     ResourceSystem::Instance()->LoadTexture(
         "UiMap", SETTINGS.TEXTURES_PATH + "UiMap.png");
-    ResourceSystem::Instance()->LoadTextureMap("playerTM", SETTINGS.TEXTURE_MAP_PATH + "PlayerTextureMap.png", { 64, 64 }, 5, true);
-    ResourceSystem::Instance()->LoadTextureMap("playerTMALL", SETTINGS.TEXTURE_MAP_PATH + "PlayerTMALL.png", { 64, 64 }, 20, true);
+    ResourceSystem::Instance()->LoadTextureMap(
+        "playerTM", SETTINGS.TEXTURE_MAP_PATH + "PlayerTextureMap.png",
+        {64, 64}, 5, true);
+    ResourceSystem::Instance()->LoadTextureMap(
+        "playerTMALL", SETTINGS.TEXTURE_MAP_PATH + "PlayerTMALL.png", {64, 64},
+        20, true);
 
-    ResourceSystem::Instance()->LoadTextureMap("enemyTM", SETTINGS.TEXTURE_MAP_PATH + "enemyTM.png", { 64, 64 }, 6, true);
-    ResourceSystem::Instance()->LoadTextureMap("explosionTM", SETTINGS.TEXTURE_MAP_PATH + "explosionTM.png", { 64, 64 }, 5, true);
-    ResourceSystem::Instance()->LoadTextureMap("cacodemonTM", SETTINGS.TEXTURE_MAP_PATH + "cacodemon.png", { 64, 64 }, 6, true);
+    ResourceSystem::Instance()->LoadTextureMap(
+        "enemyTM", SETTINGS.TEXTURE_MAP_PATH + "enemyTM.png", {64, 64}, 6,
+        true);
+    ResourceSystem::Instance()->LoadTextureMap(
+        "explosionTM", SETTINGS.TEXTURE_MAP_PATH + "explosionTM.png", {64, 64},
+        5, true);
+    ResourceSystem::Instance()->LoadTextureMap(
+        "cacodemonTM", SETTINGS.TEXTURE_MAP_PATH + "cacodemon.png", {64, 64}, 6,
+        true);
     ResourceSystem::Instance()->LoadTexture(
         "player", SETTINGS.TEXTURES_PATH + "player.png");
     ResourceSystem::Instance()->LoadSound(

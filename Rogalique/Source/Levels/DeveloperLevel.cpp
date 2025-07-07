@@ -4,9 +4,9 @@
 #include "EnemyFactory.h"
 #include "MazeGenerator.h"
 #include "ObjectSpawner.h"
-#include "UiManager.h"
-#include "UiElement.h"
 #include "Ui/HUDGenerator.h"
+#include "UiElement.h"
+#include "UiManager.h"
 
 using namespace EngineCore;
 
@@ -53,16 +53,16 @@ void DeveloperLevel::Start() {
 
     // Enemy Spawners (Requires factory initialization)
     ObjectSpawner spawner(this);
-    spawner.Spawn(1, EnemyType::CACODEMON, {550, 500}, TargetType::Enemy, 1,
-                  30, 150);
+    spawner.Spawn(1, EnemyType::CACODEMON, {550, 500}, TargetType::Enemy, 1, 30,
+                  150);
     spawner.Spawn(0, EnemyType::CREEPER, {300, 300}, TargetType::Enemy, 1, 20,
                   200);
-    
+
     // UI
     auto uiGameObject = GameWorld::Instance()->CreateGameObject("UI_Manager");
     auto uiManagerRaw = uiGameObject->AddComponent<Rogalique::UiManager>();
     uiManager = std::shared_ptr<UiManager>(uiManagerRaw);
-    
+
     HUDGenerator hudGenerator(uiManager, this, player->GetGameObject());
     hudGenerator.Generate();
 }

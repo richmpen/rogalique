@@ -1,8 +1,9 @@
 
 #include "DirectionComponent.h"
-#include "Player.h"
+
 #include "EnemyAIComponent.h"
 #include "GameWorld.h"
+#include "Player.h"
 
 namespace Rogalique {
 
@@ -15,23 +16,27 @@ DirectionComponent::DirectionComponent(EngineCore::GameObject* gameObject)
     enemyAI = gameObject->GetComponent<EnemyAIComponent>();
     playerObject =
         EngineCore::GameWorld::Instance()->FindGameObjectByName("Player");
-    moveAnimation = gameObject->GetComponent<EngineCore::SpriteMovementAnimationComponent>();
+    moveAnimation =
+        gameObject
+            ->GetComponent<EngineCore::SpriteMovementAnimationComponent>();
 }
 
-void DirectionComponent::SwitchDirection(directionEnum dir) {
-    direction = dir;
-}
+void DirectionComponent::SwitchDirection(directionEnum dir) { direction = dir; }
 
 directionEnum DirectionComponent::GetCurrentDirection() const {
     return direction;
 }
 
-void DirectionComponent::AddDirectionMoveAnimation(directionEnum dir, int firstFrame, int lastFrame, bool FlipX) {
+void DirectionComponent::AddDirectionMoveAnimation(directionEnum dir,
+                                                   int firstFrame,
+                                                   int lastFrame, bool FlipX) {
     animationMap[dir] = {firstFrame, lastFrame, FlipX};
 }
 
 void DirectionComponent::Update(float deltaTime) {
-    auto playerPos = playerObject->GetComponent<EngineCore::TransformComponent>()->GetWorldPosition();
+    auto playerPos =
+        playerObject->GetComponent<EngineCore::TransformComponent>()
+            ->GetWorldPosition();
     auto GameObjectPosition = transform->GetWorldPosition();
     directionEnum newDirection = direction;
 
@@ -50,7 +55,8 @@ void DirectionComponent::Update(float deltaTime) {
         if (newDirection != direction) {
             auto it = animationMap.find(newDirection);
             if (it != animationMap.end()) {
-                moveAnimation->PlayAnimation(it->second.startFrame, it->second.endFrame);
+                moveAnimation->PlayAnimation(it->second.startFrame,
+                                             it->second.endFrame);
                 spriteRenderer->FlipX(it->second.flipX);
                 SwitchDirection(newDirection);
             }
@@ -59,11 +65,14 @@ void DirectionComponent::Update(float deltaTime) {
 
     // Enemy logic
     if (enemyAI && enemyAI->GetIsDiscovered()) {
-        newDirection = (playerPos.x >= GameObjectPosition.x) ? directionEnum::Left : directionEnum::Right;
+        newDirection = (playerPos.x >= GameObjectPosition.x)
+                           ? directionEnum::Left
+                           : directionEnum::Right;
         if (newDirection != direction) {
             auto it = animationMap.find(newDirection);
             if (it != animationMap.end()) {
-                moveAnimation->PlayAnimation(it->second.startFrame, it->second.endFrame);
+                moveAnimation->PlayAnimation(it->second.startFrame,
+                                             it->second.endFrame);
                 spriteRenderer->FlipX(it->second.flipX);
                 SwitchDirection(newDirection);
             }

@@ -21,7 +21,9 @@ Player::Player(const EngineCore::Vector2Df& position, const TargetType& target,
     auto renderer =
         gameObject->AddComponent<EngineCore::SpriteRendererComponent>();
 
-    renderer->SetTexture(*EngineCore::ResourceSystem::Instance()->GetTextureMapElementShared("playerTMALL", 0));
+    renderer->SetTexture(
+        *EngineCore::ResourceSystem::Instance()->GetTextureMapElementShared(
+            "playerTMALL", 0));
     renderer->SetPixelSize(100, 100);
 
     auto camera = gameObject->AddComponent<EngineCore::CameraComponent>();
@@ -33,8 +35,10 @@ Player::Player(const EngineCore::Vector2Df& position, const TargetType& target,
 
     auto move = gameObject->AddComponent<EngineCore::MoveComponent>();
     move->SetSpeed(SETTINGS.PLAYER_SPEED);
-    
-    auto animation = gameObject->AddComponent<EngineCore::SpriteMovementAnimationComponent>();
+
+    auto animation =
+        gameObject
+            ->AddComponent<EngineCore::SpriteMovementAnimationComponent>();
     animation->Initialize("playerTMALL", 10.f);
 
     auto direction = gameObject->AddComponent<DirectionComponent>();
@@ -44,25 +48,23 @@ Player::Player(const EngineCore::Vector2Df& position, const TargetType& target,
     direction->AddDirectionMoveAnimation(directionEnum::Down, 18, 19, false);
     auto collider =
         gameObject->AddComponent<EngineCore::SpriteColliderComponent>();
-    
 
     auto rigidbody = gameObject->AddComponent<EngineCore::RigidbodyComponent>();
     auto armorComponent = gameObject->AddComponent<ArmorComponent>();
-    armorComponent -> SetArmor(armor);
-    armorComponent-> SetMaxArmor(armor);
+    armorComponent->SetArmor(armor);
+    armorComponent->SetMaxArmor(armor);
     auto healthComponent = gameObject->AddComponent<HealthComponent>();
     healthComponent->SetHealth(health);
-    healthComponent-> SetMaxHealth(health);
+    healthComponent->SetMaxHealth(health);
     auto ammoComponent = gameObject->AddComponent<AmmoComponent>();
-    ammoComponent-> SetMaxAmmo(30);
-    ammoComponent-> AddAmmo(30);
-    ammoComponent-> SetAmmoInClip(90);
+    ammoComponent->SetMaxAmmo(30);
+    ammoComponent->AddAmmo(30);
+    ammoComponent->SetAmmoInClip(90);
     auto fighter = gameObject->AddComponent<FightComponent>();
 
     fighter->SetDamage(damage);
     fighter->SetTargetType(target);
-    
-    
+
     // Experemental
     /*auto transform =
     gameObject->GetComponent<EngineCore::TransformComponent>();

@@ -6,9 +6,9 @@
 
 namespace EngineCore {
 MoveComponent::MoveComponent(GameObject* gameObject) : Component(gameObject) {
-    input = gameObject->GetComponent<InputComponent>(); 
+    input = gameObject->GetComponent<InputComponent>();
     transform = gameObject->GetComponent<TransformComponent>();
-    
+
     if (transform == nullptr) {
         LOG_ERROR("MoveComponent required to TransformComponent.");
         gameObject->RemoveComponent(this);

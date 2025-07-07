@@ -1,17 +1,19 @@
 #pragma once
 #include "Player.h"
 #include "ResourceSystem.h"
+
 #include <SFML/Graphics.hpp>
 #include <memory>
 
 namespace Rogalique {
 
 class UiElement {
-public:
+   public:
     virtual void Update(float deltaTime) = 0;
     virtual void Render(sf::RenderWindow& window) = 0;
     virtual ~UiElement() = default;
-protected:
+
+   protected:
     void SetTextureFromMap(const std::string& textureName, sf::IntRect rect);
     void SetPosition(sf::Vector2f position);
     void SetScale(sf::Vector2f scale);
@@ -22,14 +24,17 @@ protected:
 };
 
 class HealthBar : public UiElement {
-public:
-    HealthBar(const std::string& textureName, sf::IntRect bgRect, sf::IntRect barRect, sf::Vector2f position, sf::Vector2f barScale, EngineCore::GameObject* player);
+   public:
+    HealthBar(const std::string& textureName, sf::IntRect bgRect,
+              sf::IntRect barRect, sf::Vector2f position, sf::Vector2f barScale,
+              EngineCore::GameObject* player);
     void Update(float deltaTime) override;
     void Render(sf::RenderWindow& window) override;
     void SetBarPosition(sf::Vector2f newPosition);
     void SetBarScale(sf::Vector2f newScale);
     void SetBarColor(sf::Color newColor);
-private:
+
+   private:
     void SetHealth(float current, float max);
     sf::Sprite background;
     sf::Sprite bar;
@@ -43,14 +48,17 @@ private:
 };
 
 class ArmorBar : public UiElement {
-public:
-    ArmorBar(const std::string& textureName, sf::IntRect bgRect, sf::IntRect barRect, sf::Vector2f position, sf::Vector2f barScale, EngineCore::GameObject* player);
+   public:
+    ArmorBar(const std::string& textureName, sf::IntRect bgRect,
+             sf::IntRect barRect, sf::Vector2f position, sf::Vector2f barScale,
+             EngineCore::GameObject* player);
     void Update(float deltaTime) override;
     void Render(sf::RenderWindow& window) override;
     void SetBarPosition(sf::Vector2f newPosition);
     void SetBarScale(sf::Vector2f newScale);
     void SetBarColor(sf::Color newColor);
-private:
+
+   private:
     void SetArmor(float current, float max);
     sf::Sprite background;
     sf::Sprite bar;
@@ -64,16 +72,20 @@ private:
 };
 
 class AmmoBar : public UiElement {
-public:
-    AmmoBar(const std::string& textureName, sf::IntRect bgRect, sf::IntRect barRect, sf::Vector2f FirstTextPosition, sf::Vector2f SecondTextPosition, sf::Vector2f position, sf::Vector2f barScale, EngineCore::GameObject* player);
+   public:
+    AmmoBar(const std::string& textureName, sf::IntRect bgRect,
+            sf::IntRect barRect, sf::Vector2f FirstTextPosition,
+            sf::Vector2f SecondTextPosition, sf::Vector2f position,
+            sf::Vector2f barScale, EngineCore::GameObject* player);
     void Update(float deltaTime) override;
     void Render(sf::RenderWindow& window) override;
     void SetBarPosition(sf::Vector2f newPosition);
     void SetBarScale(sf::Vector2f newScale);
     void SetBarColor(sf::Color newColor);
-private:
+
+   private:
     void SetAmmo(float current, float max);
-    
+
     sf::Sprite background;
     sf::Sprite bar;
     sf::Text ammoTextFirst;
@@ -91,8 +103,9 @@ private:
 };
 
 class UiImageElement : public UiElement {
-public:
-    UiImageElement(const std::string& textureName, sf::IntRect rect, sf::Vector2f position);
+   public:
+    UiImageElement(const std::string& textureName, sf::IntRect rect,
+                   sf::Vector2f position);
     void Update(float deltaTime) override;
     void Render(sf::RenderWindow& window) override;
     void SetElement(sf::IntRect newRect);
@@ -100,7 +113,7 @@ public:
     void SetElementScale(sf::Vector2f newScale);
     void SetElementColor(sf::Color newColor);
 
-private:
+   private:
     sf::IntRect elementRect;
     sf::Vector2f elementPosition;
     sf::Vector2f elementScale;

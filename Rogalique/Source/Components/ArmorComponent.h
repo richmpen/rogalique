@@ -4,7 +4,7 @@
 namespace Rogalique {
 
 class ArmorComponent : public EngineCore::Component {
-public:
+   public:
     ArmorComponent(EngineCore::GameObject* gameObject);
     void TakeDamage(int damageValue);
     void SetArmor(int armor);
@@ -14,7 +14,7 @@ public:
     void Update(float deltaTime) override;
     void Render() override;
 
-private:
+   private:
     int armor = 0;
     int maxArmor = 0;
 };

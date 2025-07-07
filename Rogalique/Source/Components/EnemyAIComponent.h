@@ -11,7 +11,8 @@ class EnemyAIComponent : public EngineCore::Component {
     void Update(float deltaTime) override;
     void Render() override;
     void SetMoveSpeed(float newSpeed) { speed = newSpeed; }
-    bool GetIsDiscovered() const {return discovered;}
+    bool GetIsDiscovered() const { return discovered; }
+
    private:
     EngineCore::GameObject* playerObject;
     EngineCore::TransformComponent* transform;

@@ -3,7 +3,6 @@
 #include "GameObject.h"
 #include "InputComponent.h"
 #include "SpriteMovementAnimationComponent.h"
-
 #include "SpriteRendererComponent.h"
 
 namespace Rogalique {
@@ -22,7 +21,8 @@ class DirectionComponent : public EngineCore::Component {
     void SwitchDirection(directionEnum dir);
     directionEnum GetCurrentDirection() const;
 
-    void AddDirectionMoveAnimation(directionEnum dir,int firstFrame,int lastFrame, bool FlipX);
+    void AddDirectionMoveAnimation(directionEnum dir, int firstFrame,
+                                   int lastFrame, bool FlipX);
     void Update(float deltaTime) override;
     void Render() override;
 

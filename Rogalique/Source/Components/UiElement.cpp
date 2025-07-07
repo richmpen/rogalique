@@ -5,48 +5,48 @@
 
 namespace Rogalique {
 
-void UiElement::SetTextureFromMap(const std::string& textureName, sf::IntRect rect) {
-    texture = EngineCore::ResourceSystem::Instance()->GetTextureShared(textureName);
+void UiElement::SetTextureFromMap(const std::string& textureName,
+                                  sf::IntRect rect) {
+    texture =
+        EngineCore::ResourceSystem::Instance()->GetTextureShared(textureName);
     if (texture) {
         sprite.setTexture(*texture);
         sprite.setTextureRect(rect);
     }
-    
 }
 
 void UiElement::SetPosition(sf::Vector2f position) {
     sprite.setPosition(position);
 }
 
-void UiElement::SetScale(sf::Vector2f scale) {
-    sprite.setScale(scale);
-}
+void UiElement::SetScale(sf::Vector2f scale) { sprite.setScale(scale); }
 
-void UiElement::SetColor(sf::Color color) {
-    sprite.setColor(color);
-}
+void UiElement::SetColor(sf::Color color) { sprite.setColor(color); }
 
-
-//HealthBar
-HealthBar::HealthBar(const std::string& textureName, sf::IntRect bgRect, sf::IntRect barRect, sf::Vector2f position, sf::Vector2f barScale, EngineCore::GameObject* player)
-    : barRectOriginal(barRect), playerGameObject(player), healthBarScale(barScale)
-{
-
-    const sf::Texture* tex = EngineCore::ResourceSystem::Instance()->GetTextureShared(textureName);
+// HealthBar
+HealthBar::HealthBar(const std::string& textureName, sf::IntRect bgRect,
+                     sf::IntRect barRect, sf::Vector2f position,
+                     sf::Vector2f barScale, EngineCore::GameObject* player)
+    : barRectOriginal(barRect),
+      playerGameObject(player),
+      healthBarScale(barScale) {
+    const sf::Texture* tex =
+        EngineCore::ResourceSystem::Instance()->GetTextureShared(textureName);
     if (tex) {
         background.setTexture(*tex);
         background.setTextureRect(bgRect);
         background.setPosition(position);
         background.setColor(sf::Color(87, 157, 194));
         background.setScale(healthBarScale);
-        
+
         bar.setTexture(*tex);
         bar.setTextureRect(barRect);
         bar.setPosition(position);
-        bar.setColor(sf::Color(129, 235,254));
+        bar.setColor(sf::Color(129, 235, 254));
         bar.setScale(healthBarScale);
     }
-    maxHealth = static_cast<float>(player->GetComponent<HealthComponent>()->GetMaxHealth());
+    maxHealth = static_cast<float>(
+        player->GetComponent<HealthComponent>()->GetMaxHealth());
 }
 
 void HealthBar::SetHealth(float current, float max) {
@@ -96,12 +96,15 @@ void HealthBar::SetBarColor(sf::Color newColor) {
     SetColor(newColor);
 }
 
-//ArmorBar
-ArmorBar::ArmorBar(const std::string& textureName, sf::IntRect bgRect, sf::IntRect barRect, sf::Vector2f position, sf::Vector2f barScale, EngineCore::GameObject* player)
-    : barRectOriginal(barRect), playerGameObject(player), armorBarScale(barScale)
-{
-
-    const sf::Texture* tex = EngineCore::ResourceSystem::Instance()->GetTextureShared(textureName);
+// ArmorBar
+ArmorBar::ArmorBar(const std::string& textureName, sf::IntRect bgRect,
+                   sf::IntRect barRect, sf::Vector2f position,
+                   sf::Vector2f barScale, EngineCore::GameObject* player)
+    : barRectOriginal(barRect),
+      playerGameObject(player),
+      armorBarScale(barScale) {
+    const sf::Texture* tex =
+        EngineCore::ResourceSystem::Instance()->GetTextureShared(textureName);
     if (tex) {
         background.setTexture(*tex);
         background.setTextureRect(bgRect);
@@ -112,10 +115,9 @@ ArmorBar::ArmorBar(const std::string& textureName, sf::IntRect bgRect, sf::IntRe
         bar.setTexture(*tex);
         bar.setTextureRect(barRect);
         bar.setPosition(position);
-        bar.setColor(sf::Color(15, 191,6));
+        bar.setColor(sf::Color(15, 191, 6));
         bar.setScale(armorBarScale);
     }
-    
 }
 
 void ArmorBar::SetArmor(float current, float max) {
@@ -156,21 +158,18 @@ void ArmorBar::SetBarColor(sf::Color newColor) {
     SetColor(newColor);
 }
 
-//AmmoBar
-AmmoBar::AmmoBar(
-    const std::string& textureName,
-    sf::IntRect bgRect,
-    sf::IntRect barRect,
-    sf::Vector2f FirstTextPosition,
-    sf::Vector2f SecondtTextPosition,
-    sf::Vector2f position,
-    sf::Vector2f barScale,
-    EngineCore::GameObject* player)
-    : barRectOriginal(barRect), playerGameObject(player), ammoBarScale(barScale) {
+// AmmoBar
+AmmoBar::AmmoBar(const std::string& textureName, sf::IntRect bgRect,
+                 sf::IntRect barRect, sf::Vector2f FirstTextPosition,
+                 sf::Vector2f SecondtTextPosition, sf::Vector2f position,
+                 sf::Vector2f barScale, EngineCore::GameObject* player)
+    : barRectOriginal(barRect),
+      playerGameObject(player),
+      ammoBarScale(barScale) {
     font.loadFromFile(SETTINGS.FONTS_PATH + "roboto/Roboto-Medium.ttf");
 
-    const sf::Texture* tex = EngineCore::ResourceSystem::Instance()->
-        GetTextureShared(textureName);
+    const sf::Texture* tex =
+        EngineCore::ResourceSystem::Instance()->GetTextureShared(textureName);
     if (tex) {
         background.setTexture(*tex);
         background.setTextureRect(bgRect);
@@ -183,7 +182,7 @@ AmmoBar::AmmoBar(
         bar.setPosition(position);
         bar.setColor(sf::Color(248, 255, 156));
         bar.setScale(ammoBarScale);
-        
+
         ammoTextFirst.setFont(font);
         ammoTextFirst.setPosition(FirstTextPosition);
         ammoTextFirst.setFillColor(sf::Color(221, 204, 136));
@@ -240,17 +239,16 @@ void AmmoBar::SetBarColor(sf::Color newColor) {
     SetColor(newColor);
 }
 
-//UiImageElement
-UiImageElement::UiImageElement(const std::string& textureName, sf::IntRect rect, sf::Vector2f position)
+// UiImageElement
+UiImageElement::UiImageElement(const std::string& textureName, sf::IntRect rect,
+                               sf::Vector2f position)
     : elementRect(rect), elementPosition(position), elementScale(1.0f, 1.0f) {
-
     SetTextureFromMap(textureName, rect);
     SetPosition(position);
     SetScale(elementScale);
 }
 
-void UiImageElement::Update(float deltaTime) {
-}
+void UiImageElement::Update(float deltaTime) {}
 
 void UiImageElement::Render(sf::RenderWindow& window) {
     if (texture) {

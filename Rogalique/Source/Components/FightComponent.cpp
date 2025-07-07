@@ -13,7 +13,6 @@ FightComponent::FightComponent(EngineCore::GameObject* gameObject)
     healthComponent = gameObject->GetComponent<HealthComponent>();
     collider = gameObject->GetComponent<EngineCore::SpriteColliderComponent>();
     renderer = gameObject->GetComponent<EngineCore::SpriteRendererComponent>();
-    
 
     if (collider == nullptr) {
         LOG_ERROR("FightComponent required to SpriteColliderComponent.");

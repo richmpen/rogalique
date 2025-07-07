@@ -120,7 +120,6 @@ void ResourceSystem::DeleteSharedTextureMap(const std::string& name) {
 
 void ResourceSystem::LoadSound(const std::string& name,
                                std::string sourcePath) {
-    
     if (sounds.find(name) != sounds.end()) {
         LOG_WARN("Sound already loaded: " << name);
         return;

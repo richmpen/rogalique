@@ -7,9 +7,7 @@
 namespace Rogalique {
 
 HealthComponent::HealthComponent(EngineCore::GameObject* gameObject)
-    : Component(gameObject) {
-    
-}
+    : Component(gameObject) {}
 
 void HealthComponent::Update(float deltaTime) {}
 
@@ -17,20 +15,19 @@ void HealthComponent::Render() {}
 
 void HealthComponent::TakeDamage(int damageValue) {
     if (gameObject->GetComponent<ArmorComponent>() != 0) {
-    auto armor = gameObject->GetComponent<ArmorComponent>();
+        auto armor = gameObject->GetComponent<ArmorComponent>();
         if (armor->GetArmor() <= 0) {
             SetHealth(GetHealth() - damageValue);
             LOG_INFO(gameObject->GetName()
                      << ": Get damage " << damageValue << ", Current health "
                      << std::to_string(GetHealth()))
-        }else {
+        } else {
             armor->TakeDamage(damageValue);
             LOG_INFO(gameObject->GetName()
                      << ": Get damage " << damageValue << ", Current armor "
                      << std::to_string(armor->GetArmor()))
         }
-    }
-    else {
+    } else {
         SetHealth(GetHealth() - damageValue);
         LOG_INFO(gameObject->GetName()
                  << ": Get damage " << damageValue << ", Current health "
@@ -45,7 +42,9 @@ void HealthComponent::SetHealth(int newHealth) { this->health = newHealth; }
 
 int HealthComponent::GetHealth() const { return this->health; }
 
-void HealthComponent::SetMaxHealth(int newMaxHealth){this-> maxHealth = newMaxHealth;}
+void HealthComponent::SetMaxHealth(int newMaxHealth) {
+    this->maxHealth = newMaxHealth;
+}
 
 int HealthComponent::GetMaxHealth() const { return this->maxHealth; }
 

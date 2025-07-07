@@ -1,21 +1,20 @@
 ﻿#pragma once
 #include "GameObject.h"
 #include "MoveComponent.h"
-#include "SpriteRendererComponent.h"
 #include "ResourceSystem.h"
+#include "SpriteRendererComponent.h"
 
-namespace EngineCore
-{
-class AnimationComponent : public Component
-{
-public:
+namespace EngineCore {
+class AnimationComponent : public Component {
+   public:
     AnimationComponent(GameObject* gameObject);
 
     void Initialize(const std::string& textureMapName, float newFramerate);
 
     void Update(float deltaTime) override;
     void Render() override;
-private:
+
+   private:
     SpriteRendererComponent* renderer;
 
     std::vector<const sf::Texture*> textureMap;
@@ -24,4 +23,4 @@ private:
     float counter = 0.f;
     int frame = 0;
 };
-}
+}  // namespace EngineCore

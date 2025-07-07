@@ -18,14 +18,17 @@ void CreeperExplosion::StartCreeperExplosion() {
     isCreeperExploding = true;
     explosionTimer = SETTINGS.CREEPER_EXPLOSION_TIMER;  // 2 seconds to death
     if (renderer) {
-        renderer->SetTexture(*EngineCore::ResourceSystem::Instance()->GetTextureMapElementShared("explosionTM", 0));
+        renderer->SetTexture(
+            *EngineCore::ResourceSystem::Instance()->GetTextureMapElementShared(
+                "explosionTM", 0));
         renderer->SetPixelSize(100, 100);
     }
     auto aiComponent = gameObject->GetComponent<EnemyAIComponent>();
     auto rigidbody = gameObject->GetComponent<EngineCore::RigidbodyComponent>();
     if (aiComponent) {
         gameObject->AddComponent<EngineCore::AnimationComponent>();
-        gameObject->GetComponent<EngineCore::AnimationComponent>()->Initialize("explosionTM", SETTINGS.CREEPER_EXPLOSION_TIMER*5);
+        gameObject->GetComponent<EngineCore::AnimationComponent>()->Initialize(
+            "explosionTM", SETTINGS.CREEPER_EXPLOSION_TIMER * 5);
         aiComponent->SetMoveSpeed(0.0f);
         rigidbody->SetKinematic(true);
         gameObject->RemoveComponent(collider);
@@ -34,7 +37,7 @@ void CreeperExplosion::StartCreeperExplosion() {
 
 void CreeperExplosion::Update(float deltaTime) {
     if (IsExploding()) {  //+ check for the presence of CreeperExplosion
-                          //Component
+                          // Component
         SetExplosionTimer(GetExplosionTimer() - deltaTime);
         if (GetExplosionTimer() <= 0.0f) {
             gameObject->GetComponent<HealthComponent>()->Die();

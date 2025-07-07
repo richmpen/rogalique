@@ -4,22 +4,22 @@
 namespace Rogalique {
 
 class AmmoComponent : public EngineCore::Component {
-public:
+   public:
     AmmoComponent(EngineCore::GameObject* gameObject);
     void Spending(int count);
     void AddAmmo(int count);
     void SetMaxAmmo(int newMaxAmmoCount);
     void SetAmmoInClip(int newAmmoInClip);
     void Reloading();
-    
+
     int GetAmmo() const;
     int GetMaxAmmo() const;
     int GetAmmoInClip() const;
-    
+
     void Update(float deltaTime) override;
     void Render() override;
 
-private:
+   private:
     int currentAmmo = 0;
     int maxAmmo = 0;
     int ammoInClip = 0;

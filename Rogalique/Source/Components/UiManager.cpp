@@ -1,11 +1,13 @@
 ﻿#include "UiManager.h"
+
 #include "GameObject.h"
 #include "RenderSystem.h"
+
 #include <SFML/Graphics.hpp>
 
 namespace Rogalique {
 
-UiManager::UiManager(EngineCore::GameObject* gameObject) 
+UiManager::UiManager(EngineCore::GameObject* gameObject)
     : EngineCore::Component(gameObject) {
     // Получаем окно из RenderSystem
     window = &EngineCore::RenderSystem::Instance()->GetMainWindow();
@@ -44,14 +46,10 @@ void UiManager::AddElement(std::shared_ptr<UiElement> element) {
 }
 
 void UiManager::RemoveElement(std::shared_ptr<UiElement> element) {
-    uiElements.erase(
-        std::remove(uiElements.begin(), uiElements.end(), element),
-        uiElements.end()
-    );
+    uiElements.erase(std::remove(uiElements.begin(), uiElements.end(), element),
+                     uiElements.end());
 }
 
-void UiManager::ClearElements() {
-    uiElements.clear();
-}
+void UiManager::ClearElements() { uiElements.clear(); }
 
 }  // namespace Rogalique
