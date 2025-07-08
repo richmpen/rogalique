@@ -24,17 +24,17 @@ void HUDGenerator::Generate() {
             sf::Vector2f(0.72, 0.72), gameObject);
         uiManager->AddElement(armorBar);
 
-        auto ammoBar = std::make_shared<AmmoBar>(
-            "UiMap", sf::IntRect(789, 1204, 700, 80),
-            sf::IntRect(791, 1060, 562, 58),
-            sf::Vector2f(SETTINGS.PLAYER_CAMERA_WIDTH - 220,
-                         SETTINGS.PLAYER_CAMERA_HEIGHT - 85),
-            sf::Vector2f(SETTINGS.PLAYER_CAMERA_WIDTH - 158,
-                         SETTINGS.PLAYER_CAMERA_HEIGHT - 92),
-            sf::Vector2f(SETTINGS.PLAYER_CAMERA_WIDTH - 600,
-                         SETTINGS.PLAYER_CAMERA_HEIGHT - 100),
-            sf::Vector2f(0.72, 0.72), gameObject);
-        uiManager->AddElement(ammoBar);
+        // auto ammoBar = std::make_shared<AmmoBar>(
+        //     "UiMap", sf::IntRect(789, 1204, 700, 80),
+        //     sf::IntRect(791, 1060, 562, 58),
+        //     sf::Vector2f(SETTINGS.PLAYER_CAMERA_WIDTH - 220,
+        //                  SETTINGS.PLAYER_CAMERA_HEIGHT - 85),
+        //     sf::Vector2f(SETTINGS.PLAYER_CAMERA_WIDTH - 158,
+        //                  SETTINGS.PLAYER_CAMERA_HEIGHT - 92),
+        //     sf::Vector2f(SETTINGS.PLAYER_CAMERA_WIDTH - 600,
+        //                  SETTINGS.PLAYER_CAMERA_HEIGHT - 100),
+        //     sf::Vector2f(0.72, 0.72), gameObject);
+        // uiManager->AddElement(ammoBar);
 
         auto healthIcon = std::make_shared<UiImageElement>(
             "UiMap", sf::IntRect(777, 2382, 235, 235),
@@ -58,13 +58,46 @@ void HUDGenerator::Generate() {
         ammoIcon->SetElementScale(sf::Vector2f{0.25, 0.25});
         uiManager->AddElement(ammoIcon);
 
-        // auto ammoIconSecond = std::make_shared<UiImageElement>("UiMap",
-        // sf::IntRect(3, 700, 210, 180),
-        // sf::Vector2f(SETTINGS.PLAYER_CAMERA_WIDTH - 220,
-        // SETTINGS.PLAYER_CAMERA_HEIGHT - 85));
-        // ammoIconSecond->SetElementColor(sf::Color(67, 62, 41));
-        // ammoIconSecond->SetElementScale(sf::Vector2f{0.25, 0.25});
-        // uiManager->AddElement(ammoIconSecond);
+        auto ammoIconSecond = std::make_shared<UiImageElement>("UiMap",
+                sf::IntRect(3, 700, 210, 180),
+                sf::Vector2f(
+                SETTINGS.PLAYER_CAMERA_WIDTH - 240,
+                SETTINGS.PLAYER_CAMERA_HEIGHT - 93));
+        ammoIconSecond->SetElementColor(sf::Color(221, 204, 136));
+        ammoIconSecond->SetElementScale(sf::Vector2f{0.4, 0.4});
+
+        auto ammoTextFirst = std::make_shared<UiTextElement>(48,
+        sf::Vector2f(SETTINGS.PLAYER_CAMERA_WIDTH - 225,
+                         SETTINGS.PLAYER_CAMERA_HEIGHT - 87));
+        ammoTextFirst->SetColor(sf::Color(221, 204, 136));
+        ammoTextFirst->SetStyle(sf::Text::Bold);
+        
+
+        auto ammoTextSecond = std::make_shared<UiTextElement>(24,
+        sf::Vector2f(SETTINGS.PLAYER_CAMERA_WIDTH - 158,
+                         SETTINGS.PLAYER_CAMERA_HEIGHT - 92));
+        ammoTextSecond->SetColor(sf::Color(105, 97, 64));
+        ammoTextSecond->SetStyle(sf::Text::Italic);
+        uiManager->AddElement(ammoTextSecond);
+        
+        auto ammoBar = std::make_shared<AmmoBar>(
+            "UiMap", sf::IntRect(789, 1204, 700, 80),
+            sf::IntRect(791, 1060, 562, 58),
+            ammoTextFirst,
+            ammoTextSecond,
+            sf::Vector2f(SETTINGS.PLAYER_CAMERA_WIDTH - 600,
+                         SETTINGS.PLAYER_CAMERA_HEIGHT - 100),
+            sf::Vector2f(0.72, 0.72), gameObject);
+        uiManager->AddElement(ammoBar);
+        
+        
+        uiManager->AddElement(ammoIconSecond);
+        
+        uiManager->AddElement(ammoTextFirst);
+
+        
+        
+        
     }
 }
 }  // namespace Rogalique

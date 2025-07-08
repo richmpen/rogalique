@@ -23,6 +23,22 @@ class UiElement {
     const sf::Texture* texture = nullptr;
 };
 
+class UiTextElement : public UiElement {
+public:
+    UiTextElement(int size, sf::Vector2f position);
+
+    void Update(float deltaTime) override {}
+    void Render(sf::RenderWindow& window) override;
+
+    void SetText(const std::string& newText);
+    void SetPosition(sf::Vector2f newPosition);
+    void SetColor(sf::Color newColor);
+    void SetSize( int newSize);
+    void SetStyle(sf::Text::Style style);
+private:
+    sf::Text text;
+};
+
 class HealthBar : public UiElement {
    public:
     HealthBar(const std::string& textureName, sf::IntRect bgRect,
@@ -74,9 +90,9 @@ class ArmorBar : public UiElement {
 class AmmoBar : public UiElement {
    public:
     AmmoBar(const std::string& textureName, sf::IntRect bgRect,
-            sf::IntRect barRect, sf::Vector2f FirstTextPosition,
-            sf::Vector2f SecondTextPosition, sf::Vector2f position,
-            sf::Vector2f barScale, EngineCore::GameObject* player);
+                 sf::IntRect barRect, std::shared_ptr<UiTextElement> firstText,
+                 std::shared_ptr<UiTextElement> secondText, sf::Vector2f position,
+                 sf::Vector2f barScale, EngineCore::GameObject* player);
     void Update(float deltaTime) override;
     void Render(sf::RenderWindow& window) override;
     void SetBarPosition(sf::Vector2f newPosition);
@@ -88,16 +104,14 @@ class AmmoBar : public UiElement {
 
     sf::Sprite background;
     sf::Sprite bar;
-    sf::Text ammoTextFirst;
-    sf::Text ammoTextSecond;
+    std::shared_ptr<UiTextElement> firstText;
+    std::shared_ptr<UiTextElement> secondText;
     int currentAmmo = 0;
     int maxAmmo = 0;
 
     EngineCore::GameObject* playerGameObject = nullptr;
     sf::IntRect barRectOriginal;
     sf::Vector2f ammoBarPosition;
-    sf::Vector2f FirstTextPosition;
-    sf::Vector2f SecondTextPosition;
     sf::Vector2f ammoBarScale;
     sf::Color ammoBarColor;
 };
@@ -119,5 +133,7 @@ class UiImageElement : public UiElement {
     sf::Vector2f elementScale;
     sf::Color elementColor;
 };
+
+
 
 }  // namespace Rogalique

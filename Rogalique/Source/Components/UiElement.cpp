@@ -23,6 +23,37 @@ void UiElement::SetScale(sf::Vector2f scale) { sprite.setScale(scale); }
 
 void UiElement::SetColor(sf::Color color) { sprite.setColor(color); }
 
+//TextElement
+UiTextElement::UiTextElement(int size, sf::Vector2f position) {
+    font.loadFromFile(SETTINGS.FONTS_PATH + "roboto/Roboto-Medium.ttf");
+    text.setFont(font);
+    text.setCharacterSize(size);
+    text.setPosition(position);
+}
+
+void UiTextElement::Render(sf::RenderWindow& window) {
+    window.draw(text);
+}
+
+void UiTextElement::SetText(const std::string& newText) {
+    text.setString(newText);
+}
+
+void UiTextElement::SetPosition(sf::Vector2f newPosition) {
+    text.setPosition(newPosition);
+}
+
+void UiTextElement::SetColor(sf::Color newColor) {
+    text.setFillColor(newColor);
+}
+
+void UiTextElement::SetSize(int newSize) {
+    text.setCharacterSize(newSize);
+}
+void UiTextElement::SetStyle(sf::Text::Style style) {
+    text.setStyle(style);
+}
+
 // HealthBar
 HealthBar::HealthBar(const std::string& textureName, sf::IntRect bgRect,
                      sf::IntRect barRect, sf::Vector2f position,
@@ -160,12 +191,14 @@ void ArmorBar::SetBarColor(sf::Color newColor) {
 
 // AmmoBar
 AmmoBar::AmmoBar(const std::string& textureName, sf::IntRect bgRect,
-                 sf::IntRect barRect, sf::Vector2f FirstTextPosition,
-                 sf::Vector2f SecondtTextPosition, sf::Vector2f position,
+                 sf::IntRect barRect, std::shared_ptr<UiTextElement> firstText,
+                 std::shared_ptr<UiTextElement> secondText, sf::Vector2f position,
                  sf::Vector2f barScale, EngineCore::GameObject* player)
     : barRectOriginal(barRect),
       playerGameObject(player),
-      ammoBarScale(barScale) {
+      ammoBarScale(barScale),
+      firstText(firstText),
+      secondText(secondText) {
     font.loadFromFile(SETTINGS.FONTS_PATH + "roboto/Roboto-Medium.ttf");
 
     const sf::Texture* tex =
@@ -182,18 +215,7 @@ AmmoBar::AmmoBar(const std::string& textureName, sf::IntRect bgRect,
         bar.setPosition(position);
         bar.setColor(sf::Color(248, 255, 156));
         bar.setScale(ammoBarScale);
-
-        ammoTextFirst.setFont(font);
-        ammoTextFirst.setPosition(FirstTextPosition);
-        ammoTextFirst.setFillColor(sf::Color(221, 204, 136));
-        ammoTextFirst.setCharacterSize(64);
-        ammoTextFirst.setStyle(sf::Text::Bold);
-
-        ammoTextSecond.setFont(font);
-        ammoTextSecond.setPosition(SecondtTextPosition);
-        ammoTextSecond.setFillColor(sf::Color(105, 97, 64));
-        ammoTextSecond.setCharacterSize(24);
-        ammoTextSecond.setStyle(sf::Text::Italic);
+        
     }
 }
 
@@ -215,14 +237,14 @@ void AmmoBar::Update(float deltaTime) {
     float max = static_cast<float>(ammoComponent->GetMaxAmmo());
     int ammoInClip = ammoComponent->GetAmmoInClip();
     SetAmmo(current, max);
-    ammoTextFirst.setString(std::to_string(currentAmmo));
-    ammoTextSecond.setString(std::to_string(ammoInClip));
+    firstText->SetText(std::to_string(currentAmmo));
+    secondText->SetText(std::to_string(ammoInClip));
 }
 void AmmoBar::Render(sf::RenderWindow& window) {
     window.draw(background);
     window.draw(bar);
-    window.draw(ammoTextFirst);
-    window.draw(ammoTextSecond);
+    firstText->Render(window);
+    secondText->Render(window);
 }
 void AmmoBar::SetBarPosition(sf::Vector2f newPosition) {
     ammoBarPosition = newPosition;
@@ -275,5 +297,7 @@ void UiImageElement::SetElementColor(sf::Color newColor) {
     elementColor = newColor;
     SetColor(newColor);
 }
+
+
 
 }  // namespace Rogalique
