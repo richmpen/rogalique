@@ -14,8 +14,7 @@ DirectionComponent::DirectionComponent(EngineCore::GameObject* gameObject)
         gameObject->GetComponent<EngineCore::SpriteRendererComponent>();
     transform = gameObject->GetComponent<EngineCore::TransformComponent>();
     enemyAI = gameObject->GetComponent<EnemyAIComponent>();
-    playerObject =
-        EngineCore::GameWorld::Instance()->FindGameObjectByName("Player");
+    playerObject = EngineCore::GameWorld::Instance()->FindPlayer();
     moveAnimation =
         gameObject
             ->GetComponent<EngineCore::SpriteMovementAnimationComponent>();

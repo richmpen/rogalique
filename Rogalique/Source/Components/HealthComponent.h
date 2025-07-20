@@ -12,6 +12,7 @@ class HealthComponent : public EngineCore::Component {
     int GetHealth() const;
     void SetMaxHealth(int newMaxHealth);
     int GetMaxHealth() const;
+    void AddHealth(int healCount);
     void Die() const;
     void Update(float deltaTime) override;
     void Render() override;

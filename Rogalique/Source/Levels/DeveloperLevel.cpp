@@ -1,12 +1,19 @@
 ﻿#include "DeveloperLevel.h"
 
+#include "AmmoItem.h"
+#include "ArmorItem.h"
 #include "EnemyAIComponent.h"
 #include "EnemyFactory.h"
+#include "ItemType.h"
 #include "MazeGenerator.h"
 #include "ObjectSpawner.h"
-#include "Ui/HUDGenerator.h"
+#include "HUDGenerator.h"
 #include "UiElement.h"
 #include "UiManager.h"
+#include "HealthPotion.h"
+#include "InventorySystem.h"
+#include "WeaponItem.h"
+#include "States/SettingsState.h"
 
 using namespace EngineCore;
 
@@ -15,77 +22,75 @@ namespace Rogalique {
 DeveloperLevel::DeveloperLevel() {}
 
 void DeveloperLevel::Start() {
-    LOG_INFO("!Started " << levelName);
-
-    // Arrangement of wall and floor objects regardless of the connection of the
-    // labyrinth or other objects
+    // Arrangement of wall and floor objects
     for (int y = indentMaze; y < levelWidth + 2; y++) {
         for (int x = indentMaze; x < levelHeight + 2; x++) {
             if (y == indentMaze || y == levelWidth + 1 || x == indentMaze ||
                 x == levelHeight + 1) {
-                wall = std::make_unique<Wall>(EngineCore::Vector2Df{
+                 wall = std::make_unique<Wall>(EngineCore::Vector2Df{
                     spritePanelSize * x, spritePanelSize * y});
             } else {
-                floor = std::make_unique<Floor>(EngineCore::Vector2Df{
+                 floor = std::make_unique<Floor>(EngineCore::Vector2Df{
                     spritePanelSize * x, spritePanelSize * y});
             }
         }
     }
-    // Labyrinth spawn object
-    MazeGenerator mazeGenerator(static_cast<float>(levelWidth),
-                                static_cast<float>(levelHeight), this);
-    mazeGenerator.Generate();
+    
+    // Create maze if enabled - simple check
+    if (SettingsState::mazeEnabled) {
+        MazeGenerator mazeGenerator(static_cast<float>(levelWidth),
+                                    static_cast<float>(levelHeight), this);
+        mazeGenerator.Generate();
+    }
 
-    // Initializing enemy factories
-    enemyFactories.emplace(EnemyType::CACODEMON,
-                           std::make_unique<CacodemonEnemyFactory>());
-    enemyFactories.emplace(EnemyType::CREEPER,
-                           std::make_unique<CreeperEnemyFactory>());
+    // Initialize enemy factories if enabled - simple check
+    if (SettingsState::enemiesEnabled) {
+        enemyFactories.emplace(EnemyType::CACODEMON,
+                               std::make_unique<CacodemonEnemyFactory>());
+        enemyFactories.emplace(EnemyType::CREEPER,
+                               std::make_unique<CreeperEnemyFactory>());
+    }
 
-    // Initialization of objects
+    // Create player
     player =
         std::make_unique<Player>(std::forward<EngineCore::Vector2Df>(
                                      {levelWidth / 2 * spritePanelSize, 200}),
                                  TargetType::Player, 15, 100, 100);
-    LoadObjectCheck(player);
+   
 
-    music = std::make_unique<Music>("MetalHell");
+    // Create music if enabled
+    if (SettingsState::musicEnabled) {
+        music = std::make_unique<Music>("MetalHell");
+    }
 
-    // Enemy Spawners (Requires factory initialization)
-    ObjectSpawner spawner(this);
-    spawner.Spawn(1, EnemyType::CACODEMON, {550, 500}, TargetType::Enemy, 1, 30,
-                  150);
-    spawner.Spawn(0, EnemyType::CREEPER, {300, 300}, TargetType::Enemy, 1, 20,
-                  200);
+    // Spawn enemies if enabled - simple check
+    if (SettingsState::enemiesEnabled) {
+        ObjectSpawner spawner(this);
+        spawner.Spawn(1, EnemyType::CACODEMON, {550, 500}, TargetType::Enemy, 15, 150, 150);
+        spawner.Spawn(1, EnemyType::CREEPER, {300, 300}, TargetType::Enemy, 75, 1, 200);
+    }
 
-    // UI
-    auto uiGameObject = GameWorld::Instance()->CreateGameObject("UI_Manager");
-    auto uiManagerRaw = uiGameObject->AddComponent<Rogalique::UiManager>();
-    uiManager = std::shared_ptr<UiManager>(uiManagerRaw);
+    // Item spawning
+    auto healthPotion = std::make_shared<HealthPotion>(ItemType::HEALTH_POTION, 2, sf::Vector2f(10, -100), "HealthItem");
+    items.push_back(healthPotion);
+    
+    auto armorItem = std::make_shared<ArmorItem>(ItemType::ARMOR, 1, sf::Vector2f(300, -100), "ArmorItem");
+    items.push_back(armorItem);
 
-    HUDGenerator hudGenerator(uiManager, this, player->GetGameObject());
-    hudGenerator.Generate();
+    auto ammoItem = std::make_shared<AmmoItem>(ItemType::AMMO, 5, sf::Vector2f(600, -100), "AmmoItem");
+    items.push_back(ammoItem);
+
+    auto weapon = std::make_shared<WeaponItem>(ItemType::WEAPON, 1, sf::Vector2f(900, -100), "WeaponItem");
+    items.push_back(weapon);
 }
 
 void DeveloperLevel::Restart() {
     Stop();
     Start();
-    LOG_INFO("!Restarted " << levelName);
 }
 
 void DeveloperLevel::Stop() {
-    LOG_INFO("!Stopped " << levelName);
     GameWorld::Instance()->Clear();
 }
 
-template <typename T>
-void DeveloperLevel::LoadObjectCheck(const std::shared_ptr<T>& object) {
-    if (object && object->GetGameObject()) {
-        LOG_INFO(object->GetGameObject()->GetName()
-                 << " declared at level: " << levelName);
-    } else {
-        LOG_WARN(object->GetGameObject()->GetName()
-                 << " not valid at level: " << levelName);
-    }
-}
 }  // namespace Rogalique

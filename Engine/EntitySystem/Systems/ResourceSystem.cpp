@@ -156,6 +156,34 @@ const sf::SoundBuffer* ResourceSystem::GetSound(const std::string& name) const {
     return sounds.find(name)->second;
 }
 
+void ResourceSystem::LoadFont(const std::string& name, std::string sourcePath) {
+
+    if (fonts.find(name) != fonts.end()) {
+        LOG_WARN("Sound already loaded: " << name);
+        return;
+    }
+
+    sf::Font* newFont = new sf::Font();
+
+    if (!newFont->loadFromFile(sourcePath)) {
+        LOG_ERROR("Failed to load font: " << sourcePath
+                                           << ", loading default font.");
+        if (!newFont->loadFromFile("Assets/Fonts/Roboto-Medium.ttf")) {
+            delete newFont;
+            throw std::runtime_error(
+                "Failed to load font and fallback default sound from: " +
+                sourcePath);
+        }
+    }
+
+    fonts.emplace(name, newFont);
+    LOG_INFO("Loading sound: " << name);
+}
+
+const sf::Font* ResourceSystem::GetFont(const std::string& name) const {
+    return fonts.find(name)->second;
+}
+
 void ResourceSystem::Clear() {
     LOG_INFO("Clearing... All Textures/TextureMaps");
     DeleteAllTextures();

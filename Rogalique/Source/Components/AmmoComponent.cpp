@@ -11,14 +11,12 @@ AmmoComponent::AmmoComponent(EngineCore::GameObject* gameObject)
 void AmmoComponent::Spending(int count) {
     if (currentAmmo > 0) {
         currentAmmo -= count;
-        // LOG_INFO("Spending ammo : " << currentAmmo)
     }
 }
 
 void AmmoComponent::AddAmmo(int count) {
     if (currentAmmo < maxAmmo) {
         currentAmmo += count;
-        // LOG_INFO("Add Ammo:" << currentAmmo)
     }
     if (count > maxAmmo - currentAmmo) {
         ammoInClip += count - (maxAmmo - currentAmmo);

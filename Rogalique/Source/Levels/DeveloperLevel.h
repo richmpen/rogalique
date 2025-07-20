@@ -6,8 +6,10 @@
 #include "Music.h"
 #include "Player.h"
 #include "Scene.h"
-#include "UiManager.h"
+#include "Ui/UiManager.h"
 #include "Wall.h"
+#include "Item.h"
+#include <memory>
 
 #include <array>
 #include <iostream>
@@ -27,10 +29,9 @@ class DeveloperLevel : public Scene {
     std::vector<std::unique_ptr<Floor>> floors;
     std::unordered_map<EnemyType, std::unique_ptr<EnemyFactory>> enemyFactories;
     std::vector<std::shared_ptr<Enemy>> enemys;
+    std::vector<std::shared_ptr<Item>> items;
 
    private:
-    template <typename T>
-    void LoadObjectCheck(const std::shared_ptr<T>& object);
 
     std::string levelName = "Developer Level";
     float levelWidth = 15;
@@ -39,9 +40,9 @@ class DeveloperLevel : public Scene {
     int indentMaze = -2;
 
     std::shared_ptr<Player> player;
-    std::shared_ptr<Music> music;
     std::shared_ptr<Wall> wall;
     std::shared_ptr<Floor> floor;
+    std::shared_ptr<Music> music;
     std::shared_ptr<UiManager> uiManager;
 };
 

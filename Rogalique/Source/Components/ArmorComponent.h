@@ -13,7 +13,8 @@ class ArmorComponent : public EngineCore::Component {
     int GetMaxArmor() const;
     void Update(float deltaTime) override;
     void Render() override;
-
+    void AddArmor(int count);
+    
    private:
     int armor = 0;
     int maxArmor = 0;

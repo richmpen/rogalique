@@ -23,9 +23,6 @@ void ObjectSpawner::Spawn(int count, EnemyType type,
         std::shared_ptr<Enemy> enemy =
             factory->CreateEnemy(spawnPos, target, damage, health, speed);
         if (enemy && enemy->GetGameObject()) {
-            LOG_INFO("Spawned " << enemy->GetGameObject()->GetName()
-                                << " at position (" << spawnPos.x << ", "
-                                << spawnPos.y << ")");
             level->enemys.push_back(std::move(enemy));
         } else {
             LOG_ERROR("Failed to spawn enemy: gameObject is nullptr");

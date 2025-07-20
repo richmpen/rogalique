@@ -2,6 +2,7 @@
 
 #include "Engine.h"
 
+#include "GameStateManager.h"
 #include "GameWorld.h"
 #include "RenderSystem.h"
 
@@ -26,16 +27,17 @@ void Engine::Run() {
     sf::Event event;
 
     LOG_INFO("Game started");
+    
 
     while (RenderSystem::Instance()->GetMainWindow().isOpen()) {
         sf::Time dt = gameClock.restart();
         float deltaTime = dt.asSeconds();
 
         while (RenderSystem::Instance()->GetMainWindow().pollEvent(event)) {
-            if (event.type == sf::Event::Closed ||
-                event.key.code == sf::Keyboard::Escape) {
+            if (event.type == sf::Event::Closed) {
                 RenderSystem::Instance()->GetMainWindow().close();
             }
+            GameStateManager::Instance()->HandleEvent(event);
         }
 
         if (!RenderSystem::Instance()->GetMainWindow().isOpen()) {
@@ -44,11 +46,17 @@ void Engine::Run() {
             break;
         }
 
+        GameStateManager::Instance()->Update(deltaTime);
+
         RenderSystem::Instance()->GetMainWindow().clear();
 
         GameWorld::Instance()->Update(deltaTime);
         GameWorld::Instance()->FixedUpdate(deltaTime);
+        
         GameWorld::Instance()->Render();
+        
+        GameStateManager::Instance()->Render();
+        
         GameWorld::Instance()->LateUpdate();
 
         RenderSystem::Instance()->GetMainWindow().display();

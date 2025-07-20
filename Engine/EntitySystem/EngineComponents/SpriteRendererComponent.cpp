@@ -44,6 +44,7 @@ void SpriteRendererComponent::Render() {
 }
 
 const sf::Sprite* SpriteRendererComponent::GetSprite() const { return sprite; }
+
 void SpriteRendererComponent::SetTexture(const sf::Texture& newTexture) {
     sprite->setTexture(newTexture);
     auto textureSize = sprite->getTexture()->getSize();

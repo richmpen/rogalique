@@ -11,6 +11,6 @@ std::shared_ptr<Enemy> CacodemonEnemyFactory::CreateEnemy(
 std::shared_ptr<Enemy> CreeperEnemyFactory::CreateEnemy(
     const EngineCore::Vector2Df& position, const TargetType& target, int damage,
     int health, float speed) {
-    return std::make_shared<Creeper>(position, target, damage, health, speed);
+    return std::make_shared<Demon>(position, target, damage, health, speed);
 }
 }  // namespace Rogalique

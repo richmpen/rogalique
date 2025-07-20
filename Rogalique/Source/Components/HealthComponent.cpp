@@ -18,20 +18,11 @@ void HealthComponent::TakeDamage(int damageValue) {
         auto armor = gameObject->GetComponent<ArmorComponent>();
         if (armor->GetArmor() <= 0) {
             SetHealth(GetHealth() - damageValue);
-            LOG_INFO(gameObject->GetName()
-                     << ": Get damage " << damageValue << ", Current health "
-                     << std::to_string(GetHealth()))
         } else {
             armor->TakeDamage(damageValue);
-            LOG_INFO(gameObject->GetName()
-                     << ": Get damage " << damageValue << ", Current armor "
-                     << std::to_string(armor->GetArmor()))
         }
     } else {
         SetHealth(GetHealth() - damageValue);
-        LOG_INFO(gameObject->GetName()
-                 << ": Get damage " << damageValue << ", Current health "
-                 << std::to_string(GetHealth()));
     }
     if (health <= 0) {
         Die();
@@ -48,8 +39,11 @@ void HealthComponent::SetMaxHealth(int newMaxHealth) {
 
 int HealthComponent::GetMaxHealth() const { return this->maxHealth; }
 
+void HealthComponent::AddHealth(int count) {
+    this->health = std::min(this->health + count, this->maxHealth); 
+}
+
 void HealthComponent::Die() const {
-    LOG_INFO(gameObject->GetName() << ": Die");
     EngineCore::GameWorld::Instance()->DestroyGameObject(this->gameObject);
 }
 

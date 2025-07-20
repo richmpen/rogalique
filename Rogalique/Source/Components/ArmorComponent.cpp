@@ -14,12 +14,13 @@ void ArmorComponent::Render() {}
 
 void ArmorComponent::TakeDamage(int damageValue) {
     SetArmor(GetArmor() - damageValue);
-    LOG_INFO(gameObject->GetName()
-             << ": Get damage " << damageValue << ", Current armor "
-             << std::to_string(GetArmor()))
 }
 
 void ArmorComponent::SetArmor(int newArmor) { this->armor = newArmor; }
+
+void ArmorComponent::AddArmor(int count) {
+    this->armor = std::min(this->armor + count, this->maxArmor);
+}
 
 int ArmorComponent::GetArmor() const { return this->armor; }
 
