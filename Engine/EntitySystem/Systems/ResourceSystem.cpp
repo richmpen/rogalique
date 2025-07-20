@@ -120,19 +120,6 @@ void ResourceSystem::DeleteSharedTextureMap(const std::string& name) {
 
 void ResourceSystem::LoadSound(const std::string& name,
                                std::string sourcePath) {
-    // if (sounds.find(name) != sounds.end())
-    // {
-    // 	LOG_WARN("Sound not found: " << name);
-    // 	return;
-    // }
-    //
-    // sf::SoundBuffer* newSound = new sf::SoundBuffer();
-    // if (newSound->loadFromFile(sourcePath))
-    // {
-    // 	LOG_INFO("Loading sound: " << name);
-    // 	sounds.emplace(name, newSound);
-    // }
-    ///////////
     if (sounds.find(name) != sounds.end()) {
         LOG_WARN("Sound already loaded: " << name);
         return;
@@ -167,6 +154,34 @@ void ResourceSystem::DeleteSound(const std::string& name) {
 
 const sf::SoundBuffer* ResourceSystem::GetSound(const std::string& name) const {
     return sounds.find(name)->second;
+}
+
+void ResourceSystem::LoadFont(const std::string& name, std::string sourcePath) {
+
+    if (fonts.find(name) != fonts.end()) {
+        LOG_WARN("Sound already loaded: " << name);
+        return;
+    }
+
+    sf::Font* newFont = new sf::Font();
+
+    if (!newFont->loadFromFile(sourcePath)) {
+        LOG_ERROR("Failed to load font: " << sourcePath
+                                           << ", loading default font.");
+        if (!newFont->loadFromFile("Assets/Fonts/Roboto-Medium.ttf")) {
+            delete newFont;
+            throw std::runtime_error(
+                "Failed to load font and fallback default sound from: " +
+                sourcePath);
+        }
+    }
+
+    fonts.emplace(name, newFont);
+    LOG_INFO("Loading sound: " << name);
+}
+
+const sf::Font* ResourceSystem::GetFont(const std::string& name) const {
+    return fonts.find(name)->second;
 }
 
 void ResourceSystem::Clear() {

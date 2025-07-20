@@ -9,7 +9,7 @@
 namespace Rogalique {
 FightComponent::FightComponent(EngineCore::GameObject* gameObject)
     : Component(gameObject) {
-    creeperExplosion = gameObject->GetComponent<CreeperExplosion>();
+    deathAnimation = gameObject->GetComponent<DeathAnimation>();
     healthComponent = gameObject->GetComponent<HealthComponent>();
     collider = gameObject->GetComponent<EngineCore::SpriteColliderComponent>();
     renderer = gameObject->GetComponent<EngineCore::SpriteRendererComponent>();
@@ -24,19 +24,15 @@ FightComponent::FightComponent(EngineCore::GameObject* gameObject)
         gameObject->RemoveComponent(this);
         return;
     }
-    if (creeperExplosion == nullptr) {
-        LOG_INFO("FightComponent: CreeperExplosion not present. This is fine.");
-    }
 
     collider->SubscribeCollision([this](EngineCore::Collision collision) {
         if (healthComponent->GetHealth() <= 0 || attackCooldown > 0.0f) return;
-
         EngineCore::ColliderComponent* otherCollider =
             (collision.GetFirst() == collider) ? collision.GetSecond()
                                                : collision.GetFirst();
 
         EngineCore::GameObject* otherObject = otherCollider->GetGameObject();
-
+        auto ammoComponent = otherObject->GetComponent<AmmoComponent>();
         FightComponent* otherFight =
             otherObject->GetComponent<FightComponent>();
 
@@ -45,13 +41,16 @@ FightComponent::FightComponent(EngineCore::GameObject* gameObject)
             otherFight->GetTargetType() != TargetType::None &&
             this->GetTargetType() != TargetType::None) {
             otherFight->healthComponent->TakeDamage(this->damage);
+            if (otherObject->GetComponent<AmmoComponent>() != 0) {
+                ammoComponent->Spending(damage);
+            }
             attackCooldown = SETTINGS.ATTACK_COOLDOWN_DURATION;
             flashTimer = SETTINGS.DAMAGE_FLASH_TIMER;
 
-            if (this->gameObject->GetComponent<CreeperExplosion>() != nullptr &&
+            if (this->gameObject->GetComponent<DeathAnimation>() != nullptr &&
                 otherObject->GetComponent<EngineCore::InputComponent>() !=
                     nullptr) {
-                creeperExplosion->StartCreeperExplosion();
+                deathAnimation->Start();
             }
         }
     });
@@ -59,7 +58,7 @@ FightComponent::FightComponent(EngineCore::GameObject* gameObject)
 
 void FightComponent::Update(float deltaTime) {
     if (flashTimer > 0.0f &&
-        gameObject->GetComponent<CreeperExplosion>() == nullptr) {
+        gameObject->GetComponent<DeathAnimation>() == nullptr) {
         flashTimer -= deltaTime;
         if (renderer && flashTimer > 0.0f) {
             renderer->SetColor(sf::Color(255, 0, 0));

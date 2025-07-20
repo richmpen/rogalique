@@ -2,18 +2,31 @@
 
 #include "GameWorld.h"
 
+#include "CameraComponent.h"
+
 namespace EngineCore {
+
+bool GameWorld::isPaused = false;
+
 GameWorld* GameWorld::Instance() {
     static GameWorld world;
     return &world;
 }
 
 void GameWorld::Update(float deltaTime) {
+    if (isPaused) {
+        return;
+    }
+    
     for (int i = 0; i < gameObjects.size(); i++) {
         gameObjects[i]->Update(deltaTime);
     }
 }
 void GameWorld::FixedUpdate(float deltaTime) {
+    if (isPaused) {
+        return;
+    }
+    
     fixedCounter += deltaTime;
     if (fixedCounter > PhysicsSystem::Instance()->GetFixedDeltaTime()) {
         fixedCounter -= PhysicsSystem::Instance()->GetFixedDeltaTime();
@@ -32,13 +45,11 @@ void GameWorld::LateUpdate() {
 }
 
 GameObject* GameWorld::CreateGameObject() {
-    // LOG_INFO("Creating new Unidentified Object");
     GameObject* newGameObject = new GameObject();
     gameObjects.push_back(newGameObject);
     return newGameObject;
 }
 GameObject* GameWorld::CreateGameObject(std::string name) {
-    // LOG_INFO("Creating new Object: " << name);
     GameObject* newGameObject = new GameObject(name);
     gameObjects.push_back(newGameObject);
     return newGameObject;
@@ -47,6 +58,15 @@ GameObject* GameWorld::CreateGameObject(std::string name) {
 GameObject* GameWorld::FindGameObjectByName(const std::string& name) {
     for (auto* gameObject : gameObjects) {
         if (gameObject->GetName() == name) {
+            return gameObject;
+        }
+    }
+    return nullptr;
+}
+
+GameObject* GameWorld::FindPlayer() {
+    for (auto* gameObject : gameObjects) {
+        if (gameObject->GetComponent<CameraComponent>() != nullptr) {
             return gameObject;
         }
     }

@@ -123,7 +123,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>SFML_STATIC;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)Source;$(ProjectDir)Assets;$(SolutionDir)SFML\SFML-2.5.1\include;$(SolutionDir)Engine\EntitySystem;$(SolutionDir)Engine\EntitySystem\Systems;$(SolutionDir)Engine\EntitySystem\EngineComponents;$(SolutionDir)Engine\Utils;$(SolutionDir)Engine\Math;$(SolutionDir)Engine\Core;$(ProjectDir)Source\Audio;$(ProjectDir)Source\Components;$(ProjectDir)Source\Core;$(ProjectDir)Source\Effects;$(ProjectDir)Source\Entities;$(ProjectDir)Source\Levels;$(ProjectDir)Source\Levels\LevelEntities;$(ProjectDir)Source\Logs;$(ProjectDir)Source\Rendering;$(ProjectDir)Source\Systems;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)Source;$(ProjectDir)Source\Ui;$(ProjectDir)Source\Ui\UiElements;$(ProjectDir)Assets;$(SolutionDir)SFML\SFML-2.5.1\include;$(SolutionDir)Engine\EntitySystem;$(SolutionDir)Engine\EntitySystem\Systems;$(SolutionDir)Engine\EntitySystem\EngineComponents;$(SolutionDir)Engine\Utils;$(SolutionDir)Engine\Math;$(SolutionDir)Engine\Core;$(ProjectDir)Source\Audio;$(ProjectDir)Source\Components;$(ProjectDir)Source\Core;$(ProjectDir)Source\Effects;$(ProjectDir)Source\Entities;$(ProjectDir)Source\Levels;$(ProjectDir)Source\Levels\LevelEntities;$(ProjectDir)Source\Logs;$(ProjectDir)Source\Rendering;$(ProjectDir)Source\Systems;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -160,40 +160,407 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Source\Entities\AmmoItem.cpp" />
+    <ClCompile Include="Source\Entities\ArmorItem.cpp" />
+    <ClCompile Include="Source\Entities\HealthPotion.cpp">
+      <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <Optimization>Disabled</Optimization>
+      <SupportJustMyCode>true</SupportJustMyCode>
+      <AssemblerOutput>NoListing</AssemblerOutput>
+      <AssemblerListingLocation>E:\_Rogalique\Rogalique\\x64\Debug\</AssemblerListingLocation>
+      <UndefineAllPreprocessorDefinitions>false</UndefineAllPreprocessorDefinitions>
+      <BrowseInformation>false</BrowseInformation>
+      <BrowseInformationFile>E:\_Rogalique\Rogalique\\x64\Debug\</BrowseInformationFile>
+      <CompileAs>Default</CompileAs>
+      <UseDynamicDebugging>false</UseDynamicDebugging>
+      <ConformanceMode>true</ConformanceMode>
+      <DiagnosticsFormat>Column</DiagnosticsFormat>
+      <DisableLanguageExtensions>false</DisableLanguageExtensions>
+      <ErrorReporting>Prompt</ErrorReporting>
+      <ExpandAttributedSource>false</ExpandAttributedSource>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <EnableASAN>false</EnableASAN>
+      <EnableFuzzer>false</EnableFuzzer>
+      <EnableFiberSafeOptimizations>false</EnableFiberSafeOptimizations>
+      <EnableEnhancedInstructionSet>NotSet</EnableEnhancedInstructionSet>
+      <EnableVectorLength>NotSet</EnableVectorLength>
+      <FloatingPointModel>Precise</FloatingPointModel>
+      <ForceConformanceInForLoopScope>true</ForceConformanceInForLoopScope>
+      <GenerateModuleDependencies>false</GenerateModuleDependencies>
+      <GenerateSourceDependencies>false</GenerateSourceDependencies>
+      <GenerateXMLDocumentationFiles>false</GenerateXMLDocumentationFiles>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <IntrinsicFunctions>false</IntrinsicFunctions>
+      <IgnoreStandardIncludePath>false</IgnoreStandardIncludePath>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard_C>Default</LanguageStandard_C>
+      <MinimalRebuild>false</MinimalRebuild>
+      <ModuleDependenciesFile>E:\_Rogalique\Rogalique\\x64\Debug\</ModuleDependenciesFile>
+      <ModuleOutputFile>E:\_Rogalique\Rogalique\\x64\Debug\</ModuleOutputFile>
+      <OmitDefaultLibName>false</OmitDefaultLibName>
+      <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+      <ObjectFileName>E:\_Rogalique\Rogalique\\x64\Debug\</ObjectFileName>
+      <CallingConvention>Cdecl</CallingConvention>
+      <ProgramDataBaseFileName>E:\_Rogalique\Rogalique\\x64\Debug\vc143.pdb</ProgramDataBaseFileName>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>E:\_Rogalique\Rogalique\\x64\Debug\Rogalique.pch</PrecompiledHeaderOutputFile>
+      <PreprocessToFile>false</PreprocessToFile>
+      <PreprocessKeepComments>false</PreprocessKeepComments>
+      <PreprocessSuppressLineNumbers>false</PreprocessSuppressLineNumbers>
+      <RemoveUnreferencedCodeData>true</RemoveUnreferencedCodeData>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+      <ShowIncludes>false</ShowIncludes>
+      <SourceDependenciesFile>E:\_Rogalique\Rogalique\\x64\Debug\</SourceDependenciesFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <BufferSecurityCheck>true</BufferSecurityCheck>
+      <SmallerTypeCheck>false</SmallerTypeCheck>
+      <SpectreMitigation>false</SpectreMitigation>
+      <StructMemberAlignment>Default</StructMemberAlignment>
+      <TrackerLogDirectory>E:\_Rogalique\Rogalique\\x64\Debug\Rogalique.tlog\</TrackerLogDirectory>
+      <TranslateIncludes>false</TranslateIncludes>
+      <MinimalRebuildFromTracking>true</MinimalRebuildFromTracking>
+      <TreatWarningAsError>false</TreatWarningAsError>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <UseFullPaths>true</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <XMLDocumentationFileName>E:\_Rogalique\Rogalique\\x64\Debug\</XMLDocumentationFileName>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <IntelJCCErratum>false</IntelJCCErratum>
+      <BuildStlModules>false</BuildStlModules>
+      <TreatAngleIncludeAsExternal>false</TreatAngleIncludeAsExternal>
+      <ExternalWarningLevel>InheritWarningLevel</ExternalWarningLevel>
+      <TreatExternalTemplatesAsInternal>true</TreatExternalTemplatesAsInternal>
+      <DisableAnalyzeExternal>false</DisableAnalyzeExternal>
+      <PreprocessorDefinitions>SFML_STATIC;_DEBUG;_CONSOLE;_UNICODE;UNICODE;</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>E:\_Rogalique\Rogalique\Source;E:\_Rogalique\Rogalique\Source\Ui;E:\_Rogalique\Rogalique\Source\Ui\UiElements;E:\_Rogalique\Rogalique\Assets;E:\_Rogalique\SFML\SFML-2.5.1\include;E:\_Rogalique\Engine\EntitySystem;E:\_Rogalique\Engine\EntitySystem\Systems;E:\_Rogalique\Engine\EntitySystem\EngineComponents;E:\_Rogalique\Engine\Utils;E:\_Rogalique\Engine\Math;E:\_Rogalique\Engine\Core;E:\_Rogalique\Rogalique\Source\Audio;E:\_Rogalique\Rogalique\Source\Components;E:\_Rogalique\Rogalique\Source\Core;E:\_Rogalique\Rogalique\Source\Effects;E:\_Rogalique\Rogalique\Source\Entities;E:\_Rogalique\Rogalique\Source\Levels;E:\_Rogalique\Rogalique\Source\Levels\LevelEntities;E:\_Rogalique\Rogalique\Source\Logs;E:\_Rogalique\Rogalique\Source\Rendering;E:\_Rogalique\Rogalique\Source\Systems;</AdditionalIncludeDirectories>
+      <LinkCompiled>true</LinkCompiled>
+    </ClCompile>
+    <ClCompile Include="Source\Entities\Item.cpp" />
+    <ClCompile Include="Source\Entities\WeaponItem.cpp" />
+    <ClCompile Include="Source\States\InventoryState.cpp" />
+    <ClCompile Include="Source\States\SettingsState.cpp" />
+    <ClCompile Include="Source\Systems\InventorySystem.cpp" />
+    <ClCompile Include="Source\Ui\UiElement.cpp">
+      <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <Optimization>Disabled</Optimization>
+      <SupportJustMyCode>true</SupportJustMyCode>
+      <AssemblerOutput>NoListing</AssemblerOutput>
+      <AssemblerListingLocation>E:\_Rogalique\Rogalique\\x64\Debug\</AssemblerListingLocation>
+      <UndefineAllPreprocessorDefinitions>false</UndefineAllPreprocessorDefinitions>
+      <BrowseInformation>false</BrowseInformation>
+      <BrowseInformationFile>E:\_Rogalique\Rogalique\\x64\Debug\</BrowseInformationFile>
+      <CompileAs>Default</CompileAs>
+      <UseDynamicDebugging>false</UseDynamicDebugging>
+      <ConformanceMode>true</ConformanceMode>
+      <DiagnosticsFormat>Column</DiagnosticsFormat>
+      <DisableLanguageExtensions>false</DisableLanguageExtensions>
+      <ErrorReporting>Prompt</ErrorReporting>
+      <ExpandAttributedSource>false</ExpandAttributedSource>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <EnableASAN>false</EnableASAN>
+      <EnableFuzzer>false</EnableFuzzer>
+      <EnableFiberSafeOptimizations>false</EnableFiberSafeOptimizations>
+      <EnableEnhancedInstructionSet>NotSet</EnableEnhancedInstructionSet>
+      <EnableVectorLength>NotSet</EnableVectorLength>
+      <FloatingPointModel>Precise</FloatingPointModel>
+      <ForceConformanceInForLoopScope>true</ForceConformanceInForLoopScope>
+      <GenerateModuleDependencies>false</GenerateModuleDependencies>
+      <GenerateSourceDependencies>false</GenerateSourceDependencies>
+      <GenerateXMLDocumentationFiles>false</GenerateXMLDocumentationFiles>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <IntrinsicFunctions>false</IntrinsicFunctions>
+      <IgnoreStandardIncludePath>false</IgnoreStandardIncludePath>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard_C>Default</LanguageStandard_C>
+      <MinimalRebuild>false</MinimalRebuild>
+      <ModuleDependenciesFile>E:\_Rogalique\Rogalique\\x64\Debug\</ModuleDependenciesFile>
+      <ModuleOutputFile>E:\_Rogalique\Rogalique\\x64\Debug\</ModuleOutputFile>
+      <OmitDefaultLibName>false</OmitDefaultLibName>
+      <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+      <ObjectFileName>E:\_Rogalique\Rogalique\\x64\Debug\</ObjectFileName>
+      <CallingConvention>Cdecl</CallingConvention>
+      <ProgramDataBaseFileName>E:\_Rogalique\Rogalique\\x64\Debug\vc143.pdb</ProgramDataBaseFileName>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>E:\_Rogalique\Rogalique\\x64\Debug\Rogalique.pch</PrecompiledHeaderOutputFile>
+      <PreprocessToFile>false</PreprocessToFile>
+      <PreprocessKeepComments>false</PreprocessKeepComments>
+      <PreprocessSuppressLineNumbers>false</PreprocessSuppressLineNumbers>
+      <RemoveUnreferencedCodeData>true</RemoveUnreferencedCodeData>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+      <ShowIncludes>false</ShowIncludes>
+      <SourceDependenciesFile>E:\_Rogalique\Rogalique\\x64\Debug\</SourceDependenciesFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <BufferSecurityCheck>true</BufferSecurityCheck>
+      <SmallerTypeCheck>false</SmallerTypeCheck>
+      <SpectreMitigation>false</SpectreMitigation>
+      <StructMemberAlignment>Default</StructMemberAlignment>
+      <TrackerLogDirectory>E:\_Rogalique\Rogalique\\x64\Debug\Rogalique.tlog\</TrackerLogDirectory>
+      <TranslateIncludes>false</TranslateIncludes>
+      <MinimalRebuildFromTracking>true</MinimalRebuildFromTracking>
+      <TreatWarningAsError>false</TreatWarningAsError>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <UseFullPaths>true</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <XMLDocumentationFileName>E:\_Rogalique\Rogalique\\x64\Debug\</XMLDocumentationFileName>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <IntelJCCErratum>false</IntelJCCErratum>
+      <BuildStlModules>false</BuildStlModules>
+      <TreatAngleIncludeAsExternal>false</TreatAngleIncludeAsExternal>
+      <ExternalWarningLevel>InheritWarningLevel</ExternalWarningLevel>
+      <TreatExternalTemplatesAsInternal>true</TreatExternalTemplatesAsInternal>
+      <DisableAnalyzeExternal>false</DisableAnalyzeExternal>
+      <PreprocessorDefinitions>SFML_STATIC;_DEBUG;_CONSOLE;_UNICODE;UNICODE;</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>E:\_Rogalique\Rogalique\Source;E:\_Rogalique\Rogalique\Source\Ui;E:\_Rogalique\Rogalique\Source\Ui\UiElements;E:\_Rogalique\Rogalique\Assets;E:\_Rogalique\SFML\SFML-2.5.1\include;E:\_Rogalique\Engine\EntitySystem;E:\_Rogalique\Engine\EntitySystem\Systems;E:\_Rogalique\Engine\EntitySystem\EngineComponents;E:\_Rogalique\Engine\Utils;E:\_Rogalique\Engine\Math;E:\_Rogalique\Engine\Core;E:\_Rogalique\Rogalique\Source\Audio;E:\_Rogalique\Rogalique\Source\Components;E:\_Rogalique\Rogalique\Source\Core;E:\_Rogalique\Rogalique\Source\Effects;E:\_Rogalique\Rogalique\Source\Entities;E:\_Rogalique\Rogalique\Source\Levels;E:\_Rogalique\Rogalique\Source\Levels\LevelEntities;E:\_Rogalique\Rogalique\Source\Logs;E:\_Rogalique\Rogalique\Source\Rendering;E:\_Rogalique\Rogalique\Source\Systems;</AdditionalIncludeDirectories>
+      <LinkCompiled>true</LinkCompiled>
+      <LibCompiled>true</LibCompiled>
+    </ClCompile>
+    <ClCompile Include="Source\Ui\UiElements\AmmoBarUI.cpp" />
+    <ClCompile Include="Source\Ui\UiElements\ArmorBarUI.cpp" />
+    <ClCompile Include="Source\Ui\UiElements\CheckBoxUI.cpp" />
+    <ClCompile Include="Source\Ui\UiElements\HealthBarUI.cpp" />
+    <ClCompile Include="Source\Ui\UiElements\ImageUI.cpp" />
+    <ClCompile Include="Source\Ui\UiElements\DragDropManager.cpp" />
+    <ClCompile Include="Source\Ui\UiElements\ProgressBarUI.cpp" />
+    <ClCompile Include="Source\Ui\UiElements\QuickSlotsUI.cpp" />
+    <ClCompile Include="Source\Ui\UiElements\TabsUI.cpp" />
     <ClCompile Include="Source\Audio\Music.cpp" />
+    <ClCompile Include="Source\Components\AmmoComponent.cpp" />
+    <ClCompile Include="Source\Components\ArmorComponent.cpp" />
     <ClCompile Include="Source\Components\DirectionComponent.cpp" />
     <ClCompile Include="Source\Components\EnemyAIComponent.cpp" />
     <ClCompile Include="Source\Components\FightComponent.cpp" />
     <ClCompile Include="Source\Components\HealthComponent.cpp" />
+    <ClCompile Include="Source\Ui\UiElements\ButtonUI.cpp" />
     <ClCompile Include="Source\Core\GameMain.cpp" />
-    <ClCompile Include="Source\Effects\CreeperExplosion.cpp" />
+    <ClCompile Include="Source\Effects\DeathAnimation.cpp" />
     <ClCompile Include="Source\Entities\Enemy.cpp" />
     <ClCompile Include="Source\Entities\Player.cpp" />
     <ClCompile Include="Source\Levels\DeveloperLevel.cpp" />
     <ClCompile Include="Source\Levels\LevelEntities\Floor.cpp" />
     <ClCompile Include="Source\Levels\LevelEntities\Wall.cpp" />
     <ClCompile Include="Source\Rendering\Sprite.cpp" />
+    <ClCompile Include="Source\Rendering\Text.cpp" />
+    <ClCompile Include="Source\States\GameOverState.cpp" />
+    <ClCompile Include="Source\States\MainMenuState.cpp" />
+    <ClCompile Include="Source\States\PauseState.cpp" />
+    <ClCompile Include="Source\States\PlayState.cpp" />
+    <ClCompile Include="Source\States\WictoryState.cpp" />
     <ClCompile Include="Source\Systems\EnemyFactory.cpp" />
+    <ClCompile Include="Source\Systems\HUDGenerator.cpp">
+      <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <Optimization>Disabled</Optimization>
+      <SupportJustMyCode>true</SupportJustMyCode>
+      <AssemblerOutput>NoListing</AssemblerOutput>
+      <AssemblerListingLocation>E:\_Rogalique\Rogalique\\x64\Debug\</AssemblerListingLocation>
+      <UndefineAllPreprocessorDefinitions>false</UndefineAllPreprocessorDefinitions>
+      <BrowseInformation>false</BrowseInformation>
+      <BrowseInformationFile>E:\_Rogalique\Rogalique\\x64\Debug\</BrowseInformationFile>
+      <CompileAs>Default</CompileAs>
+      <UseDynamicDebugging>false</UseDynamicDebugging>
+      <ConformanceMode>true</ConformanceMode>
+      <DiagnosticsFormat>Column</DiagnosticsFormat>
+      <DisableLanguageExtensions>false</DisableLanguageExtensions>
+      <ErrorReporting>Prompt</ErrorReporting>
+      <ExpandAttributedSource>false</ExpandAttributedSource>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <EnableASAN>false</EnableASAN>
+      <EnableFuzzer>false</EnableFuzzer>
+      <EnableFiberSafeOptimizations>false</EnableFiberSafeOptimizations>
+      <EnableEnhancedInstructionSet>NotSet</EnableEnhancedInstructionSet>
+      <EnableVectorLength>NotSet</EnableVectorLength>
+      <FloatingPointModel>Precise</FloatingPointModel>
+      <ForceConformanceInForLoopScope>true</ForceConformanceInForLoopScope>
+      <GenerateModuleDependencies>false</GenerateModuleDependencies>
+      <GenerateSourceDependencies>false</GenerateSourceDependencies>
+      <GenerateXMLDocumentationFiles>false</GenerateXMLDocumentationFiles>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <IntrinsicFunctions>false</IntrinsicFunctions>
+      <IgnoreStandardIncludePath>false</IgnoreStandardIncludePath>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard_C>Default</LanguageStandard_C>
+      <MinimalRebuild>false</MinimalRebuild>
+      <ModuleDependenciesFile>E:\_Rogalique\Rogalique\\x64\Debug\</ModuleDependenciesFile>
+      <ModuleOutputFile>E:\_Rogalique\Rogalique\\x64\Debug\</ModuleOutputFile>
+      <OmitDefaultLibName>false</OmitDefaultLibName>
+      <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+      <ObjectFileName>E:\_Rogalique\Rogalique\\x64\Debug\</ObjectFileName>
+      <CallingConvention>Cdecl</CallingConvention>
+      <ProgramDataBaseFileName>E:\_Rogalique\Rogalique\\x64\Debug\vc143.pdb</ProgramDataBaseFileName>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>E:\_Rogalique\Rogalique\\x64\Debug\Rogalique.pch</PrecompiledHeaderOutputFile>
+      <PreprocessToFile>false</PreprocessToFile>
+      <PreprocessKeepComments>false</PreprocessKeepComments>
+      <PreprocessSuppressLineNumbers>false</PreprocessSuppressLineNumbers>
+      <RemoveUnreferencedCodeData>true</RemoveUnreferencedCodeData>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+      <ShowIncludes>false</ShowIncludes>
+      <SourceDependenciesFile>E:\_Rogalique\Rogalique\\x64\Debug\</SourceDependenciesFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <BufferSecurityCheck>true</BufferSecurityCheck>
+      <SmallerTypeCheck>false</SmallerTypeCheck>
+      <SpectreMitigation>false</SpectreMitigation>
+      <StructMemberAlignment>Default</StructMemberAlignment>
+      <TrackerLogDirectory>E:\_Rogalique\Rogalique\\x64\Debug\Rogalique.tlog\</TrackerLogDirectory>
+      <TranslateIncludes>false</TranslateIncludes>
+      <MinimalRebuildFromTracking>true</MinimalRebuildFromTracking>
+      <TreatWarningAsError>false</TreatWarningAsError>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <UseFullPaths>true</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <XMLDocumentationFileName>E:\_Rogalique\Rogalique\\x64\Debug\</XMLDocumentationFileName>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <IntelJCCErratum>false</IntelJCCErratum>
+      <BuildStlModules>false</BuildStlModules>
+      <TreatAngleIncludeAsExternal>false</TreatAngleIncludeAsExternal>
+      <ExternalWarningLevel>InheritWarningLevel</ExternalWarningLevel>
+      <TreatExternalTemplatesAsInternal>true</TreatExternalTemplatesAsInternal>
+      <DisableAnalyzeExternal>false</DisableAnalyzeExternal>
+      <PreprocessorDefinitions>SFML_STATIC;_DEBUG;_CONSOLE;_UNICODE;UNICODE;</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>E:\_Rogalique\Rogalique\Source;E:\_Rogalique\Rogalique\Assets;E:\_Rogalique\SFML\SFML-2.5.1\include;E:\_Rogalique\Engine\EntitySystem;E:\_Rogalique\Engine\EntitySystem\Systems;E:\_Rogalique\Engine\EntitySystem\EngineComponents;E:\_Rogalique\Engine\Utils;E:\_Rogalique\Engine\Math;E:\_Rogalique\Engine\Core;E:\_Rogalique\Rogalique\Source\Audio;E:\_Rogalique\Rogalique\Source\Components;E:\_Rogalique\Rogalique\Source\Core;E:\_Rogalique\Rogalique\Source\Effects;E:\_Rogalique\Rogalique\Source\Entities;E:\_Rogalique\Rogalique\Source\Levels;E:\_Rogalique\Rogalique\Source\Levels\LevelEntities;E:\_Rogalique\Rogalique\Source\Logs;E:\_Rogalique\Rogalique\Source\Rendering;E:\_Rogalique\Rogalique\Source\Systems;</AdditionalIncludeDirectories>
+      <LinkCompiled>true</LinkCompiled>
+    </ClCompile>
     <ClCompile Include="Source\Systems\MazeGenerator.cpp" />
     <ClCompile Include="Source\Systems\ObjectSpawner.cpp" />
+    <ClCompile Include="Source\Ui\UiElements\TextUI.cpp" />
+    <ClCompile Include="Source\Ui\UiManager.cpp">
+      <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <Optimization>Disabled</Optimization>
+      <SupportJustMyCode>true</SupportJustMyCode>
+      <AssemblerOutput>NoListing</AssemblerOutput>
+      <AssemblerListingLocation>E:\_Rogalique\Rogalique\\x64\Debug\</AssemblerListingLocation>
+      <UndefineAllPreprocessorDefinitions>false</UndefineAllPreprocessorDefinitions>
+      <BrowseInformation>false</BrowseInformation>
+      <BrowseInformationFile>E:\_Rogalique\Rogalique\\x64\Debug\</BrowseInformationFile>
+      <CompileAs>Default</CompileAs>
+      <UseDynamicDebugging>false</UseDynamicDebugging>
+      <ConformanceMode>true</ConformanceMode>
+      <DiagnosticsFormat>Column</DiagnosticsFormat>
+      <DisableLanguageExtensions>false</DisableLanguageExtensions>
+      <ErrorReporting>Prompt</ErrorReporting>
+      <ExpandAttributedSource>false</ExpandAttributedSource>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <EnableASAN>false</EnableASAN>
+      <EnableFuzzer>false</EnableFuzzer>
+      <EnableFiberSafeOptimizations>false</EnableFiberSafeOptimizations>
+      <EnableEnhancedInstructionSet>NotSet</EnableEnhancedInstructionSet>
+      <EnableVectorLength>NotSet</EnableVectorLength>
+      <FloatingPointModel>Precise</FloatingPointModel>
+      <ForceConformanceInForLoopScope>true</ForceConformanceInForLoopScope>
+      <GenerateModuleDependencies>false</GenerateModuleDependencies>
+      <GenerateSourceDependencies>false</GenerateSourceDependencies>
+      <GenerateXMLDocumentationFiles>false</GenerateXMLDocumentationFiles>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <IntrinsicFunctions>false</IntrinsicFunctions>
+      <IgnoreStandardIncludePath>false</IgnoreStandardIncludePath>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard_C>Default</LanguageStandard_C>
+      <MinimalRebuild>false</MinimalRebuild>
+      <ModuleDependenciesFile>E:\_Rogalique\Rogalique\\x64\Debug\</ModuleDependenciesFile>
+      <ModuleOutputFile>E:\_Rogalique\Rogalique\\x64\Debug\</ModuleOutputFile>
+      <OmitDefaultLibName>false</OmitDefaultLibName>
+      <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+      <ObjectFileName>E:\_Rogalique\Rogalique\\x64\Debug\</ObjectFileName>
+      <CallingConvention>Cdecl</CallingConvention>
+      <ProgramDataBaseFileName>E:\_Rogalique\Rogalique\\x64\Debug\vc143.pdb</ProgramDataBaseFileName>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>E:\_Rogalique\Rogalique\\x64\Debug\Rogalique.pch</PrecompiledHeaderOutputFile>
+      <PreprocessToFile>false</PreprocessToFile>
+      <PreprocessKeepComments>false</PreprocessKeepComments>
+      <PreprocessSuppressLineNumbers>false</PreprocessSuppressLineNumbers>
+      <RemoveUnreferencedCodeData>true</RemoveUnreferencedCodeData>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+      <ShowIncludes>false</ShowIncludes>
+      <SourceDependenciesFile>E:\_Rogalique\Rogalique\\x64\Debug\</SourceDependenciesFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <BufferSecurityCheck>true</BufferSecurityCheck>
+      <SmallerTypeCheck>false</SmallerTypeCheck>
+      <SpectreMitigation>false</SpectreMitigation>
+      <StructMemberAlignment>Default</StructMemberAlignment>
+      <TrackerLogDirectory>E:\_Rogalique\Rogalique\\x64\Debug\Rogalique.tlog\</TrackerLogDirectory>
+      <TranslateIncludes>false</TranslateIncludes>
+      <MinimalRebuildFromTracking>true</MinimalRebuildFromTracking>
+      <TreatWarningAsError>false</TreatWarningAsError>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <UseFullPaths>true</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <XMLDocumentationFileName>E:\_Rogalique\Rogalique\\x64\Debug\</XMLDocumentationFileName>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <IntelJCCErratum>false</IntelJCCErratum>
+      <BuildStlModules>false</BuildStlModules>
+      <TreatAngleIncludeAsExternal>false</TreatAngleIncludeAsExternal>
+      <ExternalWarningLevel>InheritWarningLevel</ExternalWarningLevel>
+      <TreatExternalTemplatesAsInternal>true</TreatExternalTemplatesAsInternal>
+      <DisableAnalyzeExternal>false</DisableAnalyzeExternal>
+      <PreprocessorDefinitions>SFML_STATIC;_DEBUG;_CONSOLE;_UNICODE;UNICODE;</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>E:\_Rogalique\Rogalique\Source;E:\_Rogalique\Rogalique\Source\Ui;E:\_Rogalique\Rogalique\Source\Ui\UiElements;E:\_Rogalique\Rogalique\Assets;E:\_Rogalique\SFML\SFML-2.5.1\include;E:\_Rogalique\Engine\EntitySystem;E:\_Rogalique\Engine\EntitySystem\Systems;E:\_Rogalique\Engine\EntitySystem\EngineComponents;E:\_Rogalique\Engine\Utils;E:\_Rogalique\Engine\Math;E:\_Rogalique\Engine\Core;E:\_Rogalique\Rogalique\Source\Audio;E:\_Rogalique\Rogalique\Source\Components;E:\_Rogalique\Rogalique\Source\Core;E:\_Rogalique\Rogalique\Source\Effects;E:\_Rogalique\Rogalique\Source\Entities;E:\_Rogalique\Rogalique\Source\Levels;E:\_Rogalique\Rogalique\Source\Levels\LevelEntities;E:\_Rogalique\Rogalique\Source\Logs;E:\_Rogalique\Rogalique\Source\Rendering;E:\_Rogalique\Rogalique\Source\Systems;</AdditionalIncludeDirectories>
+      <LinkCompiled>true</LinkCompiled>
+      <LibCompiled>true</LibCompiled>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Source\Entities\AmmoItem.h" />
+    <ClInclude Include="Source\Entities\ArmorItem.h" />
+    <ClInclude Include="Source\Entities\HealthPotion.h" />
+    <ClInclude Include="Source\Entities\Item.h" />
+    <ClInclude Include="Source\Entities\WeaponItem.h" />
+    <ClInclude Include="Source\States\InventoryState.h" />
+    <ClInclude Include="Source\States\SettingsState.h" />
+    <ClInclude Include="Source\Systems\InventorySystem.h" />
+    <ClInclude Include="Source\Systems\ItemType.h" />
+    <ClInclude Include="Source\Ui\UiElement.h" />
+    <ClInclude Include="Source\Ui\UiElements\AmmoBarUI.h" />
+    <ClInclude Include="Source\Ui\UiElements\ArmorBarUI.h" />
+    <ClInclude Include="Source\Ui\UiElements\CheckBoxUI.h" />
+    <ClInclude Include="Source\Ui\UiElements\DragDropManager.h" />
+    <ClInclude Include="Source\Ui\UiElements\HealthBarUI.h" />
+    <ClInclude Include="Source\Ui\UiElements\ImageUI.h" />
+    <ClInclude Include="Source\Ui\UiElements\ProgressBarUI.h" />
+    <ClInclude Include="Source\Ui\UiElements\QuickSlotsUI.h" />
+    <ClInclude Include="Source\Ui\UiElements\TabsUI.h" />
     <ClInclude Include="Source\Audio\Music.h" />
+    <ClInclude Include="Source\Components\AmmoComponent.h" />
+    <ClInclude Include="Source\Components\ArmorComponent.h" />
     <ClInclude Include="Source\Components\DirectionComponent.h" />
     <ClInclude Include="Source\Components\EnemyAIComponent.h" />
     <ClInclude Include="Source\Components\FightComponent.h" />
     <ClInclude Include="Source\Components\HealthComponent.h" />
+    <ClInclude Include="Source\Ui\UiElements\ButtonUI.h" />
     <ClInclude Include="Source\Core\GameSettings.h" />
-    <ClInclude Include="Source\Effects\CreeperExplosion.h" />
+    <ClInclude Include="Source\Effects\DeathAnimation.h" />
     <ClInclude Include="Source\Entities\Enemy.h" />
     <ClInclude Include="Source\Entities\Player.h" />
     <ClInclude Include="Source\Levels\DeveloperLevel.h" />
     <ClInclude Include="Source\Levels\LevelEntities\Floor.h" />
     <ClInclude Include="Source\Levels\LevelEntities\Wall.h" />
     <ClInclude Include="Source\Rendering\Sprite.h" />
+    <ClInclude Include="Source\Rendering\Text.h" />
+    <ClInclude Include="Source\States\GameOverState.h" />
+    <ClInclude Include="Source\States\MainMenuState.h" />
+    <ClInclude Include="Source\States\PauseState.h" />
+    <ClInclude Include="Source\States\PlayState.h" />
+    <ClInclude Include="Source\States\WictoryState.h" />
     <ClInclude Include="Source\Systems\EnemyFactory.h" />
+    <ClInclude Include="Source\Systems\HUDGenerator.h" />
     <ClInclude Include="Source\Systems\MazeGenerator.h" />
     <ClInclude Include="Source\Systems\ObjectSpawner.h" />
+    <ClInclude Include="Source\Ui\UiElements\TextUI.h" />
+    <ClInclude Include="Source\Ui\UiManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Engine\Engine.vcxproj">

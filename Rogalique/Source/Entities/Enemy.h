@@ -27,10 +27,10 @@ class Cacodemon : public Enemy {
     ~Cacodemon() {}
 };
 
-class Creeper : public Enemy {
+class Demon : public Enemy {
    public:
-    Creeper(const EngineCore::Vector2Df& position, const TargetType& target,
+    Demon(const EngineCore::Vector2Df& position, const TargetType& target,
             int damage, int health, float speed);
-    ~Creeper() {}
+    ~Demon() {}
 };
 }  // namespace Rogalique

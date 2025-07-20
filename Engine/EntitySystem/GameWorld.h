@@ -16,6 +16,7 @@ class GameWorld {
     GameObject* CreateGameObject();
     GameObject* CreateGameObject(std::string name);
     GameObject* FindGameObjectByName(const std::string& name);
+    GameObject* FindPlayer();
     void DestroyGameObject(GameObject* gameObject);
     void Clear();
 
@@ -24,6 +25,9 @@ class GameWorld {
     const std::vector<GameObject*>& GetAllGameObjects() const {
         return gameObjects;
     }
+    
+    static void SetPaused(bool paused) { isPaused = paused; }
+    static bool IsPaused() { return isPaused; }
 
    private:
     GameWorld() {}
@@ -33,6 +37,7 @@ class GameWorld {
     GameWorld& operator=(GameWorld const&) = delete;
 
     float fixedCounter = 0.f;
+    static bool isPaused;
 
     std::vector<GameObject*> gameObjects = {};
     std::vector<GameObject*> markedToDestroyGameObjects = {};

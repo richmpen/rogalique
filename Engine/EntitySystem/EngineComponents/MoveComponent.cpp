@@ -2,15 +2,13 @@
 
 #include "MoveComponent.h"
 
+#include "GameWorld.h"
+
 namespace EngineCore {
 MoveComponent::MoveComponent(GameObject* gameObject) : Component(gameObject) {
     input = gameObject->GetComponent<InputComponent>();
     transform = gameObject->GetComponent<TransformComponent>();
-    if (input == nullptr) {
-        LOG_ERROR("MoveComponent required to InputComponent.");
-        gameObject->RemoveComponent(this);
-        return;
-    }
+
     if (transform == nullptr) {
         LOG_ERROR("MoveComponent required to TransformComponent.");
         gameObject->RemoveComponent(this);
@@ -18,10 +16,19 @@ MoveComponent::MoveComponent(GameObject* gameObject) : Component(gameObject) {
     }
 }
 
+float MoveComponent::GetAccelerationSquared() const {
+    return acceleration.x * acceleration.x + acceleration.y * acceleration.y;
+}
+
 void MoveComponent::Update(float deltaTime) {
-    transform->MoveBy(
-        speed * deltaTime *
-        Vector2Df{input->GetHorizontalAxis(), input->GetVerticalAxis()});
+    if (gameObject->GetComponent<InputComponent>() != 0) {
+        transform->MoveBy(
+            speed * deltaTime *
+            Vector2Df{input->GetHorizontalAxis(), input->GetVerticalAxis()});
+    }
+
+    acceleration = transform->GetWorldPosition() - previousPosition;
+    previousPosition = transform->GetWorldPosition();
 }
 
 void MoveComponent::Render() {}

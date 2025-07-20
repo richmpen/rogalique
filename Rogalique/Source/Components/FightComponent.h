@@ -1,6 +1,7 @@
 ﻿#pragma once
+#include "AmmoComponent.h"
 #include "Component.h"
-#include "CreeperExplosion.h"
+#include "DeathAnimation.h"
 #include "HealthComponent.h"
 #include "SpriteColliderComponent.h"
 #include "SpriteRendererComponent.h"
@@ -38,7 +39,7 @@ class FightComponent : public EngineCore::Component {
     HealthComponent* healthComponent;
     EngineCore::SpriteColliderComponent* collider;
     EngineCore::SpriteRendererComponent* renderer;
-    CreeperExplosion* creeperExplosion;
+    DeathAnimation* deathAnimation;
 };
 
 }  // namespace Rogalique

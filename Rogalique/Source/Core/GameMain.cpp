@@ -1,9 +1,13 @@
 ﻿#include "DeveloperLevel.h"
 #include "Engine.h"
 #include "GameSettings.h"
+#include "GameStateManager.h"
 #include "Matrix2D.h"
 #include "Player.h"
 #include "ResourceSystem.h"
+#include "States/InventoryState.h"
+#include "States/MainMenuState.h"
+
 
 #include <SFML/Graphics.hpp>
 
@@ -16,41 +20,65 @@ int main() {
         sf::VideoMode(SETTINGS.SCREEN_WIDTH, SETTINGS.SCREEN_HEIGHT),
         SETTINGS.GAME_NAME));
 
-    EngineCore::ResourceSystem::Instance()->LoadTexture(
-        "player", SETTINGS.TEXTURES_PATH + "player.png");
-    EngineCore::ResourceSystem::Instance()->LoadSound(
-        "MetalHell", SETTINGS.SOUNDS_PATH + "MetalHell.wav");
-    EngineCore::ResourceSystem::Instance()->LoadTexture(
+    //Load Textures
+    ResourceSystem::Instance()->LoadTexture(
         "floor", SETTINGS.TEXTURES_PATH + "floor.png");
-    EngineCore::ResourceSystem::Instance()->LoadTexture(
+    ResourceSystem::Instance()->LoadTexture(
         "wall", SETTINGS.TEXTURES_PATH + "wall.png");
-    EngineCore::ResourceSystem::Instance()->LoadTexture(
-        "cacodemon", SETTINGS.TEXTURES_PATH + "cacodemon.png");
-    EngineCore::ResourceSystem::Instance()->LoadTexture(
-        "creeper", SETTINGS.TEXTURES_PATH + "creeper.png");
-    EngineCore::ResourceSystem::Instance()->LoadTexture(
+    ResourceSystem::Instance()->LoadTexture(
         "creeperExplosion", SETTINGS.TEXTURES_PATH + "creeperExplosion.png");
-    auto developerLevel = std::make_shared<DeveloperLevel>();
-    developerLevel->Start();
+    ResourceSystem::Instance()->LoadTexture(
+                "menu_bg", SETTINGS.TEXTURES_PATH + "menuBackground.png");
+    ResourceSystem::Instance()->LoadTexture(
+                "logo", SETTINGS.TEXTURES_PATH + "logo.png");
+    ResourceSystem::Instance()->LoadTexture(
+                "inventoryPanelMap", SETTINGS.TEXTURES_PATH + "inventoryPanelMap.png");
+    ResourceSystem::Instance()->LoadTexture(
+                "HealthItem", SETTINGS.TEXTURES_PATH + "PotionRed.png");
+    ResourceSystem::Instance()->LoadTexture(
+        "ArmorItem", SETTINGS.TEXTURES_PATH + "PotionGreen.png");
+    ResourceSystem::Instance()->LoadTexture(
+        "AmmoItem", SETTINGS.TEXTURES_PATH + "Backpack.png");
+    ResourceSystem::Instance()->LoadTexture(
+        "WeaponItem", SETTINGS.TEXTURES_PATH + "SwordT2.png");
+    ResourceSystem::Instance()->LoadTexture(
+        "UiMap", SETTINGS.TEXTURES_PATH + "UiMap.png");
+    ResourceSystem::Instance()->LoadTexture(
+        "UiMap2", SETTINGS.TEXTURES_PATH + "UiMap2.png");
+    ResourceSystem::Instance()->LoadTexture(
+        "panel", SETTINGS.TEXTURES_PATH + "Panel.png");
 
-    /*EngineCore::Matrix2D zeroMatrix;
-    zeroMatrix.Print();*/
+    //Load TextureMaps
+    ResourceSystem::Instance()->LoadTextureMap(
+        "playerTMALL", SETTINGS.TEXTURE_MAP_PATH + "PlayerTMALL.png", {64, 64},
+        20, true);
+    ResourceSystem::Instance()->LoadTextureMap(
+        "explosionTM", SETTINGS.TEXTURE_MAP_PATH + "explosionTM.png", {64, 64},
+        5, true);
+    ResourceSystem::Instance()->LoadTextureMap(
+        "cacodemonTM", SETTINGS.TEXTURE_MAP_PATH + "cacodemon.png", {64, 64}, 6,
+        true);
+    ResourceSystem::Instance()->LoadTextureMap(
+    "demonWalk", SETTINGS.TEXTURE_MAP_PATH + "Demon_Walking.png", {64,64},3,true);
+    ResourceSystem::Instance()->LoadTextureMap(
+    "demonDeath", SETTINGS.TEXTURE_MAP_PATH + "Demon_Death.png", {64,64},6,true);
 
-    /*EngineCore::Matrix2D translationMatrix =
-    EngineCore::Matrix2D(Vector2Df(12.f, 5.f), 0.f, Vector2Df(1.f, 1.f));
-    translationMatrix.Print();
-
-    EngineCore::Matrix2D rotationMatrix = EngineCore::Matrix2D(Vector2Df(0.f,
-    0.f), 90.f, Vector2Df(1.f, 1.f)); rotationMatrix.Print();
-
-    (rotationMatrix * translationMatrix).Print();
-
-    EngineCore::Matrix2D someMatrix =
-    EngineCore::Matrix2D(Vector2Df(13.f, 25.f), 90.f, Vector2Df(1.5f, 1.f));
-    someMatrix.Print();
-
-    (someMatrix * someMatrix.GetInversed()).Print();*/
-
+    //Load Sounds
+    ResourceSystem::Instance()->LoadSound(
+        "MetalHell", SETTINGS.SOUNDS_PATH + "MetalHell.wav");
+    
+    
+    //Load Fonts
+    ResourceSystem::Instance()->LoadFont(
+                "normalFont", SETTINGS.FONTS_PATH + "EternalUiRegular-BWZGd.ttf");
+    ResourceSystem::Instance()->LoadFont(
+                "boldFont", SETTINGS.FONTS_PATH + "EternalUiBold-Rpj0A.ttf");
+    
+    //First State load
+    GameStateManager::Instance()->ChangeState(
+        std::make_shared<MainMenuState>()
+    );
+  
     EngineCore::Engine::Instance()->Run();
 
     return 0;

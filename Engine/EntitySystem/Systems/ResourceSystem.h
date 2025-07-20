@@ -30,12 +30,15 @@ class ResourceSystem {
     void DeleteSound(const std::string& name);
     const sf::SoundBuffer* GetSound(const std::string& name) const;
 
+    void LoadFont(const std::string& name, std::string sourcePath);
+    const sf::Font* GetFont(const std::string& name) const;
     void Clear();
 
    private:
     std::map<std::string, sf::Texture*> textures;
     std::map<std::string, std::vector<sf::Texture*>> textureMaps;
     std::map<std::string, sf::SoundBuffer*> sounds;
+    std::map<std::string, sf::Font*> fonts;
 
     ResourceSystem() {}
     ~ResourceSystem() {}
