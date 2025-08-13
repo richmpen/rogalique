@@ -1,22 +1,22 @@
 ﻿#pragma once
 #include "ButtonUI.h"
-#include "GameState.h"
-#include "ButtonUI.h"
 #include "DeveloperLevel.h"
+#include "GameState.h"
 #include "ImageUI.h"
 #include "PlayState.h"
 #include "UiManager.h"
 
 namespace Rogalique {
 class PauseState : public EngineCore::GameState {
-    public:
+   public:
     PauseState();
-    ~PauseState();
+    ~PauseState() override;
 
     void Update(float deltaTime) override;
     void Render() override;
     void HandleEvent(const sf::Event& event) override;
-    private:
+
+   private:
     void CreateUI();
     std::unique_ptr<DeveloperLevel> currentLevel;
     std::shared_ptr<UiManager> uiManager;
@@ -25,4 +25,4 @@ class PauseState : public EngineCore::GameState {
     std::shared_ptr<ButtonUI> backToMenuButton;
     std::shared_ptr<PlayState> pause;
 };
-}
+}  // namespace Rogalique

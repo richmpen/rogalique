@@ -11,6 +11,7 @@ class Trigger {
           };
     ColliderComponent* GetFirst() const { return first; }
     ColliderComponent* GetSecond() const { return second; }
+
    private:
     ColliderComponent* first;
     ColliderComponent* second;

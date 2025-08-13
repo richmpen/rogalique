@@ -1,21 +1,21 @@
 ﻿#pragma once
-#include "GameState.h"
-#include "UiManager.h"
 #include "ButtonUI.h"
+#include "GameState.h"
 #include "ImageUI.h"
+#include "UiManager.h"
 
 namespace Rogalique {
 class MainMenuState : public EngineCore::GameState {
-public:
+   public:
     MainMenuState();
-    
+
     void Update(float deltaTime) override;
     void Render() override;
     void HandleEvent(const sf::Event& event) override;
-        
-private:
+
+   private:
     void CreateUI();
-        
+
     std::shared_ptr<UiManager> uiManager;
     std::shared_ptr<TextUI> titleText;
     std::shared_ptr<ImageUI> logo;
@@ -25,4 +25,4 @@ private:
     std::shared_ptr<ButtonUI> exitButton;
     std::shared_ptr<ImageUI> background;
 };
-}
+}  // namespace Rogalique

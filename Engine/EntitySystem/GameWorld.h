@@ -25,7 +25,7 @@ class GameWorld {
     const std::vector<GameObject*>& GetAllGameObjects() const {
         return gameObjects;
     }
-    
+
     static void SetPaused(bool paused) { isPaused = paused; }
     static bool IsPaused() { return isPaused; }
 

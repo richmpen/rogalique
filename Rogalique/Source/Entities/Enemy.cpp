@@ -37,7 +37,7 @@ Cacodemon::Cacodemon(const EngineCore::Vector2Df& position,
         gameObject
             ->AddComponent<EngineCore::SpriteMovementAnimationComponent>();
     moveAnimator->Initialize("cacodemonTM", 10.f);
-    
+
     auto direction = gameObject->AddComponent<DirectionComponent>();
     direction->AddDirectionMoveAnimation(directionEnum::Right, 0, 2, true);
     direction->AddDirectionMoveAnimation(directionEnum::Left, 0, 2, false);
@@ -53,9 +53,8 @@ Cacodemon::Cacodemon(const EngineCore::Vector2Df& position,
     fighter->SetTargetType(target);
 }
 
-Demon::Demon(const EngineCore::Vector2Df& position,
-                 const TargetType& target, int damage, int health,
-                 float speed) {
+Demon::Demon(const EngineCore::Vector2Df& position, const TargetType& target,
+             int damage, int health, float speed) {
     gameObject = EngineCore::GameWorld::Instance()->CreateGameObject("Demon");
 
     auto transform = gameObject->GetComponent<EngineCore::TransformComponent>();
@@ -79,7 +78,7 @@ Demon::Demon(const EngineCore::Vector2Df& position,
     auto direction = gameObject->AddComponent<DirectionComponent>();
     direction->AddDirectionMoveAnimation(directionEnum::Right, 0, 2, false);
     direction->AddDirectionMoveAnimation(directionEnum::Left, 0, 2, true);
-    
+
     gameObject->AddComponent<EngineCore::SpriteColliderComponent>();
     gameObject->AddComponent<EngineCore::RigidbodyComponent>();
 

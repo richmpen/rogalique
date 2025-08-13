@@ -1,13 +1,14 @@
 ﻿#pragma once
 #include "DeveloperLevel.h"
 #include "GameState.h"
-#include "UiManager.h"
 #include "InventorySystem.h"
+#include "UiManager.h"
+
 #include <memory>
 
 namespace Rogalique {
 class PlayState : public EngineCore::GameState {
-public:
+   public:
     PlayState();
 
     void Update(float deltaTime) override;
@@ -19,14 +20,12 @@ public:
     void TogglePause();
     bool IsPaused() const { return isPaused; }
 
-    
-    
-private:
+   private:
     void CheckGameStates();
-    
+
     std::unique_ptr<DeveloperLevel> currentLevel;
     UiManager* uiManager = nullptr;
     EngineCore::GameObject* gameObject = nullptr;
     bool isPaused = false;
 };
-}
+}  // namespace Rogalique

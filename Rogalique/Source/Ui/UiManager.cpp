@@ -4,13 +4,11 @@
 #include "GameObject.h"
 #include "RenderSystem.h"
 
-
 namespace Rogalique {
 
 UiManager::UiManager(EngineCore::GameObject* gameObject)
     : EngineCore::Component(gameObject) {
     window = &EngineCore::RenderSystem::Instance()->GetMainWindow();
-   
 }
 
 void UiManager::Update(float deltaTime) {
@@ -46,8 +44,6 @@ void UiManager::RemoveElement(std::shared_ptr<UiElement> element) {
 }
 
 void UiManager::ClearElements() { uiElements.clear(); }
-
-
 
 std::vector<std::shared_ptr<UiElement>> UiManager::GetAllElements() {
     return uiElements;

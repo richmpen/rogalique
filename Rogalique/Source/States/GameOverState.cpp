@@ -10,8 +10,9 @@ namespace Rogalique {
 
 GameOverState::GameOverState() {
     EngineCore::GameWorld::Instance()->SetPaused(true);
-    
-    auto uiGameObject = EngineCore::GameWorld::Instance()->CreateGameObject("GameOverUI");
+
+    auto uiGameObject =
+        EngineCore::GameWorld::Instance()->CreateGameObject("GameOverUI");
     uiManager = std::make_shared<UiManager>(uiGameObject);
     CreateUI();
 }
@@ -40,10 +41,11 @@ void GameOverState::HandleEvent(const sf::Event& event) {
             }
         }
     }
-    
+
     if (event.type == sf::Event::KeyPressed) {
         if (event.key.code == sf::Keyboard::Escape) {
-            EngineCore::GameStateManager::Instance()->ChangeState(std::make_shared<MainMenuState>());
+            EngineCore::GameStateManager::Instance()->ChangeState(
+                std::make_shared<MainMenuState>());
         }
     }
 }
@@ -52,47 +54,45 @@ void GameOverState::CreateUI() {
     if (!uiManager) {
         return;
     }
-    
+
     background = std::make_shared<ImageUI>(
-        "panel", sf::Vector2f(0.6f, 0.6f), 
-        sf::Vector2f(static_cast<float>(SETTINGS.SCREEN_WIDTH)/2, static_cast<float>(SETTINGS.SCREEN_HEIGHT)/2));
-    background->SetElementOriginCenter();
+        "panel", sf::Vector2f(0.6f, 0.6f),
+        sf::Vector2f(static_cast<float>(SETTINGS.SCREEN_WIDTH) / 2,
+                     static_cast<float>(SETTINGS.SCREEN_HEIGHT) / 2));
+    background->SetCenterOrigin();
     uiManager->AddElement(background);
-    
-    titleText = std::make_shared<TextUI>(60, sf::Vector2f(static_cast<float>(SETTINGS.SCREEN_WIDTH)/2, 350.f), true);
+
+    titleText = std::make_shared<TextUI>(
+        60, sf::Vector2f(static_cast<float>(SETTINGS.SCREEN_WIDTH) / 2, 350.f),
+        true);
     titleText->SetText("GAME OVER", true);
     titleText->SetColor(sf::Color::Red);
     uiManager->AddElement(titleText);
-    
+
     restartButton = std::make_shared<ButtonUI>(
-        "Restart",
-        "UiMap2",
-        sf::IntRect(1649, 1524, 1216, 182),
+        "Restart", "UiMap2", sf::IntRect(1649, 1524, 1216, 182),
         sf::Vector2f(SETTINGS.SCREEN_WIDTH / 2.f, SETTINGS.SCREEN_HEIGHT / 2.f),
-        sf::Vector2f(400.f, 50.f),
-        sf::Color::Green
-    );
-    restartButton->SetElementOriginCenter();
+        sf::Vector2f(400.f, 50.f), sf::Color::Green);
+    restartButton->SetCenterOrigin();
     restartButton->SetOnClick([]() {
         EngineCore::GameWorld::Instance()->Clear();
-        EngineCore::GameStateManager::Instance()->ChangeState(std::make_shared<PlayState>());
+        EngineCore::GameStateManager::Instance()->ChangeState(
+            std::make_shared<PlayState>());
     });
     uiManager->AddElement(restartButton);
-    
+
     backToMenuButton = std::make_shared<ButtonUI>(
-        "Back to Menu",
-        "UiMap2",
-        sf::IntRect(1649, 1524, 1216, 182),
-        sf::Vector2f(SETTINGS.SCREEN_WIDTH / 2.f, SETTINGS.SCREEN_HEIGHT / 2.f + 80.f),
-        sf::Vector2f(400.f, 50.f),
-        sf::Color::Green
-    );
-    backToMenuButton->SetElementOriginCenter();
+        "Back to Menu", "UiMap2", sf::IntRect(1649, 1524, 1216, 182),
+        sf::Vector2f(SETTINGS.SCREEN_WIDTH / 2.f,
+                     SETTINGS.SCREEN_HEIGHT / 2.f + 80.f),
+        sf::Vector2f(400.f, 50.f), sf::Color::Green);
+    backToMenuButton->SetCenterOrigin();
     backToMenuButton->SetOnClick([]() {
         EngineCore::GameWorld::Instance()->Clear();
-        EngineCore::GameStateManager::Instance()->ChangeState(std::make_shared<MainMenuState>());
+        EngineCore::GameStateManager::Instance()->ChangeState(
+            std::make_shared<MainMenuState>());
     });
     uiManager->AddElement(backToMenuButton);
 }
 
-}
+}  // namespace Rogalique

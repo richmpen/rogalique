@@ -40,7 +40,7 @@ void HealthComponent::SetMaxHealth(int newMaxHealth) {
 int HealthComponent::GetMaxHealth() const { return this->maxHealth; }
 
 void HealthComponent::AddHealth(int count) {
-    this->health = std::min(this->health + count, this->maxHealth); 
+    this->health = std::min(this->health + count, this->maxHealth);
 }
 
 void HealthComponent::Die() const {

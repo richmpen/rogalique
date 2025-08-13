@@ -157,7 +157,6 @@ const sf::SoundBuffer* ResourceSystem::GetSound(const std::string& name) const {
 }
 
 void ResourceSystem::LoadFont(const std::string& name, std::string sourcePath) {
-
     if (fonts.find(name) != fonts.end()) {
         LOG_WARN("Sound already loaded: " << name);
         return;
@@ -167,7 +166,7 @@ void ResourceSystem::LoadFont(const std::string& name, std::string sourcePath) {
 
     if (!newFont->loadFromFile(sourcePath)) {
         LOG_ERROR("Failed to load font: " << sourcePath
-                                           << ", loading default font.");
+                                          << ", loading default font.");
         if (!newFont->loadFromFile("Assets/Fonts/Roboto-Medium.ttf")) {
             delete newFont;
             throw std::runtime_error(

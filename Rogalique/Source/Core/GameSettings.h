@@ -37,19 +37,17 @@ class GameSettings {
     const std::string PLAYER_NAME = "Doom Slayer";
     const float TIME_PER_FRAME = 1.f / 60.f;
 
-    //Inventory & Item
+    // Inventory & Item
     const int EQUIPMENT_SLOTS = 3;
     const int MAX_INVENTORY_SIZE = 24;
-    
+
     // Inventory Grid Constants
     const int INVENTORY_GRID_ROWS = 5;
     const int INVENTORY_GRID_COLS = 5;
-    
+
     // Settings tabs
     const int AUDIO_TAB = 0;
     const int GAMEPLAY_TAB = 1;
-    
-   
 };
 #define SETTINGS GameSettings::Instance()
 }  // namespace Rogalique

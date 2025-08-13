@@ -17,7 +17,7 @@ void GameWorld::Update(float deltaTime) {
     if (isPaused) {
         return;
     }
-    
+
     for (int i = 0; i < gameObjects.size(); i++) {
         gameObjects[i]->Update(deltaTime);
     }
@@ -26,7 +26,7 @@ void GameWorld::FixedUpdate(float deltaTime) {
     if (isPaused) {
         return;
     }
-    
+
     fixedCounter += deltaTime;
     if (fixedCounter > PhysicsSystem::Instance()->GetFixedDeltaTime()) {
         fixedCounter -= PhysicsSystem::Instance()->GetFixedDeltaTime();

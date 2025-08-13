@@ -36,7 +36,7 @@ void DeathAnimation::Start() {
 }
 
 void DeathAnimation::Update(float deltaTime) {
-    if (IsDeath()) { 
+    if (IsDeath()) {
         SetTimer(GetTimer() - deltaTime);
         if (GetTimer() <= 0.0f) {
             gameObject->GetComponent<HealthComponent>()->Die();
@@ -46,9 +46,7 @@ void DeathAnimation::Update(float deltaTime) {
 
 void DeathAnimation::Render() {}
 
-void DeathAnimation::SetTimer(float count) {
-    timer = count;
-}
+void DeathAnimation::SetTimer(float count) { timer = count; }
 
 float DeathAnimation::GetTimer() const { return timer; }
 

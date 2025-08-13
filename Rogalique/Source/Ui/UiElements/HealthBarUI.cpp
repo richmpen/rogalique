@@ -4,8 +4,8 @@
 
 namespace Rogalique {
 HealthBarUI::HealthBarUI(const std::string& textureName, sf::IntRect bgRect,
-                     sf::IntRect barRect, sf::Vector2f position,
-                     sf::Vector2f barScale, EngineCore::GameObject* player)
+                         sf::IntRect barRect, sf::Vector2f position,
+                         sf::Vector2f barScale, EngineCore::GameObject* player)
     : barRectOriginal(barRect),
       playerGameObject(player),
       healthBarScale(barScale) {
@@ -60,18 +60,4 @@ void HealthBarUI::Render(sf::RenderWindow& window) {
     window.draw(bar);
 }
 
-void HealthBarUI::SetBarPosition(sf::Vector2f newPosition) {
-    healthBarPosition = newPosition;
-    SetPosition(newPosition);
-}
-
-void HealthBarUI::SetBarScale(sf::Vector2f newScale) {
-    healthBarScale = newScale;
-    SetScale(newScale);
-}
-
-void HealthBarUI::SetBarColor(sf::Color newColor) {
-    healthBarColor = newColor;
-    SetColor(newColor);
-}
-}
+}  // namespace Rogalique
