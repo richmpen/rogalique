@@ -2,13 +2,11 @@
 
 #include "AmmoComponent.h"
 
-
 namespace Rogalique {
 AmmoBarUI::AmmoBarUI(const std::string& textureName, sf::IntRect bgRect,
-                 sf::IntRect barRect, std::shared_ptr<TextUI> firstText,
-                 std::shared_ptr<TextUI> secondText,
-                 sf::Vector2f position, sf::Vector2f barScale,
-                 EngineCore::GameObject* player)
+                     sf::IntRect barRect, std::shared_ptr<TextUI> firstText,
+                     std::shared_ptr<TextUI> secondText, sf::Vector2f position,
+                     sf::Vector2f barScale, EngineCore::GameObject* player)
     : rect(barRect),
       playerGameObject(player),
       scale(barScale),
@@ -51,8 +49,8 @@ void AmmoBarUI::Update(float deltaTime) {
     float max = static_cast<float>(ammoComponent->GetMaxAmmo());
     int ammoInClip = ammoComponent->GetAmmoInClip();
     SetAmmo(current, max);
-    firstText->SetText(std::to_string(currentAmmo),false);
-    secondText->SetText(std::to_string(ammoInClip),false);
+    firstText->SetText(std::to_string(currentAmmo), false);
+    secondText->SetText(std::to_string(ammoInClip), false);
 }
 void AmmoBarUI::Render(sf::RenderWindow& window) {
     window.draw(background);
@@ -64,4 +62,4 @@ void AmmoBarUI::Render(sf::RenderWindow& window) {
         secondText->Render(window);
     }
 }
-}
+}  // namespace Rogalique

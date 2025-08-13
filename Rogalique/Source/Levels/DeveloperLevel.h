@@ -2,18 +2,18 @@
 
 #include "Enemy.h"
 #include "EnemyFactory.h"
-#include "ItemFactory.h"
 #include "Floor.h"
+#include "Item.h"
+#include "ItemFactory.h"
 #include "Music.h"
 #include "Player.h"
 #include "Scene.h"
 #include "Ui/UiManager.h"
 #include "Wall.h"
-#include "Item.h"
-#include <memory>
 
 #include <array>
 #include <iostream>
+#include <memory>
 
 using namespace EngineCore;
 
@@ -33,9 +33,7 @@ class DeveloperLevel : public Scene {
     std::vector<std::shared_ptr<Enemy>> enemys;
     std::vector<std::shared_ptr<Item>> items;
 
-
    private:
-
     std::string levelName = "Developer Level";
     float levelWidth = 15;
     float levelHeight = 15;

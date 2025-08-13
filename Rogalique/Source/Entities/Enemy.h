@@ -30,7 +30,7 @@ class Cacodemon : public Enemy {
 class Demon : public Enemy {
    public:
     Demon(const EngineCore::Vector2Df& position, const TargetType& target,
-            int damage, int health, float speed);
+          int damage, int health, float speed);
     ~Demon() {}
 };
 }  // namespace Rogalique

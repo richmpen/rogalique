@@ -1,14 +1,14 @@
 ﻿#pragma once
 #include "ButtonUI.h"
-#include "GameState.h"
 #include "DeveloperLevel.h"
+#include "GameState.h"
 #include "ImageUI.h"
-#include "UiManager.h"
 #include "TextUI.h"
+#include "UiManager.h"
 
 namespace Rogalique {
 class VictoryState : public EngineCore::GameState {
-public:
+   public:
     VictoryState();
     ~VictoryState() override;
 
@@ -16,9 +16,9 @@ public:
     void Render() override;
     void HandleEvent(const sf::Event& event) override;
 
-private:
+   private:
     void CreateUI();
-    
+
     std::shared_ptr<UiManager> uiManager;
     std::shared_ptr<ImageUI> background;
     std::shared_ptr<TextUI> titleText;
@@ -26,4 +26,4 @@ private:
     std::shared_ptr<ButtonUI> backToMenuButton;
     std::shared_ptr<ButtonUI> nextLevelButton;
 };
-}
+}  // namespace Rogalique

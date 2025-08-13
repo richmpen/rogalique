@@ -1,15 +1,17 @@
 ﻿#pragma once
-#include "UiElement.h"
-#include <functional>
 #include "GameSettings.h"
 #include "TextUI.h"
+#include "UiElement.h"
+
 #include <SFML/Graphics.hpp>
+#include <functional>
 
 namespace Rogalique {
 class ButtonUI : public UiElement {
-public:
-
-    ButtonUI(const std::string& text, const std::string& textureName, sf::IntRect rect, sf::Vector2f position, sf::Vector2f size, sf::Color color);
+   public:
+    ButtonUI(const std::string& text, const std::string& textureName,
+             sf::IntRect rect, sf::Vector2f position, sf::Vector2f size,
+             sf::Color color);
 
     void Update(float deltaTime) override;
     void Render(sf::RenderWindow& window) override;
@@ -22,12 +24,12 @@ public:
     void SetScale(sf::Vector2f scale) override;
     void SetColor(sf::Color newColor) override;
 
-private:
+   private:
     std::function<void()> onClick;
     std::shared_ptr<TextUI> buttonText;
-    
+
     sf::Sprite background;
-    
+
     sf::Vector2f position;
     sf::Vector2f scale = sf::Vector2f(1.0f, 1.0f);
     sf::IntRect rect;
@@ -44,4 +46,4 @@ private:
     sf::Color pressColor = sf::Color(30, 30, 30);
     sf::Color disabledColor = sf::Color(30, 30, 30, 128);
 };
-}
+}  // namespace Rogalique

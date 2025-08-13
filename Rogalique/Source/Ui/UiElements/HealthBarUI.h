@@ -1,13 +1,12 @@
 #pragma once
 #include "Ui/UiElement.h"
 
-
 namespace Rogalique {
 class HealthBarUI : public UiElement {
    public:
     HealthBarUI(const std::string& textureName, sf::IntRect bgRect,
-              sf::IntRect barRect, sf::Vector2f position, sf::Vector2f barScale,
-              EngineCore::GameObject* player);
+                sf::IntRect barRect, sf::Vector2f position,
+                sf::Vector2f barScale, EngineCore::GameObject* player);
     void Update(float deltaTime) override;
     void Render(sf::RenderWindow& window) override;
 
@@ -23,4 +22,4 @@ class HealthBarUI : public UiElement {
     sf::Vector2f healthBarScale;
     sf::Color healthBarColor;
 };
-}
+}  // namespace Rogalique

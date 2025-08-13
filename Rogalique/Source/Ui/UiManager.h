@@ -1,10 +1,8 @@
 ﻿#pragma once
-#include <SFML/Graphics.hpp>
-
-
 #include "Component.h"
 #include "UiElement.h"
 
+#include <SFML/Graphics.hpp>
 #include <memory>
 #include <vector>
 
@@ -16,16 +14,15 @@ class UiManager : public EngineCore::Component {
 
     void Update(float deltaTime) override;
     void Render() override;
-    
+
     void AddElement(std::shared_ptr<UiElement> element);
     void RemoveElement(std::shared_ptr<UiElement> element);
     void ClearElements();
-    
+
     std::vector<std::shared_ptr<UiElement>> GetAllElements();
 
    private:
     std::vector<std::shared_ptr<UiElement>> uiElements;
     sf::RenderWindow* window = nullptr;
-    
 };
 };  // namespace Rogalique

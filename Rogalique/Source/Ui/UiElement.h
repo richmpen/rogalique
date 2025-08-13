@@ -1,17 +1,14 @@
 #pragma once
-#include <SFML/Graphics.hpp>
 #include "GameObject.h"
 #include "ResourceSystem.h"
+
+#include <SFML/Graphics.hpp>
 #include <memory>
 
 namespace Rogalique {
-enum class UIEventType {
-    Click,
-    Hover,
-    Leave
-};
+enum class UIEventType { Click, Hover, Leave };
 class UiElement {
-public:
+   public:
     virtual void Update(float deltaTime) = 0;
     virtual void Render(sf::RenderWindow& window) = 0;
     virtual ~UiElement() = default;
@@ -29,10 +26,11 @@ public:
     sf::Vector2f GetScale();
     virtual void SetColor(sf::Color color);
     virtual void SetCenterOrigin();
-    
+
     sf::Vector2f GetPosition() const { return sprite.getPosition(); }
     sf::FloatRect GetBounds() const { return bounds; }
-protected:
+
+   protected:
     sf::Sprite sprite;
     sf::Font font;
     const sf::Texture* texture = nullptr;

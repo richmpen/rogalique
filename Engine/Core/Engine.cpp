@@ -27,7 +27,6 @@ void Engine::Run() {
     sf::Event event;
 
     LOG_INFO("Game started");
-    
 
     while (RenderSystem::Instance()->GetMainWindow().isOpen()) {
         sf::Time dt = gameClock.restart();
@@ -52,11 +51,11 @@ void Engine::Run() {
 
         GameWorld::Instance()->Update(deltaTime);
         GameWorld::Instance()->FixedUpdate(deltaTime);
-        
+
         GameWorld::Instance()->Render();
-        
+
         GameStateManager::Instance()->Render();
-        
+
         GameWorld::Instance()->LateUpdate();
 
         RenderSystem::Instance()->GetMainWindow().display();

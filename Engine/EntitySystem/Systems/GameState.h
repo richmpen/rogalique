@@ -3,11 +3,11 @@
 
 namespace EngineCore {
 class GameState {
-public:
+   public:
     virtual ~GameState() = default;
-        
+
     virtual void Update(float deltaTime) = 0;
     virtual void Render() = 0;
     virtual void HandleEvent(const sf::Event& event) {}
 };
-};
+};  // namespace EngineCore

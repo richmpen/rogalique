@@ -1,7 +1,6 @@
 #pragma once
 #include "Ui/UiElement.h"
 
-
 namespace Rogalique {
 
 class TextUI : public UiElement {
@@ -18,12 +17,10 @@ class TextUI : public UiElement {
     void SetCenterOrigin() override;
     const sf::Font* GetFirstFont();
     const sf::Font* GetSecondFont();
-    
 
-private:
+   private:
     const sf::Font* firstFont;
     const sf::Font* secondFont;
     sf::Text text;
-    
 };
-}
+}  // namespace Rogalique

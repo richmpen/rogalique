@@ -6,8 +6,8 @@ namespace Rogalique {
 class ArmorBarUI : public UiElement {
    public:
     ArmorBarUI(const std::string& textureName, sf::IntRect bgRect,
-             sf::IntRect barRect, sf::Vector2f position, sf::Vector2f barScale,
-             EngineCore::GameObject* player);
+               sf::IntRect barRect, sf::Vector2f position,
+               sf::Vector2f barScale, EngineCore::GameObject* player);
     void Update(float deltaTime) override;
     void Render(sf::RenderWindow& window) override;
 
@@ -23,4 +23,4 @@ class ArmorBarUI : public UiElement {
     sf::Vector2f scale;
     sf::Color color;
 };
-}
+}  // namespace Rogalique

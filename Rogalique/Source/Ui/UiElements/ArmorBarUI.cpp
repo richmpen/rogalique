@@ -4,11 +4,9 @@
 
 namespace Rogalique {
 ArmorBarUI::ArmorBarUI(const std::string& textureName, sf::IntRect bgRect,
-                   sf::IntRect barRect, sf::Vector2f position,
-                   sf::Vector2f barScale, EngineCore::GameObject* player)
-    : rect(barRect),
-      playerGameObject(player),
-      scale(barScale) {
+                       sf::IntRect barRect, sf::Vector2f position,
+                       sf::Vector2f barScale, EngineCore::GameObject* player)
+    : rect(barRect), playerGameObject(player), scale(barScale) {
     const sf::Texture* tex =
         EngineCore::ResourceSystem::Instance()->GetTextureShared(textureName);
     if (tex) {
@@ -49,4 +47,4 @@ void ArmorBarUI::Render(sf::RenderWindow& window) {
     window.draw(background);
     window.draw(bar);
 }
-}
+}  // namespace Rogalique
