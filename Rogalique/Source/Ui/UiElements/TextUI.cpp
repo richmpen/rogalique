@@ -21,11 +21,11 @@ void TextUI::Render(sf::RenderWindow& window) { window.draw(text); }
 void TextUI::SetText(const std::string& newText, bool setOrigin) {
     text.setString(newText);
     if (setOrigin) {
-        SetTextOrigin();
+        SetCenterOrigin();
     }
 }
 
-void TextUI::SetPosition(sf::Vector2f newPosition) {
+void TextUI::SetTextPosition(sf::Vector2f newPosition) {
     text.setPosition(newPosition);
 }
 
@@ -33,14 +33,15 @@ void TextUI::SetColor(sf::Color newColor) {
     text.setFillColor(newColor);
 }
 
-void TextUI::SetSize(int newSize) { text.setCharacterSize(newSize); }
+void TextUI::SetStyle(sf::Text::Style style) {
+    text.setStyle(style);
+}
 
-void TextUI::SetStyle(sf::Text::Style style) { text.setStyle(style); }
-
-void TextUI::SetTextOrigin() {
+void TextUI::SetCenterOrigin() {
     sf::FloatRect rc = text.getLocalBounds();
     text.setOrigin(rc.width/2, rc.height/2);
 }
+
 const sf::Font* TextUI::GetFirstFont() {
     return firstFont;
 }

@@ -12,7 +12,7 @@ QuickSlotsUI::QuickSlotsUI() {
         
         slot.image = std::make_shared<ImageUI>("inventoryPanelMap", sf::IntRect(1210, 0, 105, 100),
                            sf::Vector2f(SETTINGS.SCREEN_WIDTH-350+i* 100.0f, SETTINGS.SCREEN_HEIGHT-200.0f));
-        slot.image->SetElementScale(sf::Vector2f(0.8,0.8));
+        slot.image->SetScale(sf::Vector2f(0.8,0.8));
 
         slot.keyText = std::make_shared<TextUI>(16, sf::Vector2f(SETTINGS.SCREEN_WIDTH-350+i* 100.0f, SETTINGS.SCREEN_HEIGHT-200.0f), false);
         slot.keyText->SetText(std::to_string(i+1), false);
@@ -54,17 +54,18 @@ void QuickSlotsUI::UpdateSlots() {
             slot.hasItem = true;
 
             
-            slot.itemSprite = std::make_shared<ImageUI>(item->GetTextureName(), 
+            slot.itemSprite = std::make_shared<ImageUI>(
+                item->GetTextureName(), 
                 sf::Vector2f(1,1),
                 sf::Vector2f(SETTINGS.SCREEN_WIDTH-350+i* 100.0f+40, SETTINGS.SCREEN_HEIGHT-200.0f+30));
             
             
-            slot.itemSprite->SetElementScale(sf::Vector2f(0.2f, 0.2f));
-            slot.itemSprite->SetElementOriginCenter();
+            slot.itemSprite->SetScale(sf::Vector2f(0.18f, 0.18f));
+            slot.itemSprite->SetCenterOrigin();
             
             if (item->GetCount() > 1) {
                 slot.countText->SetText(std::to_string(item->GetCount()),false);
-                slot.countText->SetPosition(sf::Vector2f(SETTINGS.SCREEN_WIDTH-350+i* 100.0f+70, SETTINGS.SCREEN_HEIGHT-200.0f+60));
+                slot.countText->SetTextPosition(sf::Vector2f(SETTINGS.SCREEN_WIDTH-350+i* 100.0f+70, SETTINGS.SCREEN_HEIGHT-200.0f+60));
             } else {
                 slot.countText->SetText("", false);
             }

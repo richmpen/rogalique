@@ -1,12 +1,15 @@
 ﻿#include "ObjectSpawner.h"
+#include "Logger.h"
+
+
 
 namespace Rogalique {
 ObjectSpawner::ObjectSpawner(DeveloperLevel* level) : level(level) {}
 
-void ObjectSpawner::Spawn(int count, EnemyType type,
+void ObjectSpawner::SpawnEnemy(int count, EnemyType type,
                           const EngineCore::Vector2Df& position,
                           TargetType target, int damage, int health,
-                          float speed) {
+                          float speed) const {
     auto it = level->enemyFactories.find(type);
     if (it == level->enemyFactories.end()) {
         LOG_WARN("No factory found for enemy type");
@@ -29,4 +32,23 @@ void ObjectSpawner::Spawn(int count, EnemyType type,
         }
     }
 }
+
+void ObjectSpawner::SpawnItem(ItemType type, int count, const EngineCore::Vector2Df& position,const std::string& textureName) {
+    auto it = level->itemFactories.find(type);
+    if (it == level->itemFactories.end()) {
+        LOG_WARN("No factory found for item type");
+        return;
+    }
+
+    ItemFactory* factory = it->second.get();
+    
+    std::shared_ptr<Item> item =
+        factory->CreateItem(type, count, position, textureName);
+    if (item && item->GetGameObject()) {
+        level->items.push_back(std::move(item));
+    } else {
+        LOG_ERROR("Failed to spawn item: gameObject is nullptr");
+    }
+}
+
 }  // namespace Rogalique

@@ -8,9 +8,8 @@
 #include "HUDGenerator.h"
 #include "InventoryState.h"
 #include "InventorySystem.h"
-#include "HealthPotion.h"
 #include "GameOverState.h"
-#include "WictoryState.h"
+#include "VictoryState.h"
 #include "HealthComponent.h"
 #include "EnemyAIComponent.h"
 #include "SettingsState.h"
@@ -54,7 +53,7 @@ namespace Rogalique {
                 );
                 return;
             }
-            if (event.key.code == sf::Keyboard::I) {
+            if (event.key.code == sf::Keyboard::Tab) {
                 GameWorld::Instance()->SetPaused(true);
                 EngineCore::GameStateManager::Instance()->PushState(std::make_unique<InventoryState>());
             }

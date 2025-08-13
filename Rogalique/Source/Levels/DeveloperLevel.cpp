@@ -1,18 +1,18 @@
 ﻿#include "DeveloperLevel.h"
+#include "Item.h"
 
-#include "AmmoItem.h"
-#include "ArmorItem.h"
 #include "EnemyAIComponent.h"
 #include "EnemyFactory.h"
+#include "ItemFactory.h"
 #include "ItemType.h"
 #include "MazeGenerator.h"
 #include "ObjectSpawner.h"
 #include "HUDGenerator.h"
 #include "UiElement.h"
 #include "UiManager.h"
-#include "HealthPotion.h"
+
 #include "InventorySystem.h"
-#include "WeaponItem.h"
+
 #include "States/SettingsState.h"
 
 using namespace EngineCore;
@@ -50,6 +50,14 @@ void DeveloperLevel::Start() {
         enemyFactories.emplace(EnemyType::CREEPER,
                                std::make_unique<CreeperEnemyFactory>());
     }
+    itemFactories.emplace(ItemType::HEALTH_POTION,
+                            std::make_unique<HealthItemFactory>());
+    itemFactories.emplace(ItemType::ARMOR,
+                            std::make_unique<ArmorItemFactory>());
+    itemFactories.emplace(ItemType::AMMO,
+                            std::make_unique<AmmoItemFactory>());
+    itemFactories.emplace(ItemType::WEAPON,
+                            std::make_unique<WeaponItemFactory>());
 
     // Create player
     player =
@@ -63,25 +71,19 @@ void DeveloperLevel::Start() {
         music = std::make_unique<Music>("MetalHell");
     }
 
+    ObjectSpawner spawner(this);
     // Spawn enemies if enabled - simple check
     if (SettingsState::enemiesEnabled) {
-        ObjectSpawner spawner(this);
-        spawner.Spawn(1, EnemyType::CACODEMON, {550, 500}, TargetType::Enemy, 15, 150, 150);
-        spawner.Spawn(1, EnemyType::CREEPER, {300, 300}, TargetType::Enemy, 75, 1, 200);
+        spawner.SpawnEnemy(1, EnemyType::CACODEMON, {550, 500}, TargetType::Enemy, 15, 150, 150);
+        spawner.SpawnEnemy(0, EnemyType::CREEPER, {300, 300}, TargetType::Enemy, 75, 1, 200);
     }
 
     // Item spawning
-    auto healthPotion = std::make_shared<HealthPotion>(ItemType::HEALTH_POTION, 2, sf::Vector2f(10, -100), "HealthItem");
-    items.push_back(healthPotion);
+    spawner.SpawnItem(ItemType::HEALTH_POTION, 2, EngineCore::Vector2Df(10, -100), "HealthItem");
+    spawner.SpawnItem(ItemType::ARMOR, 1, EngineCore::Vector2Df(300, -100), "ArmorItem");
+    spawner.SpawnItem(ItemType::AMMO, 5, EngineCore::Vector2Df(600, -100), "AmmoItem");
+    spawner.SpawnItem(ItemType::WEAPON, 1, EngineCore::Vector2Df(900, -100), "WeaponItem");
     
-    auto armorItem = std::make_shared<ArmorItem>(ItemType::ARMOR, 1, sf::Vector2f(300, -100), "ArmorItem");
-    items.push_back(armorItem);
-
-    auto ammoItem = std::make_shared<AmmoItem>(ItemType::AMMO, 5, sf::Vector2f(600, -100), "AmmoItem");
-    items.push_back(ammoItem);
-
-    auto weapon = std::make_shared<WeaponItem>(ItemType::WEAPON, 1, sf::Vector2f(900, -100), "WeaponItem");
-    items.push_back(weapon);
 }
 
 void DeveloperLevel::Restart() {

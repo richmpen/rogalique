@@ -21,7 +21,7 @@ private:
     struct SlotData {
         std::shared_ptr<ImageUI> image;
         std::shared_ptr<ImageUI> itemSprite;
-        // sf::Sprite itemSprite;
+
         std::shared_ptr<TextUI> keyText;
         std::shared_ptr<TextUI> countText;
         bool hasItem = false;

@@ -24,8 +24,12 @@ void UiElement::SetPosition(sf::Vector2f position) {
 }
 
 void UiElement::SetScale(sf::Vector2f scale) { 
-    sprite.setScale(scale); 
+    sprite.setScale(scale);
     bounds = sprite.getGlobalBounds();
+}
+
+sf::Vector2f UiElement::GetScale() { 
+    return sprite.getScale(); 
 }
 
 void UiElement::SetColor(sf::Color color) { sprite.setColor(color); }
@@ -34,9 +38,5 @@ void UiElement::SetCenterOrigin() {
     sf::FloatRect rc = sprite.getLocalBounds();
     sprite.setOrigin(rc.width/2, rc.height/2);
     bounds = sprite.getGlobalBounds();
-}
-
-bool UiElement::Contains(sf::Vector2f point) const {
-    return bounds.contains(point);
 }
 }// namespace Rogalique

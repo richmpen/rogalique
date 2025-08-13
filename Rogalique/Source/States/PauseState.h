@@ -11,7 +11,7 @@ namespace Rogalique {
 class PauseState : public EngineCore::GameState {
     public:
     PauseState();
-    ~PauseState();
+    ~PauseState() override;
 
     void Update(float deltaTime) override;
     void Render() override;

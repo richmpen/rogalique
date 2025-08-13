@@ -24,12 +24,12 @@ namespace Rogalique {
         
         background = std::make_shared<ImageUI>(
                 "menu_bg", sf::Vector2f(1, 1), sf::Vector2f(static_cast<float>(SETTINGS.SCREEN_WIDTH)/2, static_cast<float>(SETTINGS.SCREEN_HEIGHT)/2));
-        background->SetElementOriginCenter();
+        background->SetCenterOrigin();
         uiManager->AddElement(background);
     
         logo = std::make_shared<ImageUI>(
                 "logo", sf::Vector2f(0.4f,0.4f), sf::Vector2f(300, 150));
-        logo->SetElementOriginCenter();
+        logo->SetCenterOrigin();
         uiManager->AddElement(logo);
     
         playButton = std::make_shared<ButtonUI>(
@@ -38,7 +38,7 @@ namespace Rogalique {
             sf::IntRect(1649,1524,1216,182),
             sf::Vector2f(300.f, 400.f),
             sf::Vector2f(400.f, 50.f),
-            sf::Color::Red
+            sf::Color::Green
         );
         
         if (playButton) {
@@ -49,8 +49,7 @@ namespace Rogalique {
             });
             uiManager->AddElement(playButton);
         }
-        playButton->SetElementColor(sf::Color::Green);
-        playButton->SetElementOriginCenter();
+        playButton->SetCenterOrigin();
         
 
         settingsButton = std::make_shared<ButtonUI>(
@@ -61,7 +60,7 @@ namespace Rogalique {
                 sf::Vector2f(400.f, 50.f),
             sf::Color::Green
             );
-        settingsButton->SetElementOriginCenter();
+        settingsButton->SetCenterOrigin();
         if (settingsButton) {
             settingsButton->SetOnClick([]() {
                 EngineCore::GameStateManager::Instance()->PushState(
@@ -77,9 +76,9 @@ namespace Rogalique {
             sf::IntRect(1649,1524,1216,182),
             sf::Vector2f(340.f, 400.f + 160.f),
             sf::Vector2f(400.f, 50.f),
-            sf::Color::Green
+            sf::Color::Red
         );
-        exitButton->SetElementOriginCenter();
+        exitButton->SetCenterOrigin();
         
         if (exitButton) {
             exitButton->SetOnClick([]() {

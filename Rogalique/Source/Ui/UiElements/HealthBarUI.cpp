@@ -60,18 +60,4 @@ void HealthBarUI::Render(sf::RenderWindow& window) {
     window.draw(bar);
 }
 
-void HealthBarUI::SetBarPosition(sf::Vector2f newPosition) {
-    healthBarPosition = newPosition;
-    SetPosition(newPosition);
-}
-
-void HealthBarUI::SetBarScale(sf::Vector2f newScale) {
-    healthBarScale = newScale;
-    SetScale(newScale);
-}
-
-void HealthBarUI::SetBarColor(sf::Color newColor) {
-    healthBarColor = newColor;
-    SetColor(newColor);
-}
 }

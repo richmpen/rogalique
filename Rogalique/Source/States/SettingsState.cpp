@@ -56,7 +56,7 @@ void SettingsState::CreateUI() {
     background = std::make_shared<ImageUI>(
         "menu_bg", sf::Vector2f(1, 1), 
         sf::Vector2f(static_cast<float>(SETTINGS.SCREEN_WIDTH)/2, static_cast<float>(SETTINGS.SCREEN_HEIGHT)/2));
-    background->SetElementOriginCenter();
+    background->SetCenterOrigin();
     uiManager->AddElement(background);
     
     titleText = std::make_shared<TextUI>(48, sf::Vector2f(static_cast<float>(SETTINGS.SCREEN_WIDTH)/2, 100.f), true);
@@ -69,10 +69,10 @@ void SettingsState::CreateUI() {
         "UiMap2",
         sf::IntRect(1649, 1524, 1216, 182),
         sf::Vector2f(100.f, 100.f),
-        sf::Vector2f(120.f, 40.f),
+        sf::Vector2f(150.f, 40.f),
         sf::Color::Red
     );
-    backButton->SetElementOriginCenter();
+    backButton->SetCenterOrigin();
     backButton->SetOnClick([]() {
         EngineCore::GameStateManager::Instance()->PopState();
     });
@@ -95,7 +95,7 @@ void SettingsState::CreateUI() {
 void SettingsState::CreateAudioTab() {
     
     auto musicCheckbox = std::make_shared<CheckBoxUI>(
-        "Enable Music", sf::Vector2f(250, 280.f), musicEnabled);
+        "Enable Music", sf::Vector2f(170.f, 280.f), musicEnabled);
     musicCheckbox->SetOnValueChanged([this](bool value) {
         musicEnabled = value;
         ToggleMusic(value);
@@ -108,14 +108,14 @@ void SettingsState::CreateGameplayTab() {
     
     
     auto mazeCheckbox = std::make_shared<CheckBoxUI>(
-        "Enable Maze Generation", sf::Vector2f(250, 280.f), mazeEnabled);
-    mazeCheckbox->SetOnValueChanged([](bool value) {
+        "Enable Maze Generation", sf::Vector2f(170.f, 280.f), mazeEnabled);
+    mazeCheckbox->SetOnValueChanged([this](bool value) {
         mazeEnabled = value;
     });
     tabsSystem->AddElementToTab(SETTINGS.GAMEPLAY_TAB, mazeCheckbox);
     
     auto enemiesCheckbox = std::make_shared<CheckBoxUI>(
-        "Enable Enemies", sf::Vector2f(250, 280.f + spacing), enemiesEnabled);
+        "Enable Enemies", sf::Vector2f(170.f, 280.f + spacing), enemiesEnabled);
     enemiesCheckbox->SetOnValueChanged([this](bool value) {
         enemiesEnabled = value;
         ToggleEnemies(value);

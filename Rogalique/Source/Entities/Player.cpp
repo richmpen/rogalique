@@ -64,21 +64,6 @@ Player::Player(const EngineCore::Vector2Df& position, const TargetType& target,
 
     fighter->SetDamage(damage);
     fighter->SetTargetType(target);
-
-    // Experemental
-    /*auto transform =
-    gameObject->GetComponent<EngineCore::TransformComponent>();
-    transform->RotateBy(90.f);
-    transform->MoveBy({ 1.f, 0.f });
-    transform->Print();*/
-
-    /* auto test = EngineCore::GameWorld::Instance()->CreateGameObject();
-     auto testTransform = test->GetComponent<EngineCore::TransformComponent>();
-     testTransform->SetParent(transform);
-
-     transform->RotateBy(-90.f);
-     transform->Print();
-     testTransform->Print();*/
 }
 
 EngineCore::GameObject* Player::GetGameObject() { return gameObject; }

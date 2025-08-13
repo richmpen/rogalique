@@ -43,7 +43,7 @@ void PauseState::CreateUI() {
     
     auto background = std::make_shared<ImageUI>(
                 "panel", sf::Vector2f(0.5, 0.5), sf::Vector2f(static_cast<float>(SETTINGS.SCREEN_WIDTH)/2, static_cast<float>(SETTINGS.SCREEN_HEIGHT)/2));
-    background->SetElementOriginCenter();
+    background->SetCenterOrigin();
     uiManager->AddElement(background);
     
     continueButton = std::make_shared<ButtonUI>(
@@ -54,7 +54,7 @@ void PauseState::CreateUI() {
         sf::Vector2f(400.f, 50.f),
                 sf::Color::Green
     );
-        continueButton->SetElementOriginCenter();
+        continueButton->SetCenterOrigin();
             
     if (continueButton) {
         continueButton->SetOnClick([]() {
@@ -76,7 +76,7 @@ void PauseState::CreateUI() {
         sf::Vector2f(400.f, 50.f),
                 sf::Color::Green
     );
-    backToMenuButton->SetElementOriginCenter();
+    backToMenuButton->SetCenterOrigin();
             
     if (backToMenuButton) {
         backToMenuButton->SetOnClick([this]() {

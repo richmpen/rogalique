@@ -1,4 +1,5 @@
 ﻿#pragma once
+#include "Item.h"
 #include "GameSettings.h"
 #include "SpriteColliderComponent.h"
 #include "ItemType.h"
@@ -8,18 +9,16 @@
 #include <SFML/Graphics.hpp>
 
 namespace Rogalique {
-    // Forward declaration
-    class Item;
-    
+
     class InventorySystem{
     public:
         static InventorySystem* Instance();
         
-        void ItemCollision(EngineCore::GameObject* itemGameObject, ItemType itemType, int itemCount, const std::string& textureName);
-        void AddItemToInventory(ItemType type, int count, const std::string& textureName);
+        void ItemCollision(std::shared_ptr<Item> item);
+        void AddItemToInventory(std::shared_ptr<Item> item);
         void Update(float deltaTime);
         void Render();
-        const std::vector<std::unique_ptr<Item>>& GetInventory() const { return inventory; }
+        const std::vector<std::shared_ptr<Item>>& GetInventory() const { return inventory; }
         
         bool EquipItem(int slotIndex, int inventoryIndex);
         bool UnequipItem(int slotIndex);
@@ -27,14 +26,14 @@ namespace Rogalique {
         const Item* GetEquippedItem(int slotIndex) const;
         bool IsSlotEmpty(int slotIndex) const;
 
-        bool SwapInventoryItems(int index1, int index2);
-        bool SwapEquipmentSlots(int slot1, int slot2);
+        bool SwapInventoryItems(int firstIndex, int secondIndex);
+        bool SwapEquipmentSlots(int firstSlot, int secondSlot);
         bool SwapInventoryToEquipment(int inventoryIndex, int equipmentSlot);
         
         int FindFirstEmptyInventorySlot() const;
     private:
-        std::vector<std::unique_ptr<Item>> inventory;
-        std::vector<std::unique_ptr<Item>> equippedItems;
+        std::vector<std::shared_ptr<Item>> inventory;
+        std::vector<std::shared_ptr<Item>> equippedItems;
         
         static InventorySystem* instance;
         

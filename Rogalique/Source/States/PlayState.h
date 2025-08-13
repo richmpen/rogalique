@@ -18,8 +18,6 @@ public:
     void UnpauseGame();
     void TogglePause();
     bool IsPaused() const { return isPaused; }
-
-    
     
 private:
     void CheckGameStates();

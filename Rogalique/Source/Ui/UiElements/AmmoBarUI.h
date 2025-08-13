@@ -13,9 +13,6 @@ class AmmoBarUI : public UiElement {
             sf::Vector2f barScale, EngineCore::GameObject* player);
     void Update(float deltaTime) override;
     void Render(sf::RenderWindow& window) override;
-    void SetBarPosition(sf::Vector2f newPosition);
-    void SetBarScale(sf::Vector2f newScale);
-    void SetBarColor(sf::Color newColor);
 
    private:
     void SetAmmo(float current, float max);
@@ -28,9 +25,9 @@ class AmmoBarUI : public UiElement {
     int maxAmmo = 0;
 
     EngineCore::GameObject* playerGameObject = nullptr;
-    sf::IntRect barRectOriginal;
-    sf::Vector2f ammoBarPosition;
-    sf::Vector2f ammoBarScale;
-    sf::Color ammoBarColor;
+    sf::IntRect rect;
+    sf::Vector2f position;
+    sf::Vector2f scale;
+    sf::Color color;
 };
 }

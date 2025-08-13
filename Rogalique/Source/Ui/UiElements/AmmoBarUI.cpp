@@ -9,9 +9,9 @@ AmmoBarUI::AmmoBarUI(const std::string& textureName, sf::IntRect bgRect,
                  std::shared_ptr<TextUI> secondText,
                  sf::Vector2f position, sf::Vector2f barScale,
                  EngineCore::GameObject* player)
-    : barRectOriginal(barRect),
+    : rect(barRect),
       playerGameObject(player),
-      ammoBarScale(barScale),
+      scale(barScale),
       firstText(firstText),
       secondText(secondText) {
     font.loadFromFile(SETTINGS.FONTS_PATH + "roboto/Roboto-Medium.ttf");
@@ -23,13 +23,13 @@ AmmoBarUI::AmmoBarUI(const std::string& textureName, sf::IntRect bgRect,
         background.setTextureRect(bgRect);
         background.setPosition(position);
         background.setColor(sf::Color(221, 204, 136));
-        background.setScale(ammoBarScale);
+        background.setScale(scale);
 
         bar.setTexture(*tex);
         bar.setTextureRect(barRect);
         bar.setPosition(position);
         bar.setColor(sf::Color(248, 255, 156));
-        bar.setScale(ammoBarScale);
+        bar.setScale(scale);
     }
 }
 
@@ -37,8 +37,8 @@ void AmmoBarUI::SetAmmo(float current, float max) {
     currentAmmo = current;
     maxAmmo = max;
     float percent = (max > 0) ? (current / max) : 0.f;
-    int newWidth = static_cast<int>(barRectOriginal.width * percent);
-    sf::IntRect newRect = barRectOriginal;
+    int newWidth = static_cast<int>(rect.width * percent);
+    sf::IntRect newRect = rect;
     newRect.width = newWidth > 0 ? newWidth : 0;
     bar.setTextureRect(newRect);
 }
@@ -63,19 +63,5 @@ void AmmoBarUI::Render(sf::RenderWindow& window) {
     if (secondText) {
         secondText->Render(window);
     }
-}
-void AmmoBarUI::SetBarPosition(sf::Vector2f newPosition) {
-    ammoBarPosition = newPosition;
-    SetPosition(newPosition);
-}
-
-void AmmoBarUI::SetBarScale(sf::Vector2f newScale) {
-    ammoBarScale = newScale;
-    SetScale(newScale);
-}
-
-void AmmoBarUI::SetBarColor(sf::Color newColor) {
-    ammoBarColor = newColor;
-    SetColor(newColor);
 }
 }

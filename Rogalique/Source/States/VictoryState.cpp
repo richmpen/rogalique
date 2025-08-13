@@ -1,4 +1,4 @@
-﻿#include "WictoryState.h"
+﻿#include "VictoryState.h"
 
 #include "GameSettings.h"
 #include "GameStateManager.h"
@@ -56,7 +56,7 @@ void VictoryState::CreateUI() {
     background = std::make_shared<ImageUI>(
         "panel", sf::Vector2f(0.7f, 0.7f), 
         sf::Vector2f(static_cast<float>(SETTINGS.SCREEN_WIDTH)/2, static_cast<float>(SETTINGS.SCREEN_HEIGHT)/2));
-    background->SetElementOriginCenter();
+    background->SetCenterOrigin();
     uiManager->AddElement(background);
     
     titleText = std::make_shared<TextUI>(60, sf::Vector2f(static_cast<float>(SETTINGS.SCREEN_WIDTH)/2, 320.f), true);
@@ -72,7 +72,7 @@ void VictoryState::CreateUI() {
         sf::Vector2f(400.f, 50.f),
         sf::Color::Green
     );
-    restartButton->SetElementOriginCenter();
+    restartButton->SetCenterOrigin();
     restartButton->SetOnClick([]() {
         EngineCore::GameWorld::Instance()->Clear();
         EngineCore::GameStateManager::Instance()->ChangeState(std::make_shared<PlayState>());
@@ -87,7 +87,7 @@ void VictoryState::CreateUI() {
         sf::Vector2f(400.f, 50.f),
         sf::Color(128, 128, 128)
     );
-    nextLevelButton->SetElementOriginCenter();
+    nextLevelButton->SetCenterOrigin();
     nextLevelButton->SetEnabled(false);
     uiManager->AddElement(nextLevelButton);
     
@@ -99,7 +99,7 @@ void VictoryState::CreateUI() {
         sf::Vector2f(400.f, 50.f),
         sf::Color::Green
     );
-    backToMenuButton->SetElementOriginCenter();
+    backToMenuButton->SetCenterOrigin();
     backToMenuButton->SetOnClick([]() {
         EngineCore::GameWorld::Instance()->Clear();
         EngineCore::GameStateManager::Instance()->ChangeState(std::make_shared<MainMenuState>());

@@ -4,7 +4,7 @@
 #include "GameWorld.h"
 #include "GameStateManager.h"
 #include "InventorySystem.h"
-#include "DragDropManager.h"
+#include "RenderSystem.h"
 #include "ImageUI.h"
 #include "ButtonUI.h"
 #include "TextUI.h"
@@ -22,41 +22,97 @@ namespace Rogalique {
             LOG_ERROR("Cannot create UI - uiManager is null");
             return;
         }
+
+        CreateUi();
+    }
+
+    InventoryState::~InventoryState() {
+        EngineCore::GameWorld::Instance()->SetPaused(false);
+    }
+
+    void InventoryState::Update(float deltaTime) {
+        if (uiManager) {
+            uiManager->Update(deltaTime);
+        }
+    }
+
+    void InventoryState::Render() {
+        if (uiManager) {
+            uiManager->Render();
+        }
+    }
+
+    void InventoryState::HandleEvent(const sf::Event& event) {
+        if (event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left) {
+            sf::Vector2f mousePos = GetMousePosition();
+            
+            // Handle inventory item clicks with proper bounds checking
+            for (auto i = 0; i < inventoryItems.size(); ++i) {
+                if (inventoryItems[i] && inventoryItems[i]->GetBounds().contains(mousePos)) {
+                    HandleInventoryItemClick(i);
+                    return;
+                }
+            }
+            
+            // Handle equipment item clicks with proper bounds checking
+            for (auto i = 0; i < equipmentItems.size(); ++i) {
+                if (equipmentItems[i] && equipmentItems[i]->GetBounds().contains(mousePos)) {
+                    HandleEquipmentItemClick(i);
+                    return;
+                }
+            }
+        }
         
+        // Handle other UI elements after item clicks
+        if (uiManager) {
+            for (auto& element : uiManager->GetAllElements()) {
+                if (element && element->HandleEvent(event)) {
+                    return; 
+                }
+            }
+        }
+        
+        if (event.type == sf::Event::KeyPressed) {
+            if (event.key.code == sf::Keyboard::Escape || event.key.code == sf::Keyboard::Tab) {
+                EngineCore::GameStateManager::Instance()->PopState();
+            }
+        }
+    }
+
+    void InventoryState::CreateUi() {
         auto panel = std::make_shared<ImageUI>(
             "inventoryPanelMap", sf::IntRect(0, 0, 1123, 608),
             sf::Vector2f(SETTINGS.PLAYER_CAMERA_WIDTH/2.0f, SETTINGS.PLAYER_CAMERA_HEIGHT/2.0f));
-        panel->SetElementScale(sf::Vector2f{1.3f, 1.3f});
-        panel->SetElementOriginCenter();
+        panel->SetScale(sf::Vector2f{1.3f, 1.3f});
+        panel->SetCenterOrigin();
         uiManager->AddElement(panel);
 
         auto playerPanelBackground = std::make_shared<ImageUI>(
             "inventoryPanelMap", sf::IntRect(1460, 0, 461, 474),
             sf::Vector2f(585.0f, 570.0f));
-        playerPanelBackground->SetElementScale(sf::Vector2f{1.3f, 1.3f});
-        playerPanelBackground->SetElementOriginCenter();
+        playerPanelBackground->SetScale(sf::Vector2f{1.3f, 1.3f});
+        playerPanelBackground->SetCenterOrigin();
         uiManager->AddElement(playerPanelBackground);
         
         auto playerVisualization = std::make_shared<ImageUI>(
             "inventoryPanelMap", sf::IntRect(1137, 105, 325, 264),
             sf::Vector2f(555.0f, 580.0f));
-        playerVisualization->SetElementScale(sf::Vector2f{1.3f, 1.3f});
-        playerVisualization->SetElementOriginCenter();
+        playerVisualization->SetScale(sf::Vector2f{1.3f, 1.3f});
+        playerVisualization->SetCenterOrigin();
         uiManager->AddElement(playerVisualization);
         
         auto playerLightPanel = std::make_shared<ImageUI>(
             "inventoryPanelMap", sf::IntRect(1124, 485, 370, 124),
             sf::Vector2f(530.0f, 785.0f));
-        playerLightPanel->SetElementScale(sf::Vector2f{1.3f, 1.3f});
-        playerLightPanel->SetElementOriginCenter();
+        playerLightPanel->SetScale(sf::Vector2f{1.3f, 1.3f});
+        playerLightPanel->SetCenterOrigin();
         uiManager->AddElement(playerLightPanel);
 
         auto closeButton = std::make_shared<ButtonUI>(
             "", "inventoryPanelMap", sf::IntRect(1315, 0, 40, 40),
             sf::Vector2f(1550.0f, 205.0f), sf::Vector2f(40, 40),
             sf::Color::White);
-        closeButton->SetElementScale(sf::Vector2f{1.3f, 1.3f});
-        closeButton->SetElementOriginCenter();
+        closeButton->SetCenterOrigin();
         closeButton->SetOnClick([this]() {
             EngineCore::GameStateManager::Instance()->PopState();
         });
@@ -68,13 +124,8 @@ namespace Rogalique {
             "inventoryPanelMap", sf::IntRect(1210, 0, 105, 100),
             sf::Vector2f(800.0f, 510.0f+i*130.0f));
 
-            equipmentIcon->SetElementScale(sf::Vector2f{1.f, 1.f});
-            equipmentIcon->SetElementOriginCenter();
-            equipmentIcon->SetEquipmentSlot(i);
-            equipmentIcon->SetIsEquipmentSlot(true);
-            equipmentIcon->SetOnDrop([this, i](ImageUI* draggedItem) {
-                OnItemDraggedToEquipment(draggedItem, i);
-            });
+            equipmentIcon->SetScale(sf::Vector2f{1.f, 1.f});
+            equipmentIcon->SetCenterOrigin();
             
             equipmentSlots[i] = equipmentIcon;
             uiManager->AddElement(equipmentIcon);
@@ -101,49 +152,11 @@ namespace Rogalique {
         UpdateEquipmentSlots();
     }
 
-    InventoryState::~InventoryState() {
-        EngineCore::GameWorld::Instance()->SetPaused(false);
-    }
-
-    void InventoryState::Update(float deltaTime) {
-        if (uiManager) {
-            uiManager->Update(deltaTime);
-        }
-        
-        if (DragDropManager::NeedsUIUpdate()) {
-            UpdateEquipmentSlots();
-            CreateInventoryGrid();
-            DragDropManager::ClearUIUpdateFlag();
-        }
-    }
-
-    void InventoryState::Render() {
-        if (uiManager) {
-            uiManager->Render();
-        }
-    }
-
-    void InventoryState::HandleEvent(const sf::Event& event) {
-        if (uiManager) {
-            for (auto& element : uiManager->GetAllElements()) {
-                if (element && element->HandleEvent(event)) {
-                    return; 
-                }
-            }
-        }
-        
-        if (event.type == sf::Event::KeyPressed) {
-            if (event.key.code == sf::Keyboard::Escape || event.key.code == sf::Keyboard::I) {
-                EngineCore::GameStateManager::Instance()->PopState();
-            }
-        }
-    }
-
     void InventoryState::CreateInventoryGrid() {
         const float gridIconIndent = 126.0f;
         
         if (!uiManager) {
-            LOG_ERROR("uiManager is null in CreateInventoryGrid!");
+            LOG_ERROR("INVENTORY_STATE: uiManager is null in CreateInventoryGrid!");
             return;
         }
         
@@ -177,11 +190,8 @@ namespace Rogalique {
                     "inventoryPanelMap",
                     sf::IntRect(1123, 0, 85, 85),
                     sf::Vector2f(position));
-                gridIcon->SetElementScale(sf::Vector2f{1.3f, 1.3f});
-                gridIcon->SetElementOriginCenter();
-                gridIcon->SetOnDrop([this](ImageUI* draggedItem) {
-                    OnItemDraggedToInventory(draggedItem);
-                });
+                gridIcon->SetScale(sf::Vector2f{1.3f, 1.3f});
+                gridIcon->SetCenterOrigin();
                 
                 inventorySlots.push_back(gridIcon);
                 uiManager->AddElement(gridIcon);
@@ -191,17 +201,17 @@ namespace Rogalique {
         // Create inventory items
         auto* inventorySystem = InventorySystem::Instance();
         if (!inventorySystem) {
-            LOG_ERROR("InventorySystem is null!");
+            LOG_ERROR("INVENTORY_STATE: InventorySystem is null!");
             return;
         }
         
         const auto& inventory = inventorySystem->GetInventory();
         
         int itemIndex = 0;
-        for (size_t idx = 0; idx < inventory.size(); ++idx) {
+        for (auto index = 0; index < inventory.size(); ++index) {
             if (itemIndex >= SETTINGS.INVENTORY_GRID_ROWS * SETTINGS.INVENTORY_GRID_COLS) break;
             
-            const auto& itemData = inventory[idx];
+            const auto& itemData = inventory[index];
             
             int i = itemIndex / SETTINGS.INVENTORY_GRID_COLS;
             int j = itemIndex % SETTINGS.INVENTORY_GRID_COLS;
@@ -212,12 +222,8 @@ namespace Rogalique {
                 itemData->GetTextureName(),
                 sf::Vector2f(85, 85),
                 itemPosition);
-            itemIcon->SetElementScale(sf::Vector2f{0.3f, 0.3f});
-            itemIcon->SetElementOriginCenter();
-            itemIcon->SetInventoryIndex(static_cast<int>(idx));
-            itemIcon->SetOnDrop([this, idx](ImageUI* draggedItem) {
-                OnItemDraggedToInventoryItem(draggedItem, static_cast<int>(idx));
-            });
+            itemIcon->SetScale(sf::Vector2f{0.3f, 0.3f});
+            itemIcon->SetCenterOrigin();
             
             inventoryItems.push_back(itemIcon);
             uiManager->AddElement(itemIcon);
@@ -240,13 +246,13 @@ namespace Rogalique {
 
     void InventoryState::UpdateEquipmentSlots() {
         if (!uiManager) {
-            LOG_ERROR("uiManager is null in UpdateEquipmentSlots!");
+            LOG_ERROR("INVENTORY_STATE: uiManager is null in UpdateEquipmentSlots!");
             return;
         }
         
         auto* inventorySystem = InventorySystem::Instance();
         if (!inventorySystem) {
-            LOG_ERROR("InventorySystem is null!");
+            LOG_ERROR("INVENTORY_STATE: InventorySystem is null!");
             return;
         }
         
@@ -276,13 +282,8 @@ namespace Rogalique {
                     equippedItem->GetTextureName(),
                     sf::Vector2f(85, 85),
                     position);
-                itemIcon->SetElementScale(sf::Vector2f{0.4f, 0.4f});
-                itemIcon->SetElementOriginCenter();
-                itemIcon->SetEquipmentSlot(i);
-                itemIcon->SetIsEquipmentSlot(false);
-                itemIcon->SetOnDrop([this, i](ImageUI* draggedItem) {
-                    OnItemDraggedToEquipment(draggedItem, i);
-                });
+                itemIcon->SetScale(sf::Vector2f{0.2f, 0.2f});
+                itemIcon->SetCenterOrigin();
                 
                 equipmentItems[i] = itemIcon;
                 uiManager->AddElement(itemIcon);
@@ -302,184 +303,57 @@ namespace Rogalique {
         }
     }
     
-    void InventoryState::ReturnItemToInventory(int equipmentSlot) {
+
+    void InventoryState::HandleInventoryItemClick(int inventoryIndex) {
         auto* inventorySystem = InventorySystem::Instance();
         if (!inventorySystem) {
-            LOG_ERROR("ReturnItemToInventory: inventorySystem is null");
             return;
         }
         
-        if (inventorySystem->IsSlotEmpty(equipmentSlot)) {
-            LOG_ERROR("Cannot return item from empty slot " << equipmentSlot);
+        // Check if inventory index is valid
+        const auto& inventory = inventorySystem->GetInventory();
+        if (inventoryIndex < 0 || inventoryIndex >= static_cast<int>(inventory.size())) {
             return;
         }
         
-        bool success = inventorySystem->UnequipItem(equipmentSlot);
-        
-        if (success) {
-            UpdateEquipmentSlots();
-            CreateInventoryGrid();
-        } else {
-            LOG_ERROR("Failed to return item from slot " << equipmentSlot);
+        // Find first empty equipment slot
+        for (int equipSlot = 0; equipSlot < 3; ++equipSlot) {
+            const auto* equippedItem = inventorySystem->GetEquippedItem(equipSlot);
+            if (equippedItem == nullptr) {
+                // Found empty slot - equip item
+                if (inventorySystem->EquipItem(equipSlot, inventoryIndex)) {
+                    UpdateEquipmentSlots();
+                    CreateInventoryGrid();
+                }
+                return;
+            }
         }
     }
     
-    void InventoryState::OnItemDraggedToEquipment(ImageUI* draggedItem, int equipmentSlot) {
-        if (!draggedItem) {
-            LOG_ERROR("OnItemDraggedToEquipment: draggedItem is null");
-            return;
-        }
-        
+    void InventoryState::HandleEquipmentItemClick(int equipmentSlot) {
         auto* inventorySystem = InventorySystem::Instance();
         if (!inventorySystem) {
-            LOG_ERROR("OnItemDraggedToEquipment: inventorySystem is null");
             return;
         }
         
-        int inventoryIndex = draggedItem->GetInventoryIndex();
-        int draggedEquipmentSlot = draggedItem->GetEquipmentSlot();
-        
-        bool success = false;
-        
-        if (inventoryIndex >= 0) {
-            const auto& inventory = inventorySystem->GetInventory();
-            if (inventoryIndex >= static_cast<int>(inventory.size())) {
-                LOG_ERROR("Invalid inventory index: " << inventoryIndex << " (inventory size: " << inventory.size() << ")");
-                return;
-            }
-            
-            if (!inventorySystem->IsSlotEmpty(equipmentSlot)) {
-                success = inventorySystem->SwapInventoryToEquipment(inventoryIndex, equipmentSlot);
-            } else {
-                success = inventorySystem->EquipItem(equipmentSlot, inventoryIndex);
-            }
-        } 
-        else if (draggedEquipmentSlot >= 0) {
-            if (draggedEquipmentSlot == equipmentSlot) {
-                return;
-            }
-            success = inventorySystem->SwapEquipmentSlots(draggedEquipmentSlot, equipmentSlot);
-        }
-        else {
-            LOG_ERROR("Invalid item - no valid inventory index or equipment slot");
-            return;
-        }
-        
-        if (success) {
-            DragDropManager::ClearDraggedItem();
-            
-            if (inventoryIndex >= 0) {
+        // Check if there's actually an item in this slot
+        const auto* equippedItem = inventorySystem->GetEquippedItem(equipmentSlot);
+        if (equippedItem != nullptr) {
+            // Unequip item (add to inventory)
+            if (inventorySystem->UnequipItem(equipmentSlot)) {
+                UpdateEquipmentSlots();
                 CreateInventoryGrid();
             }
-            UpdateEquipmentSlots();
-        } else {
-            LOG_ERROR("Failed to process equipment operation");
         }
     }
     
-    void InventoryState::OnItemDraggedToInventory(ImageUI* draggedItem) {
-        if (!draggedItem) {
-            LOG_ERROR("OnItemDraggedToInventory: draggedItem is null");
-            return;
-        }
-        
-        auto* inventorySystem = InventorySystem::Instance();
-        if (!inventorySystem) {
-            LOG_ERROR("OnItemDraggedToInventory: inventorySystem is null");
-            return;
-        }
-        
-        int inventoryIndex = draggedItem->GetInventoryIndex();
-        int equipmentSlot = draggedItem->GetEquipmentSlot();
-        
-        bool success = false;
-        
-        if (equipmentSlot >= 0 && inventoryIndex < 0) {
-            if (inventorySystem->IsSlotEmpty(equipmentSlot)) {
-                LOG_ERROR("Cannot unequip from empty slot " << equipmentSlot);
-                return;
-            }
-            
-            success = inventorySystem->UnequipItem(equipmentSlot);
-        } 
-        else if (inventoryIndex >= 0) {
-            return;
-        }
-        else {
-            LOG_ERROR("Invalid item - no valid inventory index or equipment slot");
-            return;
-        }
-        
-        if (success) {
-            DragDropManager::ClearDraggedItem();
-            
-            if (equipmentSlot >= 0) {
-                UpdateEquipmentSlots();
-            }
-            CreateInventoryGrid();
-        } else {
-            LOG_ERROR("Failed to process inventory operation");
-        }
-    }
-
-    void InventoryState::OnItemDraggedToInventoryItem(ImageUI* draggedItem, int targetInventoryIndex) {
-        if (!draggedItem) {
-            LOG_ERROR("OnItemDraggedToInventoryItem: draggedItem is null");
-            return;
-        }
-        
-        auto* inventorySystem = InventorySystem::Instance();
-        if (!inventorySystem) {
-            LOG_ERROR("OnItemDraggedToInventoryItem: inventorySystem is null");
-            return;
-        }
-        
-        int draggedInventoryIndex = draggedItem->GetInventoryIndex();
-        int equipmentSlot = draggedItem->GetEquipmentSlot();
-        
-        if (draggedInventoryIndex < 0 && equipmentSlot < 0) {
-            LOG_ERROR("OnItemDraggedToInventoryItem: No valid indices - draggedInventoryIndex: " << draggedInventoryIndex << ", equipmentSlot: " << equipmentSlot);
-            return;
-        }
-        
-        bool success = false;
-        
-        if (draggedInventoryIndex >= 0 && equipmentSlot < 0) {
-            if (draggedInventoryIndex != targetInventoryIndex) {
-                success = inventorySystem->SwapInventoryItems(draggedInventoryIndex, targetInventoryIndex);
-            } else {
-                return;
-            }
-        }
-        else if (equipmentSlot >= 0 && draggedInventoryIndex < 0) {
-            const auto& inventory = inventorySystem->GetInventory();
-            if (targetInventoryIndex >= static_cast<int>(inventory.size())) {
-                LOG_ERROR("Invalid target inventory index: " << targetInventoryIndex << " (inventory size: " << inventory.size() << ")");
-                return;
-            }
-            
-            if (inventorySystem->IsSlotEmpty(equipmentSlot)) {
-                LOG_ERROR("Cannot swap - equipment slot " << equipmentSlot << " is empty");
-                return;
-            }
-            
-            success = inventorySystem->SwapInventoryToEquipment(targetInventoryIndex, equipmentSlot);
-        }
-        else {
-            LOG_ERROR("Invalid drag operation - draggedInventoryIndex: " << draggedInventoryIndex << ", equipmentSlot: " << equipmentSlot);
-            return;
-        }
-        
-        if (success) {
-            DragDropManager::ClearDraggedItem();
-            
-            if (equipmentSlot >= 0) {
-                UpdateEquipmentSlots();
-            }
-            CreateInventoryGrid();
-        } else {
-            LOG_ERROR("Failed to process inventory item swap");
-        }
+    sf::Vector2f InventoryState::GetMousePosition() {
+        auto& window = EngineCore::RenderSystem::Instance()->GetMainWindow();
+        auto oldView = window.getView();
+        window.setView(window.getDefaultView());
+        sf::Vector2f mousePos = window.mapPixelToCoords(sf::Mouse::getPosition(window));
+        window.setView(oldView);
+        return mousePos;
     }
 
 }

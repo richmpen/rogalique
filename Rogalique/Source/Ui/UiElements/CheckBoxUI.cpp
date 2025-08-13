@@ -5,26 +5,28 @@ namespace Rogalique {
 
 CheckBoxUI::CheckBoxUI(const std::string& text, const sf::Vector2f& position, bool initialValue)
     : text(text), position(position), isChecked(initialValue), isEnabled(true), isHovered(false) {
+
+    checkBoxBackground = std::make_shared<ImageUI>("UiMap2",sf::IntRect(1649,1524,1216,182),
+    sf::Vector2f(position.x+180,position.y+10));
+    checkBoxBackground->SetCenterOrigin();
+    checkBoxBackground->SetScale(sf::Vector2f(0.4f,0.25f));
+    checkBoxBackground->SetColor(sf::Color::Green);
     
-    // Setup checkbox rectangle
     checkBoxRect.setSize(sf::Vector2f(20.f, 20.f));
     checkBoxRect.setPosition(position);
     checkBoxRect.setFillColor(sf::Color::White);
     checkBoxRect.setOutlineColor(sf::Color::Black);
     checkBoxRect.setOutlineThickness(2.0f);
     
-    // Setup checkmark rectangle
     checkMarkRect.setSize(sf::Vector2f(20.f - 8, 20.f - 8));
     checkMarkRect.setPosition(position.x + 4, position.y + 4);
     checkMarkRect.setFillColor(sf::Color::Green);
     
-    // Setup text label
-    labelText = std::make_shared<TextUI>(20, sf::Vector2f(position.x + 30.f, position.y), false);
+    labelText = std::make_shared<TextUI>(28, sf::Vector2f(position.x + 35.f, position.y-7.f), true);
     labelText->SetText(text, false);
     labelText->SetColor(sf::Color::White);
     
-    // Setup bounds for click detection
-    bounds = sf::FloatRect(position.x, position.y, 20.f + 30.f + text.length() * 10, 20.f);
+    bounds = sf::FloatRect(position.x, position.y, 20.f + 30.f + text.length() * 20, 20.f);
 }
 
 void CheckBoxUI::Update(float deltaTime) {
@@ -32,13 +34,13 @@ void CheckBoxUI::Update(float deltaTime) {
         labelText->Update(deltaTime);
     }
     
-    // Update colors based on state
+    // Update colors
     if (!isEnabled) {
         checkBoxRect.setFillColor(sf::Color(128, 128, 128));
         if (labelText) labelText->SetColor(sf::Color(128, 128, 128));
     } else if (isHovered) {
         checkBoxRect.setFillColor(sf::Color(240, 240, 240));
-        if (labelText) labelText->SetColor(sf::Color(200, 200, 255));
+        if (labelText) labelText->SetColor(sf::Color(38, 153, 38));
     } else {
         checkBoxRect.setFillColor(sf::Color::White);
         if (labelText) labelText->SetColor(sf::Color::White);
@@ -46,15 +48,22 @@ void CheckBoxUI::Update(float deltaTime) {
 }
 
 void CheckBoxUI::Render(sf::RenderWindow& window) {
+    
+    if (checkBoxBackground) {
+        checkBoxBackground->Render(window);
+    }
+    
     window.draw(checkBoxRect);
     
     if (isChecked) {
         window.draw(checkMarkRect);
     }
+
     
     if (labelText) {
         labelText->Render(window);
     }
+    
 }
 
 bool CheckBoxUI::HandleEvent(const sf::Event& event) {

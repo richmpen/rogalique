@@ -13,7 +13,7 @@ namespace Rogalique {
 class SettingsState : public EngineCore::GameState {
 public:
     SettingsState();
-    ~SettingsState();
+    ~SettingsState() override;
 
     void Update(float deltaTime) override;
     void Render() override;

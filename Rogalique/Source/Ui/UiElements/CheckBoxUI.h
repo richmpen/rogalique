@@ -1,4 +1,5 @@
 #pragma once
+#include "ImageUI.h"
 #include "UiElement.h"
 #include "TextUI.h"
 #include <functional>
@@ -26,7 +27,8 @@ public:
 private:
     std::shared_ptr<TextUI> labelText;
     std::function<void(bool)> onValueChanged;
-    
+
+    std::shared_ptr<ImageUI> checkBoxBackground;
     sf::RectangleShape checkBoxRect;
     sf::RectangleShape checkMarkRect;
     sf::FloatRect bounds;

@@ -10,9 +10,6 @@ class HealthBarUI : public UiElement {
               EngineCore::GameObject* player);
     void Update(float deltaTime) override;
     void Render(sf::RenderWindow& window) override;
-    void SetBarPosition(sf::Vector2f newPosition);
-    void SetBarScale(sf::Vector2f newScale);
-    void SetBarColor(sf::Color newColor);
 
    private:
     void SetHealth(float current, float max);

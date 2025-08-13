@@ -10,7 +10,7 @@ namespace Rogalique {
 class GameOverState : public EngineCore::GameState {
 public:
     GameOverState();
-    ~GameOverState();
+    ~GameOverState() override;
 
     void Update(float deltaTime) override;
     void Render() override;
