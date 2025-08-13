@@ -116,10 +116,10 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>SFML_STATIC;NOMINMAX;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>Create</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>$(ProjectDir)EntitySystem\Systems;$(ProjectDir)EntitySystem\EngineComponents;$(ProjectDir)Utils;$(ProjectDir)Math;$(ProjectDir)EntitySystem;$(ProjectDir)Core;$(SolutionDir)SFML\SFML-2.5.1\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)Core;$(ProjectDir)EntitySystem\Systems;$(ProjectDir)EntitySystem\EngineComponents;$(ProjectDir)Utils;$(ProjectDir)Math;$(ProjectDir)EntitySystem;$(SolutionDir)SFML\SFML-2.5.1\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -244,7 +244,7 @@
       <WholeProgramOptimization>false</WholeProgramOptimization>
       <ObjectFileName>x64\Debug\</ObjectFileName>
       <CallingConvention>Cdecl</CallingConvention>
-      <ProgramDataBaseFileName>E:\_Rogalique\Rogalique\x64\Debug\Engine.pdb</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <PrecompiledHeaderOutputFile>x64\Debug\Engine.pch</PrecompiledHeaderOutputFile>
@@ -277,7 +277,7 @@
       <DisableAnalyzeExternal>false</DisableAnalyzeExternal>
       <PreprocessorDefinitions>SFML_STATIC;NOMINMAX;_DEBUG;_LIB;_UNICODE;UNICODE;</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>E:\_Rogalique\Engine\EntitySystem\Systems;E:\_Rogalique\Engine\EntitySystem\EngineComponents;E:\_Rogalique\Engine\Utils;E:\_Rogalique\Engine\Math;E:\_Rogalique\Engine\EntitySystem;E:\_Rogalique\Engine\Core;E:\_Rogalique\SFML\SFML-2.5.1\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)EntitySystem\Systems;$(ProjectDir)EntitySystem\EngineComponents;$(ProjectDir)Utils;$(ProjectDir)Math;$(ProjectDir)EntitySystem;$(ProjectDir)Core;$(SolutionDir)SFML\SFML-2.5.1\include</AdditionalIncludeDirectories>
       <LinkCompiled>true</LinkCompiled>
       <LibCompiled>true</LibCompiled>
     </ClCompile>
